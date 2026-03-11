@@ -2,7 +2,7 @@ import React from "react";
 
 const BackgroundGraphics = () => {
   return (
-    <div className="absolute inset-0 -z-10 overflow-hidden">
+    <div className="absolute inset-0 -z-10 overflow-hidden animate-float">
       {/* First Image - Top Left */}
       <img
         src="/home-section-bg.jpg"

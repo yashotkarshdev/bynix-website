@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import FAQSection from "../components/FAQSection";
 import SectionBadge from "../components/SectionBadge";
 import BackgroundGraphics from "../components/BackgroundGraphic";
+import Reveal from "../components/animate/Reveal";
 
 function SaasService() {
     const services = [
@@ -81,7 +82,7 @@ function SaasService() {
     ];
     return (
         <>
-            <section className="relative bg-white py-8 lg:py-36 px-6 overflow-hidden">
+            <section className="relative bg-white py-8 lg:py-32 px-6 overflow-hidden">
                 {/* Background Image */}
                 <div
                     className="absolute inset-0 bg-cover bg-center opacity-20"
@@ -94,25 +95,32 @@ function SaasService() {
                 </div>
 
                 <div className="container mx-auto text-center relative z-10">
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-black mb-6 leading-tight">
-                        Transform Your Business <br /> with Powerful <span className="text-[#F27115]">SaaS</span> Solutions
-                    </h1>
+                    <Reveal animation="right">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-black mb-6 leading-tight">
+                            Transform Your Business <br /> with Powerful <span className="text-[#F27115]">SaaS</span> Solutions
+                        </h1>
+                    </Reveal>
 
-                    <p className="text-black text-center font-medium text-lg md:text-xl sm:px-20 mx-auto mb-10 leading-relaxed">
-                        SaaS allows businesses to access software anytime, anywhere without the hassle of installations or maintenance. It’s cost-effective, scalable, and keeps your business agile in a competitive digital world.
-                    </p>
+                    <Reveal animation="left">
 
-                    <div className="flex flex-col sm:flex-row justify-center gap-4">
-                        <button className="px-8 py-3 cursor-pointer bg-white/0 border-2 border-gray-400 text-black font-bold rounded-lg hover:bg-gray-50 transition-all">
-                            Explore Our Solutions
-                        </button>
-                        <Link to={"/contact"} className="px-8 py-3 bg-black cursor-pointer text-white font-bold rounded-lg hover:bg-[#F27115] transition-all shadow-lg">
-                            Get In Touch
-                        </Link>
-                    </div>
+                        <p className="text-black text-center font-medium text-lg md:text-xl sm:px-20 mx-auto mb-10 leading-relaxed">
+                            SaaS allows businesses to access software anytime, anywhere without the hassle of installations or maintenance. It’s cost-effective, scalable, and keeps your business agile in a competitive digital world.
+                        </p>
+                    </Reveal>
+
+                    <Reveal animation="zoom" delay={200}>
+                        <div className="flex flex-col sm:flex-row justify-center gap-4">
+                            <button className="px-8 py-3 cursor-pointer bg-white/0 border-2 border-gray-400 text-black font-bold rounded-lg hover:bg-gray-50 transition-all">
+                                Explore Our Solutions
+                            </button>
+                            <Link to={"/contact"} className="px-8 py-3 bg-black cursor-pointer text-white font-bold rounded-lg hover:bg-[#F27115] transition-all shadow-lg">
+                                Get In Touch
+                            </Link>
+                        </div>
+                    </Reveal>
                 </div>
             </section>
-            <section className="relative py-20 overflow-hidden"> {/* removed bg-white */}
+            <section className="relative overflow-hidden"> {/* removed bg-white */}
                 <BackgroundGraphics topLeftImage="/home-section-bg.jpg" bottomRightImage="/home-section-bg.jpg" />
                 <section className="py-16 md:py-24 bg-white/0 overflow-hidden">
                     <div className="container mx-auto px-6 md:px-20">
@@ -134,43 +142,45 @@ function SaasService() {
                                 {services.map((service, index) => {
                                     const isEven = index % 2 !== 0;
                                     return (
-                                        <div key={index} className="relative flex flex-col md:flex-row items-center md:min-h-[160px]">
+                                        <Reveal key={index} animation={service.align} delay={index * 200}>
+                                            <div className="relative flex flex-col md:flex-row items-center md:min-h-[160px]">
 
-                                            {/* Item Content Wrapper */}
-                                            <div className={`w-full flex ${isEven ? 'md:justify-end' : 'md:justify-start'} items-center`}>
-                                                <div className="w-full md:w-1/2 relative">
+                                                {/* Item Content Wrapper */}
+                                                <div className={`w-full flex ${isEven ? 'md:justify-end' : 'md:justify-start'} items-center`}>
+                                                    <div className="w-full md:w-1/2 relative">
 
-                                                    {/* Content Container: Mobile par left alignment, Desktop par alternating */}
-                                                    <div className={`flex flex-col items-start ${isEven ? 'md:items-end md:text-right md:pr-12' : 'md:items-start md:pl-12'} pl-12 md:pl-0`}>
+                                                        {/* Content Container: Mobile par left alignment, Desktop par alternating */}
+                                                        <div className={`flex flex-col items-start ${isEven ? 'md:items-end md:text-right md:pr-12' : 'md:items-start md:pl-12'} pl-12 md:pl-0`}>
 
-                                                        {/* Number Circle: Mobile par text ke sath, Desktop par branch line ke end mein */}
-                                                        <div className={`
+                                                            {/* Number Circle: Mobile par text ke sath, Desktop par branch line ke end mein */}
+                                                            <div className={`
                       flex items-center justify-center rounded-full border border-gray-200 bg-white font-bold text-gray-900 shadow-sm z-10
                       absolute left-0 top-0 w-9 h-9 text-base   /* Mobile Style */
                       md:top-1/2 md:-translate-y-1/2 md:w-12 md:h-12 md:text-xl /* Desktop Style */
                       ${isEven ? 'md:left-auto md:-right-16' : 'md:-left-16'}
                     `}>
-                                                            {service.id}
+                                                                {service.id}
+                                                            </div>
+
+                                                            {/* Title */}
+                                                            <h3 className="text-lg md:text-xl font-bold text-[#002B5B] mb-1 md:mb-0 md:pb-1">
+                                                                {service.title}
+                                                            </h3>
+
+                                                            {/* Branch Line - Desktop Only */}
+                                                            <div className="w-full h-[1.5px] bg-black relative hidden md:block"></div>
+
+                                                            {/* Description */}
+                                                            <p className="text-gray-600 text-sm leading-relaxed pt-2 md:max-w-[90%]">
+                                                                {service.desc}
+                                                            </p>
                                                         </div>
 
-                                                        {/* Title */}
-                                                        <h3 className="text-lg md:text-xl font-bold text-[#002B5B] mb-1 md:mb-0 md:pb-1">
-                                                            {service.title}
-                                                        </h3>
-
-                                                        {/* Branch Line - Desktop Only */}
-                                                        <div className="w-full h-[1.5px] bg-black relative hidden md:block"></div>
-
-                                                        {/* Description */}
-                                                        <p className="text-gray-600 text-sm leading-relaxed pt-2 md:max-w-[90%]">
-                                                            {service.desc}
-                                                        </p>
                                                     </div>
-
                                                 </div>
-                                            </div>
 
-                                        </div>
+                                            </div>
+                                        </Reveal>
                                     );
                                 })}
                             </div>
@@ -186,7 +196,6 @@ function SaasService() {
                             {industries.map((item, index) => {
                                 let colClass = "";
 
-                                // only apply custom layout on md screens
                                 if (index < 3) colClass = "lg:col-span-2";
                                 if (index === 3) colClass = "lg:col-span-2 lg:col-start-2";
                                 if (index === 4) colClass = "lg:col-span-2 lg:col-start-4";
@@ -194,15 +203,25 @@ function SaasService() {
                                 return (
                                     <div
                                         key={index}
-                                        className={`flex items-center gap-4 lg:justify-center  ${colClass}`}
+                                        className={`flex items-center gap-4 lg:justify-center ${colClass}`}
                                     >
-                                        <div className="w-16 h-16 flex items-center justify-center border rounded-full">
-                                            <img src={item.icon} alt={item.name} className="w-8 h-8" />
-                                        </div>
+                                        <Reveal animation="up" delay={index * 150}>
+                                            <div className="flex items-center gap-4 group">
 
-                                        <h3 className="text-lg font-medium text-gray-800 text-center sm:text-left">
-                                            {item.name}
-                                        </h3>
+                                                <div className="w-16 h-16 flex items-center justify-center border rounded-full transition-transform duration-300 group-hover:scale-110">
+                                                    <img
+                                                        src={item.icon}
+                                                        alt={item.name}
+                                                        className="w-8 h-8 animate-icon-wave"
+                                                    />
+                                                </div>
+
+                                                <h3 className="text-lg font-medium text-gray-800 text-center sm:text-left">
+                                                    {item.name}
+                                                </h3>
+
+                                            </div>
+                                        </Reveal>
                                     </div>
                                 );
                             })}
@@ -210,7 +229,9 @@ function SaasService() {
                         </div>
                     </div>
                 </section>
+                <Reveal animation="up" delay={100}>
                 <FAQSection faqs={saasFaqs} />
+                </Reveal>
             </section>
         </>
     )

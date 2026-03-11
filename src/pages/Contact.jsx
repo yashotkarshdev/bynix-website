@@ -1,3 +1,4 @@
+import Reveal from "../components/animate/Reveal";
 import SEO from "../components/Seo";
 
 function Contact() {
@@ -10,6 +11,7 @@ function Contact() {
             />
             {/* Contact Hero & Form Section */}
             <section className="container mx-auto py-16 lg:py-24 px-5 lg:px-20 grid lg:grid-cols-2 gap-12 items-center">
+                <Reveal animation="left">
                 <div>
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
                         Your One-Stop Partner for <br />
@@ -22,8 +24,10 @@ function Contact() {
                         Contact Us
                     </button>
                 </div>
+                </Reveal>
 
                 {/* Lead Form */}
+                <Reveal animation="right">
                 <div className="bg-[#3D3D3D] p-8 md:p-10 rounded-[2rem] shadow-2xl w-full max-w-lg mx-auto lg:ml-auto">
                     <h2 className="text-white text-2xl font-bold text-center mb-8">Let's Build Your Success</h2>
                     <form className="space-y-4">
@@ -52,6 +56,7 @@ function Contact() {
                         </button>
                     </form>
                 </div>
+                </Reveal>
             </section>
         </>
     )

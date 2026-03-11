@@ -4,3 +4,67 @@
 @theme {
   --font-poppins: "Poppins", sans-serif;
 }
+
+
+@keyframes slow-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+
+@keyframes float-shadow {
+  0%, 100% { transform: translateY(0); shadow: 0 5px 15px rgba(0,0,0,0.1); }
+  50% { transform: translateY(-10px); shadow: 0 25px 15px rgba(0,0,0,0.05); }
+}
+
+
+@utility animate-slow-spin {
+  animation: slow-spin 5s linear infinite;
+}
+
+
+@utility animate-float-card {
+  animation: float-shadow 1s ease-in-out infinite;
+}
+
+@utility animate-float {
+  animation: float 1.5s ease-in-out infinite;
+}
+
+@keyframes bubble-up {
+  0% { transform: translateY(100%) scale(0.5); opacity: 0; }
+  50% { opacity: 0.8; }
+  100% { transform: translateY(-100%) scale(1.2); opacity: 0; }
+}
+
+@utility animate-bubble {
+  animation: bubble-up 4s ease-in infinite;
+}
+
+@keyframes icon-wave {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-6px) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(6px) rotate(2deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@utility animate-icon-wave {
+  animation: icon-wave 3.5s ease-in-out infinite;
+}

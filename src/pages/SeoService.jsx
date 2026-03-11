@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import FAQSection from "../components/FAQSection";
 import SectionBadge from "../components/SectionBadge";
 import BackgroundGraphics from "../components/BackgroundGraphic";
+import Reveal from "../components/animate/Reveal";
 
 function SeoService() {
     const features = [
@@ -67,26 +68,30 @@ function SeoService() {
                 </div>
 
                 <div className="container mx-auto text-center relative z-10">
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-black mb-6 leading-tight">
-                        Data-Driven <span className="text-[#F27115]">SEO</span> Solutions <br />
-                        for Sustainable Website Growth
-                    </h1>
-
-                    <p className="text-black text-left md:text-center font-medium text-lg md:text-xl sm:px-20 mx-auto mb-10 leading-relaxed">
-                        Bynix Technology offers SEO services with advanced solutions to grow your business.
-                        We have a dedicated team of professionals who are trained in keyword optimization,
-                        link building, and high-quality content development. Our experts use latest SEO
-                        techniques that align with search engine algorithms to boost organic traffic.
-                    </p>
-
-                    <div className="flex flex-col sm:flex-row justify-center gap-4">
-                        <button className="px-8 py-3 cursor-pointer bg-white/0 border-2 border-gray-400 text-black font-bold rounded-lg hover:bg-gray-50 transition-all">
-                            Explore Our Solutions
-                        </button>
-                        <Link to={"/contact"} className="px-8 py-3 bg-black cursor-pointer text-white font-bold rounded-lg hover:bg-[#F27115] transition-all shadow-lg">
-                            Get In Touch
-                        </Link>
-                    </div>
+                    <Reveal animation="right">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-black mb-6 leading-tight">
+                            Data-Driven <span className="text-[#F27115]">SEO</span> Solutions <br />
+                            for Sustainable Website Growth
+                        </h1>
+                    </Reveal>
+                    <Reveal animation="left">
+                        <p className="text-black text-left md:text-center font-medium text-lg md:text-xl sm:px-20 mx-auto mb-10 leading-relaxed">
+                            Bynix Technology offers SEO services with advanced solutions to grow your business.
+                            We have a dedicated team of professionals who are trained in keyword optimization,
+                            link building, and high-quality content development. Our experts use latest SEO
+                            techniques that align with search engine algorithms to boost organic traffic.
+                        </p>
+                    </Reveal>
+                    <Reveal animation="zoom" delay={200}>
+                        <div className="flex flex-col sm:flex-row justify-center gap-4">
+                            <button className="px-8 py-3 cursor-pointer bg-white/0 border-2 border-gray-400 text-black font-bold rounded-lg hover:bg-gray-50 transition-all">
+                                Explore Our Solutions
+                            </button>
+                            <Link to={"/contact"} className="px-8 py-3 bg-black cursor-pointer text-white font-bold rounded-lg hover:bg-[#F27115] transition-all shadow-lg">
+                                Get In Touch
+                            </Link>
+                        </div>
+                    </Reveal>
                 </div>
             </section>
             <section className="relative py-20 overflow-hidden"> {/* removed bg-white */}
@@ -107,21 +112,25 @@ function SeoService() {
                     {/* Features Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {features.map((item, idx) => (
+                            <Reveal key={idx} animation="up" delay={idx * 150}>
                             <div
-                                key={idx}
+                                // key={idx}
                                 className="bg-white border z-10 border-gray-400 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 flex flex-col items-start text-left group h-full"
                             >
                                 <div className="mb-6 w-20 h-20 flex items-center justify-center">
-                                    <img src={item.image} alt={item.title} className="w-full h-full object-contain" />
+                                    <img src={item.image} alt={item.title} className="w-full h-full object-contain animate-icon-wave" />
                                 </div>
                                 <h3 className="text-xl font-bold text-gray-900 mb-4 tracking-tight">{item.title}</h3>
                                 <p className="text-gray-600 text-[15px] leading-relaxed">{item.desc}</p>
                             </div>
+                            </Reveal>
                         ))}
                     </div>
                 </div>
-
+                
+                <Reveal animation="up">
                 <FAQSection faqs={seoFaq} />
+                </Reveal>
             </section>
 
         </>

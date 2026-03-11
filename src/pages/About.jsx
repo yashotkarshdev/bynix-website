@@ -363,6 +363,7 @@ import { Helmet } from "react-helmet-async";
 import TeamCarousel from "../components/TeamCarousel";
 import SEO from "../components/Seo";
 import SectionBadge from "../components/SectionBadge";
+import Reveal from "../components/animate/Reveal";
 
 
 export default function About() {
@@ -389,50 +390,60 @@ export default function About() {
             </section>
 
             {/* Stats Bar */}
-            <div className="flex justify-center z-20 relative -mt-10 sm:-mt-14 mb-8 px-4">
-                <div className="bg-white shadow-xl rounded-xl grid grid-cols-2 md:grid-cols-4 p-6 sm:p-8 gap-6 w-full max-w-7xl">
-                    <div className="flex flex-col items-center border-r last:border-0 border-gray-100 md:border-r">
-                        <span className="text-[#F27115] font-extrabold text-2xl sm:text-4xl">99+</span>
-                        <span className="uppercase text-[10px] sm:text-xs text-gray-500 mt-1 text-center font-medium">Happy Clients</span>
-                    </div>
-                    <div className="flex flex-col items-center md:border-r border-gray-100">
-                        <span className="text-[#F27115] font-extrabold text-2xl sm:text-4xl">25</span>
-                        <span className="uppercase text-[10px] sm:text-xs text-gray-500 mt-1 text-center font-medium">Success Project</span>
-                    </div>
-                    <div className="flex flex-col items-center border-r last:border-0 border-gray-100">
-                        <span className="text-[#F27115] font-extrabold text-2xl sm:text-4xl">4.5</span>
-                        <span className="uppercase text-[10px] sm:text-xs text-gray-500 mt-1 text-center font-medium">Client's Rating</span>
-                    </div>
-                    <div className="flex flex-col items-center">
-                        <span className="text-[#F27115] font-extrabold text-2xl sm:text-4xl">4+</span>
-                        <span className="uppercase text-[10px] sm:text-xs text-gray-500 mt-1 text-center font-medium">Years Experience</span>
+            <Reveal animation="up">
+                <div className="flex justify-center z-20 relative -mt-10 sm:-mt-14 mb-8 px-4">
+                    <div className="bg-white shadow-xl rounded-xl grid grid-cols-2 md:grid-cols-4 p-6 sm:p-8 gap-6 w-full max-w-7xl">
+                        <div className="flex flex-col items-center border-r last:border-0 border-gray-100 md:border-r">
+                            <span className="text-[#F27115] font-extrabold text-2xl sm:text-4xl">99+</span>
+                            <span className="uppercase text-[10px] sm:text-xs text-gray-500 mt-1 text-center font-medium">Happy Clients</span>
+                        </div>
+                        <div className="flex flex-col items-center md:border-r border-gray-100">
+                            <span className="text-[#F27115] font-extrabold text-2xl sm:text-4xl">25</span>
+                            <span className="uppercase text-[10px] sm:text-xs text-gray-500 mt-1 text-center font-medium">Success Project</span>
+                        </div>
+                        <div className="flex flex-col items-center border-r last:border-0 border-gray-100">
+                            <span className="text-[#F27115] font-extrabold text-2xl sm:text-4xl">4.5</span>
+                            <span className="uppercase text-[10px] sm:text-xs text-gray-500 mt-1 text-center font-medium">Client's Rating</span>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <span className="text-[#F27115] font-extrabold text-2xl sm:text-4xl">4+</span>
+                            <span className="uppercase text-[10px] sm:text-xs text-gray-500 mt-1 text-center font-medium">Years Experience</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-
+            </Reveal>
+            
             <section className="container mx-auto py-10 lg:py-16 px-5 lg:px-20">
                 <SectionBadge title={"About Us"} />
 
                 {/* introduction grid */}
                 <div className="grid lg:grid-cols-3 gap-8 py-10">
+                    <Reveal animation="left" delay={550}>
                     <h2 className="text-3xl sm:text-4xl font-semibold leading-tight">
                         <span className="text-[#FF5722]">Introduction</span> <br className="hidden sm:block" />
                         <span>To Best Digital Agency!</span>
                     </h2>
+                    </Reveal>
+                    <Reveal animation="left" delay={400}>
                     <p className="text-gray-600 text-base leading-relaxed">
                         Bynix Technology is a leading Digital Marketing & IT Solutions firm dedicated to accelerating growth for brands, startups, and enterprises.
                     </p>
+                    </Reveal>
+                    <Reveal animation="left" delay={250}>
                     <p className="text-gray-600 text-base leading-relaxed">
                         Welcome to Bynix Technology — a highly result-oriented and outcome-driven digital marketing company committed to helping businesses grow and lead in the digital space.
                     </p>
+                    </Reveal>
                 </div>
 
                 {/* vision growth mission */}
+                <Reveal animation="up">
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 py-6">
                     {/* Vision */}
+                    <Reveal animation="right" delay={200}>
                     <div className="flex items-start gap-4 bg-white p-6 rounded-xl shadow-sm border border-gray-50 hover:shadow-md transition-shadow">
                         <div className="bg-[#F27115] p-4 rounded-full w-16 h-16 shrink-0 flex items-center justify-center">
-                            <img src="/bulb.png" alt="Innovation Icon" loading="lazy" className="w-8 h-8 object-contain" />
+                            <img src="/bulb.png" alt="Innovation Icon" loading="lazy" className="w-8 h-8 object-contain animate-icon-wave" />
                         </div>
                         <div>
                             <h3 className="text-lg font-bold">Vision</h3>
@@ -441,10 +452,12 @@ export default function About() {
                             </p>
                         </div>
                     </div>
+                    </Reveal>
                     {/* Growth */}
+                    <Reveal animation="right" delay={400}>
                     <div className="flex items-start gap-4 bg-white p-6 rounded-xl shadow-sm border border-gray-50 hover:shadow-md transition-shadow">
                         <div className="bg-black p-4 rounded-full w-16 h-16 shrink-0 flex items-center justify-center">
-                            <img src="/growth.png" alt="Growth Icon" loading="lazy" className="w-8 h-8 object-contain" />
+                            <img src="/growth.png" alt="Growth Icon" loading="lazy" className="w-8 h-8 object-contain animate-icon-wave" />
                         </div>
                         <div>
                             <h3 className="text-lg font-bold text-black">Growth Formula</h3>
@@ -453,10 +466,12 @@ export default function About() {
                             </p>
                         </div>
                     </div>
+                    </Reveal>
+                    <Reveal animation="right" delay={550}>
                     {/* Mission */}
                     <div className="flex items-start gap-4 bg-white p-6 rounded-xl shadow-sm border border-gray-50 hover:shadow-md transition-shadow md:col-span-2 lg:col-span-1">
                         <div className="bg-[#F27115] p-4 rounded-full w-16 h-16 shrink-0 flex items-center justify-center">
-                            <img src="/mission.png" alt="Mission Icon" loading="lazy" className="w-8 h-8 object-contain" />
+                            <img src="/mission.png" alt="Mission Icon" loading="lazy" className="w-8 h-8 object-contain animate-icon-wave" />
                         </div>
                         <div>
                             <h3 className="text-lg font-bold">Mission</h3>
@@ -465,13 +480,17 @@ export default function About() {
                             </p>
                         </div>
                     </div>
+                    </Reveal>
                 </div>
+                </Reveal>
 
                 {/* Team Images Section */}
+                <Reveal animation="right" delay={200}>
                 <div className="py-16 flex flex-col lg:flex-row justify-center items-center gap-6">
                     <img src="/group-image1.png" alt="Bynix Technology Team Collaboration" loading="lazy" className="rounded-2xl shadow-lg max-w-[60%] h-auto" />
                     <img src="/group-image2.png" alt="Digital Strategy Meeting" loading="lazy" className="hidden lg:block rounded-2xl shadow-lg relative lg:-left-16 z-10 max-w-[40%] h-auto" />
                 </div>
+                </Reveal>
             </section>
 
             {/* Middle Banner */}
@@ -488,6 +507,7 @@ export default function About() {
             </div>
 
             {/* Why Choose Section */}
+            <Reveal animation="up">
             <section className="container mx-auto py-16 px-5 lg:px-20">
                 <div className="max-w-4xl">
                     <h2 className="text-4xl font-bold mb-8">
@@ -502,16 +522,19 @@ export default function About() {
                             { title: "Deliver Measurable Success", desc: "We analyze the market to create impactful digital marketing strategies to deliver refined results." },
                             { title: "Deliver Competitive Edge", desc: "We implement creative solutions that turn visitors into loyal customers." }
                         ].map((item, idx) => (
-                            <li key={idx} className="flex items-start gap-3">
+                            <Reveal key={idx} animation="right" delay={200 + idx * 150}>
+                            <li  className="flex items-start gap-3">
                                 <span className="text-[#F95228] font-bold text-2xl mt-[-4px]">•</span>
                                 <p className="text-gray-700 leading-relaxed">
                                     <strong className="text-black font-bold">{item.title}: </strong>{item.desc}
                                 </p>
                             </li>
+                            </Reveal>
                         ))}
                     </ul>
                 </div>
             </section>
+            </Reveal>
 
             {/* Our Team Section
             <section className="bg-[#F3F3F3CC] py-20 px-4">
@@ -542,7 +565,9 @@ export default function About() {
                     </div>
                 </div>
             </section> */}
+            <Reveal animation="up">
             <TeamCarousel />
+            </Reveal>
         </div>
     );
 }
