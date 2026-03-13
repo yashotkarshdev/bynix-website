@@ -11,7 +11,7 @@
 //       { "@type": "SiteNavigationElement", "position": 1, "name": "Home", "url": "https://bynix.com/" },
 //       { "@type": "SiteNavigationElement", "position": 2, "name": "About Us", "url": "https://bynix.com/about" },
 //       { "@type": "SiteNavigationElement", "position": 3, "name": "Services", "url": "https://bynix.com/services" },
-//       { "@type": "SiteNavigationElement", "position": 4, "name": "Blogs", "url": "https://bynix.com/blogs" },
+//       { "@type": "SiteNavigationElement", "position": 4, "name": "blog", "url": "https://bynix.com/blogs" },
 //       { "@type": "SiteNavigationElement", "position": 5, "name": "Contact Us", "url": "https://bynix.com/contact" }
 //     ]
 //   };
@@ -166,7 +166,7 @@
 //             </ul>
 //           </li>
 //           <li>
-//             <NavLink to="/blogs" onClick={() => setIsMenuOpen(false)} className={navLinkStyles}>Blogs</NavLink>
+//             <NavLink to="/blogs" onClick={() => setIsMenuOpen(false)} className={navLinkStyles}>blog</NavLink>
 //           </li>
 //           <li>
 //             <NavLink to="/contact" onClick={() => setIsMenuOpen(false)} className={navLinkStyles}>Contact us</NavLink>
@@ -191,7 +191,7 @@ export default function Header() {
       { "@type": "SiteNavigationElement", position: 1, name: "Home", url: "https://bynix.com/" },
       { "@type": "SiteNavigationElement", position: 2, name: "About Us", url: "https://bynix.com/about" },
       { "@type": "SiteNavigationElement", position: 3, name: "Services", url: "https://bynix.com/services" },
-      { "@type": "SiteNavigationElement", position: 4, name: "Blogs", url: "https://bynix.com/blogs" },
+      { "@type": "SiteNavigationElement", position: 4, name: "blog", url: "https://bynix.com/blogs" },
       { "@type": "SiteNavigationElement", position: 5, name: "Contact Us", url: "https://bynix.com/contact" }
     ]
   };
@@ -235,9 +235,9 @@ export default function Header() {
         >
           <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {isMenuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"/>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
             ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"/>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
             )}
           </svg>
         </button>
@@ -288,7 +288,7 @@ ${isMenuOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
                 stroke="currentColor"
                 viewBox="0 0 24 24"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"/>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
 
@@ -367,18 +367,43 @@ ${isServicesOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}
           </li>
 
           {/* Quick Contact Icons */}
-          <li className="flex gap-6 mt-2 lg:mt-0">
-            <a href="tel:+911234567890" className="text-white hover:text-orange-400">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                  d="M3 5a2 2 0 012-2h2.28a2 2 0 011.94 1.515l.516 2.064a2 2 0 01-.45 1.95l-1.27 1.27a16.001 16.001 0 006.586 6.586l1.27-1.27a2 2 0 011.95-.45l2.064.516A2 2 0 0121 16.72V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+          <li className="flex items-center gap-6 mt-2 lg:mt-0">
+            {/* Phone Icon */}
+            <a
+              href="tel:+916376925384"
+              className="text-white hover:text-orange-400 transition-colors duration-300"
+              aria-label="Call Us"
+            >
+              <svg
+                className="w-5 h-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
               </svg>
             </a>
 
-            <a href="mailto:contact@bynix.com" className="text-white hover:text-orange-400">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                  d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8m-18 8h18a2 2 0 002-2V8a2 2 0 00-2-2H3a2 2 0 00-2 2v6a2 2 0 002 2z"/>
+            {/* Mail Icon */}
+            <a
+              href="mailto:info@bynixtechnology.com"
+              className="text-white hover:text-orange-400 transition-colors duration-300"
+              aria-label="Email Us"
+            >
+              <svg
+                className="w-5 h-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <rect width="20" height="16" x="2" y="4" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
               </svg>
             </a>
           </li>

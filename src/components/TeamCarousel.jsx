@@ -2,34 +2,64 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import SectionBadge from "./SectionBadge";
-
-const teamMembers = [
-  { name: "Nitesh Gupta", role: "Founder", img: "./founder-profile.jpg" },
-  { name: "Ravinder Saini", role: "Software Developer", img: "./ravindra.jpg" },
-  { name: "Rajveer Singh", role: "SEO Lead", img: "./founder-profile.jpg" },
-  { name: "Kanishka Sharma", role: "UI/UX Designer", img: "./founder-profile.jpg" },
-  { name: "Yashotkarsh Apoorva", role: "Junior Web Developer", img: "./yashotkarsh.png" },
-];
+import api from "../services/api";
 
 export default function TeamCarousel() {
+
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(1);
+  const [teamMembers, setTeamMembers] = useState([]);
 
   useEffect(() => {
+
+    const fetchTeamData = async () => {
+
+      try {
+
+        const response = await api.get("/team");
+
+        setTeamMembers(response.data.data);
+
+      } catch (error) {
+
+        console.error("Error fetching team data:", error);
+
+      }
+
+    };
+
+    fetchTeamData();
+
+  }, []);
+
+  useEffect(() => {
+
+    if (!teamMembers.length) return;
+
     const timer = setInterval(() => {
       nextStep();
     }, 3000);
+
     return () => clearInterval(timer);
-  }, []);
+
+  }, [teamMembers]);
 
   const nextStep = () => {
+
+    if (!teamMembers.length) return;
+
     setDirection(1);
     setIndex((prev) => (prev + 1) % teamMembers.length);
+
   };
 
   const prevStep = () => {
+
+    if (!teamMembers.length) return;
+
     setDirection(-1);
     setIndex((prev) => (prev - 1 + teamMembers.length) % teamMembers.length);
+
   };
 
   const variants = {
@@ -47,17 +77,24 @@ export default function TeamCarousel() {
     }),
   };
 
+  if (!teamMembers.length) {
+    return <p className="text-center py-10">Loading team...</p>;
+  }
+
+  const member = teamMembers[index];
+
   return (
+
     <section className="bg-[#F3F3F3CC] py-12 px-4">
+
       <div className="container mx-auto flex flex-col items-center">
 
-        {/* Title */}
         <SectionBadge title={"Our Team"} />
 
-        {/* Carousel */}
         <div className="relative w-full max-w-xl h-[320px] flex items-center justify-center overflow-hidden">
 
           <AnimatePresence custom={direction} mode="wait">
+
             <motion.div
               key={index}
               custom={direction}
@@ -65,48 +102,56 @@ export default function TeamCarousel() {
               initial="enter"
               animate="center"
               exit="exit"
-              transition={{ duration: 0.5, ease: "easeInOut" }}
+              transition={{ duration: 0.5 }}
               className="absolute flex flex-col items-center gap-6"
             >
+
               <div className="h-40 w-40 overflow-hidden rounded-full border-4 border-white shadow-lg">
+
                 <img
-                  src={teamMembers[index].img}
-                  alt={teamMembers[index].name}
+                  src={member.imageUrl}
+                  alt={member.name}
                   className="h-full w-full object-cover"
                 />
+
               </div>
 
               <div className="text-center">
+
                 <h3 className="font-bold text-2xl text-gray-900">
-                  {teamMembers[index].name}
+                  {member.name}
                 </h3>
+
                 <p className="text-[#FF5722] font-semibold">
-                  {teamMembers[index].role}
+                  {member.role}
                 </p>
+
               </div>
+
             </motion.div>
+
           </AnimatePresence>
 
-          {/* Buttons */}
           <button
             onClick={prevStep}
-            className="absolute left-0 p-3 bg-white rounded-full shadow-lg hover:bg-[#FF5722] hover:text-white transition"
+            className="absolute left-0 p-3 bg-white rounded-full shadow-lg hover:bg-[#FF5722] hover:text-white"
           >
             <ChevronLeft size={26} />
           </button>
 
           <button
             onClick={nextStep}
-            className="absolute right-0 p-3 bg-white rounded-full shadow-lg hover:bg-[#FF5722] hover:text-white transition"
+            className="absolute right-0 p-3 bg-white rounded-full shadow-lg hover:bg-[#FF5722] hover:text-white"
           >
             <ChevronRight size={26} />
           </button>
 
         </div>
 
-        {/* Dots */}
-        <div className="flex gap-3">
+        <div className="flex gap-3 mt-6">
+
           {teamMembers.map((_, i) => (
+
             <button
               key={i}
               onClick={() => setIndex(i)}
@@ -114,10 +159,15 @@ export default function TeamCarousel() {
                 index === i ? "w-8 bg-[#FF5722]" : "w-2.5 bg-gray-300"
               }`}
             />
+
           ))}
+
         </div>
 
       </div>
+
     </section>
+
   );
+
 }

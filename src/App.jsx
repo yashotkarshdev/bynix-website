@@ -4,7 +4,6 @@ import About from './pages/About'
 import Layout from './layouts/Layout';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
-import Blogs from './pages/Blogs';
 // import Services from './pages/Services';
 import ScrollToTop from './components/ScrollToTop';
 import SeoService from './pages/SeoService';
@@ -13,6 +12,9 @@ import SMMService from './pages/SMMService';
 import SaasService from './pages/SaasService';
 import GraphicDesigning from './pages/GraphicDesigning';
 import Services from './pages/Services';
+import Blog from './pages/Blogs';
+import BlogDetails from './pages/BlogDetails';
+import NotFound from "./pages/NotFound";  
 
 export default function App() {
   return (
@@ -23,13 +25,15 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
-          <Route path="blogs" element={<Blogs />} />
+          <Route path="/blogs" element={<Blog />} />
+          <Route path="/blogs/:slug" element={<BlogDetails />} />
           <Route path='services/seo-service' element={<SeoService />} />
           <Route path='services/web-app-development-service' element={<WebAppDevService />} />
           <Route path='services/smm-service' element={<SMMService />} />
           <Route path='services/saas-service' element={<SaasService />} />
           <Route path='services/graphic-designing' element={<GraphicDesigning />} />
           <Route path="/services" element={<Services />} />
+          <Route path="*" element={<NotFound />} />
 
         </Route>
       </Routes>

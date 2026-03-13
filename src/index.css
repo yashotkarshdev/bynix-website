@@ -5,6 +5,8 @@
   --font-poppins: "Poppins", sans-serif;
 }
 
+@plugin "@tailwindcss/typography";
+
 
 @keyframes slow-spin {
   from { transform: rotate(0deg); }
