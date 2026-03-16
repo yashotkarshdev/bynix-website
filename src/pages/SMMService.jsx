@@ -4,6 +4,8 @@ import BackgroundGraphicsLeft from "../components/BackgroundGraphicsLeft";
 import SectionBadge from "../components/SectionBadge";
 import { useState, useRef, useEffect } from 'react';
 import Reveal from "../components/animate/Reveal";
+import SEO from "../components/SEO";
+import { Helmet } from "react-helmet-async";
 
 function SMMService() {
     const scrollRef = useRef(null);
@@ -85,8 +87,78 @@ function SMMService() {
             });
         }
     };
+    const serviceSchema = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: "Social Media Marketing Services",
+        url: "https://www.bynixtechnology.com/services/smm-service",
+        description:
+            "Professional social media marketing services including Instagram marketing, Facebook ads, LinkedIn marketing, influencer marketing, and content management.",
+        serviceType: "Social Media Marketing",
+        areaServed: {
+            "@type": "Place",
+            name: "Worldwide"
+        },
+        provider: {
+            "@type": "Organization",
+            name: "Bynix Technology",
+            url: "https://www.bynixtechnology.com"
+        },
+        knowsAbout: [
+            "Social Media Marketing",
+            "Instagram Marketing",
+            "Facebook Marketing",
+            "LinkedIn Marketing",
+            "Twitter Marketing",
+            "Influencer Marketing",
+            "Social Media Advertising"
+        ]
+    };
+    const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+            {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://www.bynixtechnology.com"
+            },
+            {
+                "@type": "ListItem",
+                position: 2,
+                name: "Services",
+                item: "https://www.bynixtechnology.com/services"
+            },
+            {
+                "@type": "ListItem",
+                position: 3,
+                name: "Social Media Marketing",
+                item: "https://www.bynixtechnology.com/services/smm-service"
+            }
+        ]
+    };
     return (
         <>
+            <SEO
+                title="Social Media Marketing Services | Instagram, Facebook & LinkedIn Marketing"
+                description="Bynix Technology offers professional social media marketing services including Instagram marketing, Facebook advertising, LinkedIn marketing, and influencer campaigns."
+                keywords="social media marketing services, instagram marketing agency, facebook ads management, linkedin marketing services, social media advertising"
+                image="/smm-service/smmhero.jpg"
+            />
+            <Helmet>
+                <script type="application/ld+json">
+                    {JSON.stringify(serviceSchema)}
+                </script>
+
+                <script type="application/ld+json">
+                    {JSON.stringify(faqSchema)}
+                </script>
+
+                <script type="application/ld+json">
+                    {JSON.stringify(breadcrumbSchema)}
+                </script>
+            </Helmet>
             <section className="relative bg-white py-16 lg:py-36 px-6 overflow-hidden min-h-[600px]">
                 {/* Background Image */}
                 <div
@@ -312,7 +384,7 @@ function SMMService() {
                 </section>
                 {/* FAQ Section */}
                 <Reveal animation="up">
-                <FAQSection faqs={ssmFaqs} />
+                    <FAQSection faqs={ssmFaqs} />
                 </Reveal>
             </section>
         </>

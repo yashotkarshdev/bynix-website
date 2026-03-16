@@ -37,7 +37,7 @@ export default function Footer() {
                         <div className="flex flex-col gap-6 lg:items-end text-white">
                             <h3 className="font-bold text-lg tracking-wider">CONNECT WITH US</h3>
                             <div className="flex gap-6 text-2xl">
-                                <a href="#" aria-label="LinkedIn" className="hover:text-blue-700 text-[#F27115] transition-colors">
+                                <a href="https://www.linkedin.com/company/bynix-technology" aria-label="LinkedIn" className="hover:text-blue-700 text-[#F27115] transition-colors">
                                     <i className="fab fa-linkedin"></i>
                                 </a>
                                 <a target='_blank' href="https://www.instagram.com/bynixtechnology/" aria-label="Instagram" className="hover:text-pink-600 text-[#F27115] transition-colors">
@@ -65,9 +65,9 @@ export default function Footer() {
                 <div className="container mx-auto px-6 text-center">
                     <p className="text-sm md:text-base font-light tracking-wide">
                         © 2026 All rights reserved. Designed by 
-                        <span className="font-semibold border-b border-white ml-1">
+                        <Link to="/about" className="font-semibold border-b border-white ml-1">
                             Bynix Technology
-                        </span>
+                        </Link>
                     </p>
                 </div>
             </div>

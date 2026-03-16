@@ -361,20 +361,113 @@
 
 import { Helmet } from "react-helmet-async";
 import TeamCarousel from "../components/TeamCarousel";
-import SEO from "../components/Seo";
+import SEO from "../components/SEO";
 import SectionBadge from "../components/SectionBadge";
 import Reveal from "../components/animate/Reveal";
 
 
 export default function About() {
+    const aboutSchema = {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "About Bynix Technology",
+        "url": "https://bynixtechnology.com/about",
+        "description": "Learn about Bynix Technology, a digital marketing and web development company helping businesses grow online.",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "Bynix Technology",
+            "url": "https://bynixtechnology.com",
+            "logo": "https://bynixtechnology.com/logo.png",
+            "founder": {
+                "@type": "Person",
+                "name": "Nitesh Gupta"
+            },
+            "foundingLocation": {
+                "@type": "Place",
+                "name": "Jaipur, India"
+            }
+        }
+    };
+    const organizationSchema = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Bynix Technology",
+        "url": "https://bynixtechnology.com",
+        "logo": "https://bynixtechnology.com/logo.png",
+        "founder": {
+            "@type": "Person",
+            "name": "Nitesh Gupta"
+        },
+        "foundingLocation": {
+            "@type": "Place",
+            "name": "Jaipur, India"
+        },
+        "sameAs": [
+            "https://www.linkedin.com/company/bynix-technology",
+            "https://www.instagram.com/bynixtechnology"
+        ]
+    };
+    const businessSchema = {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Bynix Technology",
+        "image": "https://bynixtechnology.com/logo.png",
+        "url": "https://bynixtechnology.com",
+        "telephone": "+91-6376925384",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Jaipur",
+            "addressRegion": "Rajasthan",
+            "addressCountry": "India"
+        },
+        "areaServed": "India"
+    };
+    const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://bynixtechnology.com"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "About",
+                "item": "https://bynixtechnology.com/about"
+            }
+        ]
+    };
 
     return (
         <div className="overflow-x-hidden">
             <SEO
-                title="Our Story & Mission"
-                description="Learn about Bynix Technology's journey. We are a team of dedicated developers and marketers committed to driving digital transformation and business growth."
+                title="About Bynix Technology"
+                description="Learn about Bynix Technology, a leading digital marketing and web development company in Jaipur helping businesses grow with innovative solutions."
+                keywords="Bynix Technology, about Bynix Technology, digital marketing company Jaipur, IT company Jaipur, web development company Jaipur, SEO agency Jaipur"
                 image="/about-team.jpg"
             />
+            <Helmet>
+
+                <script type="application/ld+json">
+                    {JSON.stringify(aboutSchema)}
+                </script>
+
+                <script type="application/ld+json">
+                    {JSON.stringify(organizationSchema)}
+                </script>
+
+                <script type="application/ld+json">
+                    {JSON.stringify(businessSchema)}
+                </script>
+
+                <script type="application/ld+json">
+                    {JSON.stringify(breadcrumbSchema)}
+                </script>
+
+            </Helmet>
 
             {/* Banner Section */}
             <section
@@ -412,84 +505,84 @@ export default function About() {
                     </div>
                 </div>
             </Reveal>
-            
+
             <section className="container mx-auto py-10 lg:py-16 px-5 lg:px-20">
                 <SectionBadge title={"About Us"} />
 
                 {/* introduction grid */}
                 <div className="grid lg:grid-cols-3 gap-8 py-10">
                     <Reveal animation="left" delay={550}>
-                    <h2 className="text-3xl sm:text-4xl font-semibold leading-tight">
-                        <span className="text-[#FF5722]">Introduction</span> <br className="hidden sm:block" />
-                        <span>To Best Digital Agency!</span>
-                    </h2>
+                        <h2 className="text-3xl sm:text-4xl font-semibold leading-tight">
+                            <span className="text-[#FF5722]">Introduction</span> <br className="hidden sm:block" />
+                            <span>To Best Digital Agency!</span>
+                        </h2>
                     </Reveal>
                     <Reveal animation="left" delay={400}>
-                    <p className="text-gray-600 text-base leading-relaxed">
-                        Bynix Technology is a leading Digital Marketing & IT Solutions firm dedicated to accelerating growth for brands, startups, and enterprises.
-                    </p>
+                        <p className="text-gray-600 text-base leading-relaxed">
+                            Bynix Technology is a leading Digital Marketing & IT Solutions firm dedicated to accelerating growth for brands, startups, and enterprises.
+                        </p>
                     </Reveal>
                     <Reveal animation="left" delay={250}>
-                    <p className="text-gray-600 text-base leading-relaxed">
-                        Welcome to Bynix Technology — a highly result-oriented and outcome-driven digital marketing company committed to helping businesses grow and lead in the digital space.
-                    </p>
+                        <p className="text-gray-600 text-base leading-relaxed">
+                            Welcome to Bynix Technology — a highly result-oriented and outcome-driven digital marketing company committed to helping businesses grow and lead in the digital space.
+                        </p>
                     </Reveal>
                 </div>
 
                 {/* vision growth mission */}
                 <Reveal animation="up">
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 py-6">
-                    {/* Vision */}
-                    <Reveal animation="right" delay={200}>
-                    <div className="flex items-start gap-4 bg-white p-6 rounded-xl shadow-sm border border-gray-50 hover:shadow-md transition-shadow">
-                        <div className="bg-[#F27115] p-4 rounded-full w-16 h-16 shrink-0 flex items-center justify-center">
-                            <img src="/bulb.png" alt="Innovation Icon" loading="lazy" className="w-8 h-8 object-contain animate-icon-wave" />
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-bold">Vision</h3>
-                            <p className="text-gray-600 text-sm mt-2 leading-snug">
-                                We combine analytics, innovation, and strategy to drive sustainable success for every partner.
-                            </p>
-                        </div>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 py-6">
+                        {/* Vision */}
+                        <Reveal animation="right" delay={200}>
+                            <div className="flex items-start gap-4 bg-white p-6 rounded-xl shadow-sm border border-gray-50 hover:shadow-md transition-shadow">
+                                <div className="bg-[#F27115] p-4 rounded-full w-16 h-16 shrink-0 flex items-center justify-center">
+                                    <img src="/bulb.png" alt="Innovation Icon" loading="lazy" className="w-8 h-8 object-contain animate-icon-wave" />
+                                </div>
+                                <div>
+                                    <h3 className="text-lg font-bold">Vision</h3>
+                                    <p className="text-gray-600 text-sm mt-2 leading-snug">
+                                        We combine analytics, innovation, and strategy to drive sustainable success for every partner.
+                                    </p>
+                                </div>
+                            </div>
+                        </Reveal>
+                        {/* Growth */}
+                        <Reveal animation="right" delay={400}>
+                            <div className="flex items-start gap-4 bg-white p-6 rounded-xl shadow-sm border border-gray-50 hover:shadow-md transition-shadow">
+                                <div className="bg-black p-4 rounded-full w-16 h-16 shrink-0 flex items-center justify-center">
+                                    <img src="/growth.png" alt="Growth Icon" loading="lazy" className="w-8 h-8 object-contain animate-icon-wave" />
+                                </div>
+                                <div>
+                                    <h3 className="text-lg font-bold text-black">Growth Formula</h3>
+                                    <p className="text-gray-600 text-sm mt-2 leading-snug">
+                                        Innovation + Strategy + Execution = Success. We build the future of digital commerce.
+                                    </p>
+                                </div>
+                            </div>
+                        </Reveal>
+                        <Reveal animation="right" delay={550}>
+                            {/* Mission */}
+                            <div className="flex items-start gap-4 bg-white p-6 rounded-xl shadow-sm border border-gray-50 hover:shadow-md transition-shadow md:col-span-2 lg:col-span-1">
+                                <div className="bg-[#F27115] p-4 rounded-full w-16 h-16 shrink-0 flex items-center justify-center">
+                                    <img src="/mission.png" alt="Mission Icon" loading="lazy" className="w-8 h-8 object-contain animate-icon-wave" />
+                                </div>
+                                <div>
+                                    <h3 className="text-lg font-bold">Mission</h3>
+                                    <p className="text-gray-600 text-sm mt-2 leading-snug">
+                                        To serve as a trusted strategic partner, helping brands achieve tangible results through scalable solutions.
+                                    </p>
+                                </div>
+                            </div>
+                        </Reveal>
                     </div>
-                    </Reveal>
-                    {/* Growth */}
-                    <Reveal animation="right" delay={400}>
-                    <div className="flex items-start gap-4 bg-white p-6 rounded-xl shadow-sm border border-gray-50 hover:shadow-md transition-shadow">
-                        <div className="bg-black p-4 rounded-full w-16 h-16 shrink-0 flex items-center justify-center">
-                            <img src="/growth.png" alt="Growth Icon" loading="lazy" className="w-8 h-8 object-contain animate-icon-wave" />
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-bold text-black">Growth Formula</h3>
-                            <p className="text-gray-600 text-sm mt-2 leading-snug">
-                                Innovation + Strategy + Execution = Success. We build the future of digital commerce.
-                            </p>
-                        </div>
-                    </div>
-                    </Reveal>
-                    <Reveal animation="right" delay={550}>
-                    {/* Mission */}
-                    <div className="flex items-start gap-4 bg-white p-6 rounded-xl shadow-sm border border-gray-50 hover:shadow-md transition-shadow md:col-span-2 lg:col-span-1">
-                        <div className="bg-[#F27115] p-4 rounded-full w-16 h-16 shrink-0 flex items-center justify-center">
-                            <img src="/mission.png" alt="Mission Icon" loading="lazy" className="w-8 h-8 object-contain animate-icon-wave" />
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-bold">Mission</h3>
-                            <p className="text-gray-600 text-sm mt-2 leading-snug">
-                                To serve as a trusted strategic partner, helping brands achieve tangible results through scalable solutions.
-                            </p>
-                        </div>
-                    </div>
-                    </Reveal>
-                </div>
                 </Reveal>
 
                 {/* Team Images Section */}
                 <Reveal animation="right" delay={200}>
-                <div className="py-16 flex flex-col lg:flex-row justify-center items-center gap-6">
-                    <img src="/group-image1.png" alt="Bynix Technology Team Collaboration" loading="lazy" className="rounded-2xl shadow-lg max-w-[60%] h-auto" />
-                    <img src="/group-image2.png" alt="Digital Strategy Meeting" loading="lazy" className="hidden lg:block rounded-2xl shadow-lg relative lg:-left-16 z-10 max-w-[40%] h-auto" />
-                </div>
+                    <div className="py-16 flex flex-col lg:flex-row justify-center items-center gap-6">
+                        <img src="/group-image1.png" alt="Bynix Technology Team Collaboration" loading="lazy" className="rounded-2xl shadow-lg max-w-[60%] h-auto" />
+                        <img src="/group-image2.png" alt="Digital Strategy Meeting" loading="lazy" className="hidden lg:block rounded-2xl shadow-lg relative lg:-left-16 z-10 max-w-[40%] h-auto" />
+                    </div>
                 </Reveal>
             </section>
 
@@ -508,32 +601,32 @@ export default function About() {
 
             {/* Why Choose Section */}
             <Reveal animation="up">
-            <section className="container mx-auto py-16 px-5 lg:px-20">
-                <div className="max-w-4xl">
-                    <h2 className="text-4xl font-bold mb-8">
-                        Why Choose <span className="text-[#F95228]">Bynix Technology?</span>
-                    </h2>
-                    <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                        Our clients are our future growth partners. We value every interaction to provide feasible business solutions. Here's why our clients trust us:
-                    </p>
-                    <ul className="space-y-4">
-                        {[
-                            { title: "Business-centric Strategies", desc: "We avoid using generic templates but focus on strategies that drive leads and improve conversions." },
-                            { title: "Deliver Measurable Success", desc: "We analyze the market to create impactful digital marketing strategies to deliver refined results." },
-                            { title: "Deliver Competitive Edge", desc: "We implement creative solutions that turn visitors into loyal customers." }
-                        ].map((item, idx) => (
-                            <Reveal key={idx} animation="right" delay={200 + idx * 150}>
-                            <li  className="flex items-start gap-3">
-                                <span className="text-[#F95228] font-bold text-2xl mt-[-4px]">•</span>
-                                <p className="text-gray-700 leading-relaxed">
-                                    <strong className="text-black font-bold">{item.title}: </strong>{item.desc}
-                                </p>
-                            </li>
-                            </Reveal>
-                        ))}
-                    </ul>
-                </div>
-            </section>
+                <section className="container mx-auto py-16 px-5 lg:px-20">
+                    <div className="max-w-4xl">
+                        <h2 className="text-4xl font-bold mb-8">
+                            Why Choose <span className="text-[#F95228]">Bynix Technology?</span>
+                        </h2>
+                        <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                            Our clients are our future growth partners. We value every interaction to provide feasible business solutions. Here's why our clients trust us:
+                        </p>
+                        <ul className="space-y-4">
+                            {[
+                                { title: "Business-centric Strategies", desc: "We avoid using generic templates but focus on strategies that drive leads and improve conversions." },
+                                { title: "Deliver Measurable Success", desc: "We analyze the market to create impactful digital marketing strategies to deliver refined results." },
+                                { title: "Deliver Competitive Edge", desc: "We implement creative solutions that turn visitors into loyal customers." }
+                            ].map((item, idx) => (
+                                <Reveal key={idx} animation="right" delay={200 + idx * 150}>
+                                    <li className="flex items-start gap-3">
+                                        <span className="text-[#F95228] font-bold text-2xl mt-[-4px]">•</span>
+                                        <p className="text-gray-700 leading-relaxed">
+                                            <strong className="text-black font-bold">{item.title}: </strong>{item.desc}
+                                        </p>
+                                    </li>
+                                </Reveal>
+                            ))}
+                        </ul>
+                    </div>
+                </section>
             </Reveal>
 
             {/* Our Team Section
@@ -566,7 +659,7 @@ export default function About() {
                 </div>
             </section> */}
             <Reveal animation="up">
-            <TeamCarousel />
+                <TeamCarousel />
             </Reveal>
         </div>
     );

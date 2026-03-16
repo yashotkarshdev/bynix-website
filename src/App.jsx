@@ -15,6 +15,9 @@ import Services from './pages/Services';
 import Blog from './pages/Blogs';
 import BlogDetails from './pages/BlogDetails';
 import NotFound from "./pages/NotFound";  
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsAndConditions from './pages/TermsAndConditions';
+import Careers from './pages/careers';
 
 export default function App() {
   return (
@@ -33,8 +36,11 @@ export default function App() {
           <Route path='services/saas-service' element={<SaasService />} />
           <Route path='services/graphic-designing' element={<GraphicDesigning />} />
           <Route path="/services" element={<Services />} />
-          <Route path="*" element={<NotFound />} />
 
+          <Route path="/terms" element={<TermsAndConditions />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/career" element={<Careers />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

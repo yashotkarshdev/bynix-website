@@ -1,9 +1,10 @@
 import React from 'react'
-import SEO from '../components/Seo';
+import SEO from '../components/SEO';
 import FAQSection from '../components/FAQSection';
 import SectionBadge from '../components/SectionBadge';
 import { useEffect, useState } from "react";
 import Reveal from '../components/animate/Reveal';
+import { Helmet } from 'react-helmet-async';
 // import { getServices } from "../services/serviceApi";
 
 function Home() {
@@ -157,14 +158,91 @@ function Home() {
         },
     ];
 
+    const organizationSchema = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Bynix Technology",
+        "url": "https://bynixtechnology.com",
+        "logo": "https://bynixtechnology.com/logo.png",
+        "image": "https://bynixtechnology.com/home-preview.jpg",
+        "description": "Bynix Technology provides website development, mobile app development, and digital marketing services.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Jaipur",
+            "addressRegion": "Rajasthan",
+            "addressCountry": "India"
+        },
+        "sameAs": [
+            "https://www.linkedin.com/company/bynixtechnology",
+            "https://www.instagram.com/bynixtechnology"
+        ]
+    };
+
+    const websiteSchema = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Bynix Technology",
+        "url": "https://bynixtechnology.com"
+    };
+
+    const servicesSchema = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": services.map((service, index) => ({
+            "@type": "Service",
+            "position": index + 1,
+            "name": service.title,
+            "description": service.description,
+            "url": "https://bynixtechnology.com/services",
+            "provider": {
+                "@type": "Organization",
+                "name": "Bynix Technology",
+                "url": "https://bynixtechnology.com"
+            }
+        }))
+    };
+
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": homeFaqs.map((faq) => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+            }
+        }))
+    };
+
 
     return (
         <>
             <SEO
                 title="Digital Marketing & Web Development Agency in Jaipur"
                 description="Bynix Technology helps businesses grow with high-performance website development, custom mobile apps, and result-driven digital marketing strategies."
+                keywords="digital marketing agency jaipur, website development company jaipur, seo agency jaipur, mobile app development jaipur, digital marketing services india"
                 image="/home-preview.jpg"
             />
+            <Helmet>
+
+                <script type="application/ld+json">
+                    {JSON.stringify(organizationSchema)}
+                </script>
+
+                <script type="application/ld+json">
+                    {JSON.stringify(websiteSchema)}
+                </script>
+
+                <script type="application/ld+json">
+                    {JSON.stringify(servicesSchema)}
+                </script>
+
+                <script type="application/ld+json">
+                    {JSON.stringify(faqSchema)}
+                </script>
+
+            </Helmet>
             {/* hero section  */}
             <section className="relative py-24 overflow-hidden">
 
@@ -304,14 +382,14 @@ function Home() {
 
                     {/* Banner */}
                     <Reveal animation="up">
-                    <div className="w-full h-64 md:h-80 rounded-[2.5rem] overflow-hidden mb-[-100px] relative z-0">
-                        <img
-                            src="/team-banner.jpg"
-                            alt="Team"
-                            loading="lazy"
-                            className="w-full h-full object-cover grayscale-[30%] opacity-90 "
-                        />
-                    </div>
+                        <div className="w-full h-64 md:h-80 rounded-[2.5rem] overflow-hidden mb-[-100px] relative z-0">
+                            <img
+                                src="/team-banner.jpg"
+                                alt="Team"
+                                loading="lazy"
+                                className="w-full h-full object-cover grayscale-[30%] opacity-90 "
+                            />
+                        </div>
                     </Reveal>
 
                     {/* Features */}
@@ -371,7 +449,7 @@ function Home() {
                                             src={step.img}
                                             alt={step.title}
                                             loading="lazy"
-                                            style={{animationDelay:`${index*0.5}s`}}
+                                            style={{ animationDelay: `${index * 0.5}s` }}
                                             className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500 animate-float"
                                         />
                                     </div>
@@ -404,30 +482,30 @@ function Home() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
                             {features2.map((item, index) => (
                                 <Reveal key={index} animation="right" delay={index * 400}>
-                                <div className="flex flex-col items-center text-center group">
+                                    <div className="flex flex-col items-center text-center group">
 
-                                    {/* Image Circle Container */}
-                                    <div className="w-32 h-32 md:w-40 md:h-40 bg-[#F27115] rounded-full flex items-center justify-center mb-8 transition-transform duration-300 group-hover:scale-110 shadow-lg shadow-orange-100">
-                                        <img
-                                            src={item.image}
-                                            alt={item.title}
-                                            loading="lazy"
-                                            className={`w-1/2 h-1/2 object-contain ${index === 0 || index ===3 ? 'animate-float-card' : 'animate-slow-spin'}`}
-                                        />
+                                        {/* Image Circle Container */}
+                                        <div className="w-32 h-32 md:w-40 md:h-40 bg-[#F27115] rounded-full flex items-center justify-center mb-8 transition-transform duration-300 group-hover:scale-110 shadow-lg shadow-orange-100">
+                                            <img
+                                                src={item.image}
+                                                alt={item.title}
+                                                loading="lazy"
+                                                className={`w-1/2 h-1/2 object-contain ${index === 0 || index === 3 ? 'animate-float-card' : 'animate-slow-spin'}`}
+                                            />
+                                        </div>
+
+                                        {/* Description Text */}
+                                        <div className="max-w-[200px]">
+                                            <p className="text-gray-800 text-lg leading-snug font-medium">
+                                                {/* Styling specific words to match your bolding in the image */}
+                                                {index === 0 && <>Deliver <span className="font-semibold">scalable and intelligent solutions</span> for businesses.</>}
+                                                {index === 1 && <>Help companies leverage <span className="font-semibold">AI, automation, and digital transformation.</span></>}
+                                                {index === 2 && <>Provide <span className="font-semibold">expert resources</span> through flexible allocation models.</>}
+                                                {index === 3 && <>Offer <span className="font-semibold">white-label solutions</span> to accelerate business growth.</>}
+                                            </p>
+                                        </div>
+
                                     </div>
-
-                                    {/* Description Text */}
-                                    <div className="max-w-[200px]">
-                                        <p className="text-gray-800 text-lg leading-snug font-medium">
-                                            {/* Styling specific words to match your bolding in the image */}
-                                            {index === 0 && <>Deliver <span className="font-semibold">scalable and intelligent solutions</span> for businesses.</>}
-                                            {index === 1 && <>Help companies leverage <span className="font-semibold">AI, automation, and digital transformation.</span></>}
-                                            {index === 2 && <>Provide <span className="font-semibold">expert resources</span> through flexible allocation models.</>}
-                                            {index === 3 && <>Offer <span className="font-semibold">white-label solutions</span> to accelerate business growth.</>}
-                                        </p>
-                                    </div>
-
-                                </div>
                                 </Reveal>
                             ))}
                         </div>

@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import FAQSection from "../components/FAQSection";
 import BackgroundGraphics from "../components/BackgroundGraphic";
 import Reveal from "../components/animate/Reveal";
+import SEO from "../components/SEO";
+import { Helmet } from "react-helmet-async";
 const designServices = [
     {
         title: "Logo Design",
@@ -73,9 +75,113 @@ const processes = [
     }
 ];
 function GraphicDesigning() {
+    const designServiceSchema = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: "Graphic Design Services",
+        url: "https://bynixtechnology.com/services/graphic-designing",
+        description:
+            "Professional graphic design services including logo design, creative graphics, and video editing to help businesses build strong brand identity.",
+        serviceType: "Graphic Design",
+        provider: {
+            "@type": "Organization",
+            name: "Bynix Technology",
+            url: "https://bynixtechnology.com"
+        },
+        areaServed: {
+            "@type": "Place",
+            name: "Worldwide"
+        },
+        knowsAbout: [
+            "Logo Design",
+            "Graphic Design",
+            "Creative Graphics",
+            "Video Editing",
+            "Brand Design",
+            "Social Media Design"
+        ]
+    };
+
+    const servicesSchema = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        itemListElement: designServices.map((service, index) => ({
+            "@type": "Service",
+            position: index + 1,
+            name: service.title,
+            description: service.desc,
+            provider: {
+                "@type": "Organization",
+                name: "Bynix Technology",
+                url: "https://bynixtechnology.com"
+            }
+        }))
+    };
+
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: designingFaqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+                "@type": "Answer",
+                text:
+                    "Bynix Technology provides professional graphic design services including logo design, creative graphics, and video editing tailored to your brand."
+            }
+        }))
+    };
+
+    const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+            {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://bynixtechnology.com"
+            },
+            {
+                "@type": "ListItem",
+                position: 2,
+                name: "Services",
+                item: "https://bynixtechnology.com/services"
+            },
+            {
+                "@type": "ListItem",
+                position: 3,
+                name: "Graphic Design",
+                item: "https://bynixtechnology.com/services/graphic-designing"
+            }
+        ]
+    };
 
     return (
         <>
+            <SEO
+                title="Graphic Design Services | Logo, Creative Graphics & Video Editing"
+                description="Bynix Technology provides professional graphic design services including logo design, creative graphics, and video editing to help your brand stand out."
+                keywords="graphic design jaipur, logo design jaipur, creative graphics, video editing services, brand design india"
+                image="/graphic-designing/hero.jpg"
+            />
+            <Helmet>
+                <script type="application/ld+json">
+                    {JSON.stringify(designServiceSchema)}
+                </script>
+
+                <script type="application/ld+json">
+                    {JSON.stringify(servicesSchema)}
+                </script>
+
+                <script type="application/ld+json">
+                    {JSON.stringify(faqSchema)}
+                </script>
+
+                <script type="application/ld+json">
+                    {JSON.stringify(breadcrumbSchema)}
+                </script>
+            </Helmet>
 
             <section className="relative bg-white py-8 lg:py-36 px-6 overflow-hidden">
                 {/* Background Image */}
@@ -83,11 +189,6 @@ function GraphicDesigning() {
                     className="absolute inset-0 bg-cover bg-center opacity-20"
                     style={{ backgroundImage: "url('/graphic-designing/hero.jpg')" }}
                 ></div>
-
-                {/* Background Pattern - Optional visual element */}
-                <div className="relative inset-0 opacity-5 pointer-events-none">
-                    <img src="/path-to-your-bg-pattern.svg" alt="" className="w-full h-full object-cover" />
-                </div>
 
                 <div className="container mx-auto text-center relative z-10">
                     <Reveal animation="right">
@@ -130,32 +231,32 @@ function GraphicDesigning() {
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-12">
                             {designServices.map((service, index) => (
                                 <Reveal key={index} animation="up" delay={index * 200}>
-                                <div
-                                    className="bg-white rounded-md border border-gray-100 shadow-sm overflow-hidden group"
-                                >
+                                    <div
+                                        className="bg-white rounded-md border border-gray-100 shadow-sm overflow-hidden group"
+                                    >
 
-                                    {/* Image Container with precise aspect ratio and hover effect */}
-                                    <div className="aspect-[16/9] overflow-hidden bg-gray-100">
-                                        <img
-                                            src={service.image}
-                                            alt={service.title}
-                                            className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
-                                        />
+                                        {/* Image Container with precise aspect ratio and hover effect */}
+                                        <div className="aspect-[16/9] overflow-hidden bg-gray-100">
+                                            <img
+                                                src={service.image}
+                                                alt={service.title}
+                                                className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
+                                            />
+                                        </div>
+
+                                        {/* Text Content Area */}
+                                        <div className="p-8">
+                                            {/* Precise Title Typography */}
+                                            <h3 className="text-2xl font-bold text-[#1a1a1a] mb-5 tracking-tight">
+                                                {service.title}
+                                            </h3>
+                                            {/* Precise Description Typography */}
+                                            <p className="text-[#555] text-[15px] leading-relaxed font-normal">
+                                                {service.desc}
+                                            </p>
+                                        </div>
+
                                     </div>
-
-                                    {/* Text Content Area */}
-                                    <div className="p-8">
-                                        {/* Precise Title Typography */}
-                                        <h3 className="text-2xl font-bold text-[#1a1a1a] mb-5 tracking-tight">
-                                            {service.title}
-                                        </h3>
-                                        {/* Precise Description Typography */}
-                                        <p className="text-[#555] text-[15px] leading-relaxed font-normal">
-                                            {service.desc}
-                                        </p>
-                                    </div>
-
-                                </div>
                                 </Reveal>
                             ))}
                         </div>
@@ -240,7 +341,7 @@ function GraphicDesigning() {
                                             <img
                                                 src={item.image}
                                                 alt={item.title}
-                                                style={{animationDelay:`${index*0.5}s`}}
+                                                style={{ animationDelay: `${index * 0.5}s` }}
                                                 className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 animate-float"
                                             />
                                         </div>
@@ -256,7 +357,7 @@ function GraphicDesigning() {
                     </div>
                 </section>
                 <Reveal animation="up">
-                <FAQSection faqs={designingFaqs} />
+                    <FAQSection faqs={designingFaqs} />
                 </Reveal>
             </section>
         </>

@@ -3,6 +3,9 @@ import FAQSection from "../components/FAQSection";
 import SectionBadge from "../components/SectionBadge";
 import BackgroundGraphics from "../components/BackgroundGraphic";
 import Reveal from "../components/animate/Reveal";
+import SEOPricingSection from "../components/SEOPackageCard";
+import SEO from "../components/SEO";
+import { Helmet } from "react-helmet-async";
 
 function SeoService() {
     const features = [
@@ -50,22 +53,117 @@ function SeoService() {
             "question": "What is keyword research in SEO?"
         }
     ];
+    const seoServiceSchema = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: "SEO Services",
+        url: "https://bynixtechnology.com/services/seo-service",
+        description:
+            "Professional SEO services including on-page SEO, off-page SEO, technical SEO, and SEO outsourcing to increase website traffic and search rankings.",
+        provider: {
+            "@type": "Organization",
+            name: "Bynix Technology",
+            url: "https://bynixtechnology.com"
+        },
+        serviceType: "Search Engine Optimization",
+        areaServed: {
+            "@type": "Place",
+            name: "Worldwide"
+        },
+        knowsAbout: [
+            "SEO Services",
+            "On Page SEO",
+            "Off Page SEO",
+            "Technical SEO",
+            "Local SEO",
+            "SEO Outsourcing"
+        ]
+    };
+    const seoServicesSchema = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        itemListElement: features.map((feature, index) => ({
+            "@type": "Service",
+            position: index + 1,
+            name: feature.title,
+            description: feature.desc,
+            provider: {
+                "@type": "Organization",
+                name: "Bynix Technology",
+                url: "https://bynixtechnology.com"
+            }
+        }))
+    };
+    const seoFaqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: seoFaq.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+                "@type": "Answer",
+                text:
+                    "Bynix Technology provides professional SEO services including keyword optimization, link building, and technical SEO to improve website rankings."
+            }
+        }))
+    };
+    const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+            {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://bynixtechnology.com"
+            },
+            {
+                "@type": "ListItem",
+                position: 2,
+                name: "Services",
+                item: "https://bynixtechnology.com/services"
+            },
+            {
+                "@type": "ListItem",
+                position: 3,
+                name: "SEO Services",
+                item: "https://bynixtechnology.com/services/seo-service"
+            }
+        ]
+    };
 
 
     return (
         <>
+            <SEO
+                title="Professional SEO Services | Local & Technical SEO Solutions"
+                description="Bynix Technology offers data-driven SEO services including on-page, off-page, technical SEO, and local SEO strategies to boost your website traffic."
+                keywords="seo services, on-page seo, off-page seo, technical seo, local seo, seo outsourcing, seo pricing"
+                image="/seo/bynix-seo-service-hero.png"
+            />
+            <Helmet>
+                <script type="application/ld+json">
+                    {JSON.stringify(seoServiceSchema)}
+                </script>
 
+                <script type="application/ld+json">
+                    {JSON.stringify(seoServicesSchema)}
+                </script>
+
+                <script type="application/ld+json">
+                    {JSON.stringify(seoFaqSchema)}
+                </script>
+
+                <script type="application/ld+json">
+                    {JSON.stringify(breadcrumbSchema)}
+                </script>
+            </Helmet>
             <section className="relative bg-white py-16 lg:py-36 px-6 overflow-hidden">
                 {/* Background Image */}
                 <div
                     className="absolute inset-0 bg-cover bg-center opacity-20"
                     style={{ backgroundImage: "url('/seo/bynix-seo-service-hero.png')" }}
                 ></div>
-
-                {/* Background Pattern - Optional visual element */}
-                <div className="relative inset-0 opacity-5 pointer-events-none">
-                    <img src="/path-to-your-bg-pattern.svg" alt="" className="w-full h-full object-cover" />
-                </div>
 
                 <div className="container mx-auto text-center relative z-10">
                     <Reveal animation="right">
@@ -113,23 +211,27 @@ function SeoService() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {features.map((item, idx) => (
                             <Reveal key={idx} animation="up" delay={idx * 150}>
-                            <div
-                                // key={idx}
-                                className="bg-white border z-10 border-gray-400 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 flex flex-col items-start text-left group h-full"
-                            >
-                                <div className="mb-6 w-20 h-20 flex items-center justify-center">
-                                    <img src={item.image} alt={item.title} className="w-full h-full object-contain animate-icon-wave" />
+                                <div
+                                    // key={idx}
+                                    className="bg-white border z-10 border-gray-400 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 flex flex-col items-start text-left group h-full"
+                                >
+                                    <div className="mb-6 w-20 h-20 flex items-center justify-center">
+                                        <img src={item.image} alt={item.title} className="w-full h-full object-contain animate-icon-wave" />
+                                    </div>
+                                    <h3 className="text-xl font-bold text-gray-900 mb-4 tracking-tight">{item.title}</h3>
+                                    <p className="text-gray-600 text-[15px] leading-relaxed">{item.desc}</p>
                                 </div>
-                                <h3 className="text-xl font-bold text-gray-900 mb-4 tracking-tight">{item.title}</h3>
-                                <p className="text-gray-600 text-[15px] leading-relaxed">{item.desc}</p>
-                            </div>
                             </Reveal>
                         ))}
                     </div>
                 </div>
-                
+
                 <Reveal animation="up">
-                <FAQSection faqs={seoFaq} />
+                    <SEOPricingSection />
+                </Reveal>
+
+                <Reveal animation="up">
+                    <FAQSection faqs={seoFaq} />
                 </Reveal>
             </section>
 

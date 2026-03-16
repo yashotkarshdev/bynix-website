@@ -3,8 +3,11 @@ import FAQSection from "../components/FAQSection";
 import SectionBadge from "../components/SectionBadge";
 import BackgroundGraphics from "../components/BackgroundGraphic";
 import Reveal from "../components/animate/Reveal";
+import SEO from "../components/SEO";
+import { Helmet } from "react-helmet-async";
 
 function SaasService() {
+
     const services = [
         {
             id: "1.",
@@ -80,19 +83,119 @@ function SaasService() {
             "question": "Do you provide SaaS support after launch?"
         }
     ];
+
+const saasServiceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "SaaS Development Services",
+  url: "https://bynixtechnology.com/services/saas-service",
+  description:
+    "Custom SaaS development services including SaaS product design, integration, analytics, and long-term support for scalable cloud software.",
+  serviceType: "SaaS Development",
+  provider: {
+    "@type": "Organization",
+    name: "Bynix Technology",
+    url: "https://bynixtechnology.com"
+  },
+  areaServed: {
+    "@type": "Place",
+    name: "Worldwide"
+  },
+  knowsAbout: [
+    "SaaS Development",
+    "Cloud Software Development",
+    "SaaS Product Design",
+    "SaaS Integration",
+    "SaaS Analytics",
+    "SaaS Maintenance"
+  ]
+};
+
+const servicesSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: services.map((service, index) => ({
+    "@type": "Service",
+    position: index + 1,
+    name: service.title,
+    description: service.desc,
+    provider: {
+      "@type": "Organization",
+      name: "Bynix Technology",
+      url: "https://bynixtechnology.com"
+    }
+  }))
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: saasFaqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text:
+        "Bynix Technology provides scalable SaaS development services including product design, integration, analytics, and long-term platform support."
+    }
+  }))
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://bynixtechnology.com"
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Services",
+      item: "https://bynixtechnology.com/services"
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "SaaS Development",
+      item: "https://bynixtechnology.com/services/saas-service"
+    }
+  ]
+};
     return (
         <>
+            <SEO
+                title="SaaS Development Services | Custom SaaS, UI/UX & Analytics"
+                description="Bynix Technology provides custom SaaS development, integration, UI/UX design, and analytics solutions for businesses across industries."
+                keywords="saas development, saas integration, saas ui/ux, saas analytics, saas support, jaipur"
+                image="/saas/bynix-saas-service.jpg"
+            />
+            <Helmet>
+  <script type="application/ld+json">
+    {JSON.stringify(saasServiceSchema)}
+  </script>
+
+  <script type="application/ld+json">
+    {JSON.stringify(servicesSchema)}
+  </script>
+
+  <script type="application/ld+json">
+    {JSON.stringify(faqSchema)}
+  </script>
+
+  <script type="application/ld+json">
+    {JSON.stringify(breadcrumbSchema)}
+  </script>
+</Helmet>
             <section className="relative bg-white py-8 lg:py-32 px-6 overflow-hidden">
                 {/* Background Image */}
                 <div
                     className="absolute inset-0 bg-cover bg-center opacity-20"
                     style={{ backgroundImage: "url('/saas/bynix-saas-service.jpg')" }}
                 ></div>
-
-                {/* Background Pattern - Optional visual element */}
-                <div className="relative inset-0 opacity-5 pointer-events-none">
-                    <img src="/path-to-your-bg-pattern.svg" alt="" className="w-full h-full object-cover" />
-                </div>
 
                 <div className="container mx-auto text-center relative z-10">
                     <Reveal animation="right">
@@ -230,7 +333,7 @@ function SaasService() {
                     </div>
                 </section>
                 <Reveal animation="up" delay={100}>
-                <FAQSection faqs={saasFaqs} />
+                    <FAQSection faqs={saasFaqs} />
                 </Reveal>
             </section>
         </>

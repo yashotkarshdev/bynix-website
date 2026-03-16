@@ -2,6 +2,8 @@ import SectionBadge from "../components/SectionBadge";
 import FAQSection from "../components/FAQSection";
 import BackgroundGraphics from "../components/BackgroundGraphic";
 import Reveal from "../components/animate/Reveal";
+import SEO from "../components/SEO";
+import { Helmet } from "react-helmet-async";
 
 function WebAppDevService() {
     const services = [
@@ -55,8 +57,111 @@ function WebAppDevService() {
             "question": "Can you redesign an existing website or app?"
         }
     ];
+    const serviceSchema = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: "Web & Mobile App Development Services",
+        url: "https://www.bynixtechnology.com/services/web-app-development-service",
+        description:
+            "Professional web and mobile app development services including custom websites, e-commerce platforms, mobile apps, UI/UX design, and website maintenance.",
+        serviceType: "Web & Mobile App Development",
+        areaServed: {
+            "@type": "Place",
+            name: "Worldwide"
+        },
+        provider: {
+            "@type": "Organization",
+            name: "Bynix Technology",
+            url: "https://www.bynixtechnology.com"
+        },
+        knowsAbout: [
+            "Website Development",
+            "Mobile App Development",
+            "E-Commerce Development",
+            "Web Application Development",
+            "UI UX Design",
+            "Website Maintenance"
+        ]
+    };
+
+    const offerCatalogSchema = {
+        "@context": "https://schema.org",
+        "@type": "OfferCatalog",
+        name: "Web & App Development Services",
+        itemListElement: services.map((service) => ({
+            "@type": "Offer",
+            itemOffered: {
+                "@type": "Service",
+                name: service.title,
+                description: service.desc
+            }
+        }))
+    };
+
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: webAppFaqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+                "@type": "Answer",
+                text:
+                    "Bynix Technology provides professional web and mobile app development solutions tailored to your business needs."
+            }
+        }))
+    };
+
+    const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+            {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://www.bynixtechnology.com"
+            },
+            {
+                "@type": "ListItem",
+                position: 2,
+                name: "Services",
+                item: "https://www.bynixtechnology.com/services"
+            },
+            {
+                "@type": "ListItem",
+                position: 3,
+                name: "Web & App Development",
+                item: "https://www.bynixtechnology.com/services/web-app-development-service"
+            }
+        ]
+    };
     return (
         <>
+            <SEO
+                title="Web & Mobile App Development Services | Bynix Technology"
+                description="Bynix Technology offers professional web and mobile app development services including custom websites, e-commerce platforms, UI/UX design, and scalable web applications."
+                keywords="web development services, mobile app development company, ecommerce development, web application development, UI UX design services"
+                image="/web-app-development/custom-web.jpg"
+            />
+
+            <Helmet>
+                <script type="application/ld+json">
+                    {JSON.stringify(serviceSchema)}
+                </script>
+
+                <script type="application/ld+json">
+                    {JSON.stringify(offerCatalogSchema)}
+                </script>
+
+                <script type="application/ld+json">
+                    {JSON.stringify(faqSchema)}
+                </script>
+
+                <script type="application/ld+json">
+                    {JSON.stringify(breadcrumbSchema)}
+                </script>
+            </Helmet>
             <section
                 style={{
                     backgroundColor: "#f6efe9",

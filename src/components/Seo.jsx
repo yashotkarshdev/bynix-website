@@ -1,65 +1,69 @@
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
 
-export default function SEO({ 
-  title, 
-  description, 
-  image = "/og-image.jpg", 
-  type = "website" 
+export default function SEO({
+  title,
+  description,
+  keywords,
+  image = "/og-image.jpg",
 }) {
+
   const { pathname } = useLocation();
+
   const siteName = "Bynix Technology";
   const baseUrl = "https://bynixtechnology.com";
-  
-  // Automatically generate the canonical URL based on the current path
   const canonicalUrl = `${baseUrl}${pathname}`;
-  
-  const fullTitle = title ? `${title} | ${siteName}` : `${siteName} | Digital Transformation Experts`;
-  const defaultDesc = "Bynix Technology provides top-tier Website Development, Mobile App Development, and Digital Marketing strategies.";
 
-  // Logic to switch Schema Type based on URL path
-  const getSchemaType = () => {
-    if (pathname === "/contact") return "ContactPage";
-    if (pathname === "/about") return "AboutPage";
-    if (pathname.includes("/services")) return "Service";
-    return "ProfessionalService"; // Default for Home
+  const fullTitle = title
+    ? `${title} | ${siteName}`
+    : `${siteName} | Website Development & Digital Marketing`;
+
+  const defaultDesc =
+    "Bynix Technology provides Website Development, Mobile App Development, SEO and Digital Marketing services.";
+
+  const defaultKeywords =
+    "Bynix Technology, web development company Jaipur, digital marketing agency, SEO services Jaipur";
+
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: siteName,
+    url: baseUrl,
+    logo: `${baseUrl}/logo.png`,
+    sameAs: [
+      "https://www.linkedin.com/company/bynix-technology",
+      "https://www.instagram.com/bynixtechnology"
+    ]
   };
 
-  // Improved Structured Data
-  const structuredData = {
+  const websiteSchema = {
     "@context": "https://schema.org",
-    "@type": getSchemaType(),
-    "name": siteName,
-    "url": canonicalUrl,
-    "logo": `${baseUrl}/logo.png`,
-    "image": `${baseUrl}${image}`,
-    "description": description || defaultDesc,
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Jaipur",
-      "addressRegion": "RJ",
-      "addressCountry": "IN"
-    },
-    "sameAs": [
-      "https://www.linkedin.com/company/bynixtechnology",
-      "https://www.instagram.com/bynixtechnology"
-      // Add your actual social links here
-    ]
+    "@type": "WebSite",
+    name: siteName,
+    url: baseUrl
   };
 
   return (
     <Helmet>
-      {/* Standard Metadata */}
+
       <title>{fullTitle}</title>
+
       <meta name="description" content={description || defaultDesc} />
+      <meta name="keywords" content={keywords || defaultKeywords} />
+      <meta name="robots" content="index, follow" />
+      <meta name="author" content="Bynix Technology" />
+      <meta name="publisher" content="Bynix Technology" />
+
       <link rel="canonical" href={canonicalUrl} />
 
-      {/* Open Graph / Facebook */}
-      <meta property="og:type" content={type} />
+      {/* Open Graph */}
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content={siteName} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description || defaultDesc} />
-      <meta property="og:url" content={canonicalUrl} />
       <meta property="og:image" content={`${baseUrl}${image}`} />
+      <meta property="og:image:alt" content={fullTitle} />
+      <meta property="og:url" content={canonicalUrl} />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -67,10 +71,16 @@ export default function SEO({
       <meta name="twitter:description" content={description || defaultDesc} />
       <meta name="twitter:image" content={`${baseUrl}${image}`} />
 
-      {/* Structured Data */}
+      {/* Organization Schema */}
       <script type="application/ld+json">
-        {JSON.stringify(structuredData)}
+        {JSON.stringify(organizationSchema)}
       </script>
+
+      {/* Website Schema */}
+      <script type="application/ld+json">
+        {JSON.stringify(websiteSchema)}
+      </script>
+
     </Helmet>
   );
 }
