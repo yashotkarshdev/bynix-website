@@ -506,23 +506,23 @@ export default function About() {
                 </div>
             </Reveal>
 
-            <section className="container mx-auto py-10 lg:py-16 px-5 lg:px-20">
+            <section className="container mx-auto py-5 md:py-10 lg:py-16 px-5 lg:px-20">
                 <SectionBadge title={"About Us"} />
 
                 {/* introduction grid */}
-                <div className="grid lg:grid-cols-3 gap-8 py-10">
-                    <Reveal animation="left" delay={550}>
+                <div className="grid lg:grid-cols-3 gap-8 py-5 lg:py-10">
+                    <Reveal animation="left" delay={350}>
                         <h2 className="text-3xl sm:text-4xl font-semibold leading-tight">
                             <span className="text-[#FF5722]">Introduction</span> <br className="hidden sm:block" />
                             <span>To Best Digital Agency!</span>
                         </h2>
                     </Reveal>
-                    <Reveal animation="left" delay={400}>
+                    <Reveal animation="left" delay={250}>
                         <p className="text-gray-600 text-base leading-relaxed">
                             Bynix Technology is a leading Digital Marketing & IT Solutions firm dedicated to accelerating growth for brands, startups, and enterprises.
                         </p>
                     </Reveal>
-                    <Reveal animation="left" delay={250}>
+                    <Reveal animation="left" delay={150}>
                         <p className="text-gray-600 text-base leading-relaxed">
                             Welcome to Bynix Technology — a highly result-oriented and outcome-driven digital marketing company committed to helping businesses grow and lead in the digital space.
                         </p>
@@ -533,7 +533,7 @@ export default function About() {
                 <Reveal animation="up">
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 py-6">
                         {/* Vision */}
-                        <Reveal animation="right" delay={200}>
+                        <Reveal animation="right" delay={100}>
                             <div className="flex items-start gap-4 bg-white p-6 rounded-xl shadow-sm border border-gray-50 hover:shadow-md transition-shadow">
                                 <div className="bg-[#F27115] p-4 rounded-full w-16 h-16 shrink-0 flex items-center justify-center">
                                     <img src="/bulb.png" alt="Innovation Icon" loading="lazy" className="w-8 h-8 object-contain animate-icon-wave" />
@@ -547,7 +547,7 @@ export default function About() {
                             </div>
                         </Reveal>
                         {/* Growth */}
-                        <Reveal animation="right" delay={400}>
+                        <Reveal animation="right" delay={250}>
                             <div className="flex items-start gap-4 bg-white p-6 rounded-xl shadow-sm border border-gray-50 hover:shadow-md transition-shadow">
                                 <div className="bg-black p-4 rounded-full w-16 h-16 shrink-0 flex items-center justify-center">
                                     <img src="/growth.png" alt="Growth Icon" loading="lazy" className="w-8 h-8 object-contain animate-icon-wave" />
@@ -560,7 +560,7 @@ export default function About() {
                                 </div>
                             </div>
                         </Reveal>
-                        <Reveal animation="right" delay={550}>
+                        <Reveal animation="right" delay={350}>
                             {/* Mission */}
                             <div className="flex items-start gap-4 bg-white p-6 rounded-xl shadow-sm border border-gray-50 hover:shadow-md transition-shadow md:col-span-2 lg:col-span-1">
                                 <div className="bg-[#F27115] p-4 rounded-full w-16 h-16 shrink-0 flex items-center justify-center">
@@ -578,9 +578,9 @@ export default function About() {
                 </Reveal>
 
                 {/* Team Images Section */}
-                <Reveal animation="right" delay={200}>
+                <Reveal animation="right" delay={100}>
                     <div className="py-16 flex flex-col lg:flex-row justify-center items-center gap-6">
-                        <img src="/group-image1.png" alt="Bynix Technology Team Collaboration" loading="lazy" className="rounded-2xl shadow-lg max-w-[60%] h-auto" />
+                        <img src="/group-image1.png" alt="Bynix Technology Team Collaboration" loading="lazy" className="rounded-2xl shadow-lg lg:max-w-[60%] h-auto" />
                         <img src="/group-image2.png" alt="Digital Strategy Meeting" loading="lazy" className="hidden lg:block rounded-2xl shadow-lg relative lg:-left-16 z-10 max-w-[40%] h-auto" />
                     </div>
                 </Reveal>
@@ -615,7 +615,7 @@ export default function About() {
                                 { title: "Deliver Measurable Success", desc: "We analyze the market to create impactful digital marketing strategies to deliver refined results." },
                                 { title: "Deliver Competitive Edge", desc: "We implement creative solutions that turn visitors into loyal customers." }
                             ].map((item, idx) => (
-                                <Reveal key={idx} animation="right" delay={200 + idx * 150}>
+                                <Reveal key={idx} animation="right" delay={100 + idx * 100}>
                                     <li className="flex items-start gap-3">
                                         <span className="text-[#F95228] font-bold text-2xl mt-[-4px]">•</span>
                                         <p className="text-gray-700 leading-relaxed">

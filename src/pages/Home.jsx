@@ -5,6 +5,7 @@ import SectionBadge from '../components/SectionBadge';
 import { useEffect, useState } from "react";
 import Reveal from '../components/animate/Reveal';
 import { Helmet } from 'react-helmet-async';
+import LeadPopup from '../components/LeadPopup';
 // import { getServices } from "../services/serviceApi";
 
 function Home() {
@@ -243,6 +244,7 @@ function Home() {
                 </script>
 
             </Helmet>
+            <LeadPopup />
             {/* hero section  */}
             <section className="relative py-24 overflow-hidden">
 
@@ -287,7 +289,7 @@ function Home() {
                 </div>
             </section>
             {/* Service section  */}
-            <section className="py-20 bg-white">
+            <section className="py-8 lg:py-20 bg-white">
 
                 <div className="container mx-auto px-6 md:px-12">
 
@@ -305,7 +307,7 @@ function Home() {
                     {/* Services Grid */}
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         {services.map((service, index) => (
-                            <Reveal key={index} animation="up" delay={index * 250}>
+                            <Reveal key={index} animation="up" delay={index * 150}>
                                 <div
                                     // key={index}
                                     className="border-2 border-dashed border-gray-200 rounded-[2.5rem] p-8 flex flex-col hover:border-[#F27115] transition-colors duration-300 group"
@@ -343,7 +345,7 @@ function Home() {
                 </div>
             </section>
             {/* how we help  */}
-            <section className="relative bg-transparent py-20 overflow-hidden">
+            <section className="relative bg-transparent py-8 lg:py-20 overflow-hidden">
 
                 {/* Background Images */}
                 <div className="absolute inset-0 -z-10 animate-float">
@@ -395,7 +397,7 @@ function Home() {
                     {/* Features */}
                     <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-8">
                         {features.map((item, idx) => (
-                            <Reveal key={idx} animation="up" delay={idx * 250}>
+                            <Reveal key={idx} animation="up" delay={idx * 100}>
                                 <div
                                     // key={idx}
                                     className={`bg-white rounded-[2rem] p-8 shadow-[0_15px_50px_rgba(0,0,0,0.1)] border border-gray-50 transform transition-all duration-300 hover:-translate-y-2 ${idx >= 3 ? "lg:col-span-1 lg:translate-x-1/2" : ""
@@ -425,7 +427,7 @@ function Home() {
 
 
                 {/* ---------------- HOW WE WORK ---------------- */}
-                <div className="container mx-auto px-6 lg:px-16 relative z-10">
+                <div className="container py-10 lg:py-20 mx-auto px-6 lg:px-16 relative z-10">
 
                     {/* Section Heading */}
                     <div className="mb-16">
@@ -439,7 +441,7 @@ function Home() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
 
                         {workSteps.map((step, index) => (
-                            <Reveal key={index} animation="up" delay={index * 200}>
+                            <Reveal key={index} animation="up" delay={index * 100}>
 
                                 <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col items-center text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 group">
 
@@ -471,7 +473,7 @@ function Home() {
 
             {/* features section */}
             <Reveal animation="up">
-                <section className="py-20 bg-white">
+                <section className="py-8 lg:py-20 bg-white">
                     <div className="container mx-auto px-6">
                         {/* Section Heading */}
                         <h2 className="text-3xl md:text-5xl font-semibold text-center text-black mb-20 tracking-tight">
@@ -481,7 +483,7 @@ function Home() {
                         {/* Features Grid */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
                             {features2.map((item, index) => (
-                                <Reveal key={index} animation="right" delay={index * 400}>
+                                <Reveal key={index} animation="right" delay={index * 200}>
                                     <div className="flex flex-col items-center text-center group">
 
                                         {/* Image Circle Container */}

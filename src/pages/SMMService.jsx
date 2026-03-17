@@ -151,9 +151,9 @@ function SMMService() {
                     {JSON.stringify(serviceSchema)}
                 </script>
 
-                <script type="application/ld+json">
+                {/* <script type="application/ld+json">
                     {JSON.stringify(faqSchema)}
-                </script>
+                </script> */}
 
                 <script type="application/ld+json">
                     {JSON.stringify(breadcrumbSchema)}
@@ -179,7 +179,7 @@ function SMMService() {
                         </p>
                     </Reveal>
 
-                    <Reveal animation="zoom" delay={200}>
+                    <Reveal animation="zoom" delay={100}>
 
                         <div className="flex flex-col sm:flex-row justify-center gap-4">
                             <button className="px-8 py-3 cursor-pointer hover:bg-white border-2 border-gray-400 text-black font-bold rounded-lg transition-all">
@@ -253,7 +253,7 @@ function SMMService() {
                     </Reveal>
                 </section>
 
-                <section className="py-16 md:py-24 overflow-hidden">
+                <section className=" lg:py-10 overflow-hidden">
                     <div className="container mx-auto px-6 md:px-20">
                         <SectionBadge title={"Platforms we cover"} />
 
@@ -271,7 +271,7 @@ function SMMService() {
                                         key={index}
                                         className={`flex items-center gap-4 lg:justify-center ${colClass}`}
                                     >
-                                        <Reveal animation="up" delay={index * 180}>
+                                        <Reveal animation="up" delay={index * 100}>
                                             <div className="flex items-center gap-4 group">
 
                                                 <div className="w-20 h-20 border-2 border-gray-300 flex items-center justify-center rounded-full shadow-2xl transition-transform duration-300 group-hover:scale-110 bg-white">
@@ -295,7 +295,7 @@ function SMMService() {
                         </div>
                     </div>
                 </section>
-                <section className="relative py-20 bg-transparent overflow-hidden">
+                <section className="relative py-10 lg:py-20 bg-transparent overflow-hidden">
 
                     <div className="container mx-auto px-6 lg:px-18 relative z-10">
 
@@ -314,7 +314,7 @@ function SMMService() {
                                     key={index}
                                     className="service-card min-w-[100%] md:min-w-[45%] lg:min-w-[32%] bg-white border border-gray-100 rounded-sm snap-start overflow-hidden group"
                                 >
-                                    <Reveal animation="up" delay={index * 150}>
+                                    <Reveal animation="up" delay={index * 100}>
 
                                         <div className="h-64 overflow-hidden">
                                             <img

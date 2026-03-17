@@ -16,6 +16,7 @@
     "axios": "^1.13.6",
     "framer-motion": "^12.35.0",
     "lucide-react": "^0.577.0",
+    "mongoos": "^0.0.1-security",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-helmet-async": "^3.0.0",

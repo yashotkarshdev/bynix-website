@@ -170,7 +170,7 @@ function WebAppDevService() {
                 }}
                 className="relative py-16 lg:py-44 px-6 overflow-hidden"
             >
-                <div className="container px-6 lg:px-18 mx-auto grid lg:grid-cols-2 gap-12 items-center">
+                <div className="container md:px-6 lg:px-18 mx-auto grid lg:grid-cols-2 gap-12 items-center">
 
                     {/* Left Content */}
                     <Reveal animation="left">
@@ -189,7 +189,7 @@ function WebAppDevService() {
                             </p>
                             {/* </Reveal> */}
 
-                            <Reveal animation="zoom" delay={400}>
+                            <Reveal animation="zoom" delay={200}>
                                 <div className="flex flex-wrap gap-4">
                                     <button className="px-8 py-3 bg-white border border-gray-300 text-black font-semibold rounded-md hover:bg-gray-50 transition-all">
                                         Explore Our Solutions
@@ -218,7 +218,7 @@ function WebAppDevService() {
             </section >
             <section className="relative overflow-hidden"> {/* removed bg-white */}
                 <BackgroundGraphics bottomRightImage="/home-section-bg.jpg" topLeftImage="/home-section-bg.jpg" />
-                <section className="py-24 bg-white/20 relative overflow-hidden">
+                <section className="py-12 md:py-24 bg-white/20 relative overflow-hidden">
                     <div className="container mx-auto px-6 lg:px-18 relative z-10">
                         <div className="text-center mb-16">
                             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-900 leading-tight">
@@ -245,12 +245,12 @@ function WebAppDevService() {
                                 </div>
                             </Reveal>
                             <div className="order-1 lg:order-2 space-y-8">
-                                <Reveal animation="right" delay={250}>
+                                <Reveal animation="right" delay={100}>
                                     <p className="text-[#444] text-[19px] leading-[1.8] font-medium text-justify lg:text-right">
                                         In today’s digital world, having a professional website and mobile app helps your business reach more customers and build a strong online presence. A well-developed platform allows customers to easily explore your services, interact with your brand, and make purchases anytime.
                                     </p>
                                 </Reveal>
-                                <Reveal animation="right" delay={400}>
+                                <Reveal animation="right" delay={200}>
                                     <p className="text-[#444] text-[19px] leading-[1.8] font-medium text-justify lg:text-right">
                                         Web and app development also improves business efficiency, enhances customer experience, and helps you stay competitive in the modern market. With the right digital solution, your business can grow faster and connect with a wider audience.
                                     </p>
@@ -261,7 +261,7 @@ function WebAppDevService() {
                     </div>
                 </section >
 
-                <section className="relative py-8 md:16 lg:20 bg-white/20 overflow-hidden">
+                <section className="relative lg:py-20 bg-white/20 overflow-hidden">
 
                     <div className="container mx-auto px-6 lg:px-18 relative z-10">
 
@@ -274,7 +274,7 @@ function WebAppDevService() {
                             {services.map((service, index) => (
                                 <div key={index} className="group cursor-pointer p-2 md:p-4 rounded-xl bg-white">
 
-                                    <Reveal animation="up" delay={index * 150}>
+                                    <Reveal animation="up" delay={index * 75}>
 
                                         {/* Image */}
                                         <div className="overflow-hidden rounded-lg mb-6 shadow-sm">

@@ -130,7 +130,7 @@ const Careers = () => {
                         style={{ backgroundImage: "url('/careers/hero.jpg')" }}
                     ></div>
 
-                    <div className="container mx-auto my-34 md:my-36 lg:my-32 text-center relative z-10">
+                    <div className="container mx-auto my-34 mt-18 md:my-36 lg:my-32 text-center relative z-10">
                         <Reveal animation="right">
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-2 leading-tight">
                                 Careers
@@ -142,7 +142,7 @@ const Careers = () => {
                             </p>
                         </Reveal>
 
-                        <Reveal animation="zoom" delay={200}>
+                        <Reveal animation="zoom" delay={100}>
                             <div className="flex flex-col sm:flex-row justify-center gap-4">
                                 <button className="px-8 py-3 cursor-pointer bg-white/0 border-2 border-gray-400 text-white font-bold rounded-lg hover:bg-gray-50 transition-all">
                                     Explore Our Solutions
@@ -165,7 +165,7 @@ const Careers = () => {
                         </h2>
 
                         {/* Staggered Grid */}
-                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
+                        <div className="grid grid-cols-1 lg:grid-cols-3 md:gap-10 items-start">
 
                             {/* Left Column: Higher Position */}
                             <div className="space-y-10 md:-mt-10  relative z-40">
@@ -174,13 +174,13 @@ const Careers = () => {
                             </div>
 
                             {/* Middle Column: Lower Position (Starts below the hero) */}
-                            <div className="space-y-10 mt-10 relative z-40">
+                            <div className="space-y-10 lg:mt-10 relative z-40">
                                 <JobCard title={jobs[1].title} experience={jobs[1].exp} location={jobs[1].loc} />
                                 <JobCard title={jobs[4].title} experience={jobs[4].exp} location={jobs[4].loc} />
                             </div>
 
                             {/* Right Column: Higher Position */}
-                            <div className="space-y-10 md:-mt-10 relative z-40">
+                            <div className="space-y-10 lg:-mt-10 relative z-40">
                                 <JobCard title={jobs[2].title} experience={jobs[2].exp} location={jobs[2].loc} />
                                 <JobCard title={jobs[5].title} experience={jobs[5].exp} location={jobs[5].loc} />
                             </div>

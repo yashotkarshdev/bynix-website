@@ -3,7 +3,6 @@ import FAQSection from "../components/FAQSection";
 import SectionBadge from "../components/SectionBadge";
 import BackgroundGraphics from "../components/BackgroundGraphic";
 import Reveal from "../components/animate/Reveal";
-import SEOPricingSection from "../components/SEOPackageCard";
 import SEO from "../components/SEO";
 import { Helmet } from "react-helmet-async";
 
@@ -180,7 +179,7 @@ function SeoService() {
                             techniques that align with search engine algorithms to boost organic traffic.
                         </p>
                     </Reveal>
-                    <Reveal animation="zoom" delay={200}>
+                    <Reveal animation="zoom" delay={100}>
                         <div className="flex flex-col sm:flex-row justify-center gap-4">
                             <button className="px-8 py-3 cursor-pointer bg-white/0 border-2 border-gray-400 text-black font-bold rounded-lg hover:bg-gray-50 transition-all">
                                 Explore Our Solutions
@@ -192,13 +191,13 @@ function SeoService() {
                     </Reveal>
                 </div>
             </section>
-            <section className="relative py-20 overflow-hidden"> {/* removed bg-white */}
+            <section className="relative md:py-10 lg:py-20 overflow-hidden"> {/* removed bg-white */}
                 <BackgroundGraphics topLeftImage="/home-section-bg.jpg" bottomRightImage="/home-section-bg.jpg" />
 
                 {/* Main content */}
                 <div className="container mx-auto px-6 max-w-7xl relative z-10 bg-transparent p-10 rounded-xl">
                     {/* Heading */}
-                    <div className="text-center mb-16">
+                    <div className="text-center mb-8 lg:mb-16">
                         <h2 className="relative inline-block text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 pb-4">
                             Why Local SEO Matters to
                             <span className="absolute top-5 left-1/2 mix-blend-multiply -translate-x-1/2 w-full h-3 bg-[#FFC107]"></span>
@@ -208,9 +207,9 @@ function SeoService() {
                     </div>
 
                     {/* Features Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {features.map((item, idx) => (
-                            <Reveal key={idx} animation="up" delay={idx * 150}>
+                            <Reveal key={idx} animation="up" delay={idx * 100}>
                                 <div
                                     // key={idx}
                                     className="bg-white border z-10 border-gray-400 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 flex flex-col items-start text-left group h-full"
@@ -226,9 +225,9 @@ function SeoService() {
                     </div>
                 </div>
 
-                <Reveal animation="up">
+                {/* <Reveal animation="up">
                     <SEOPricingSection />
-                </Reveal>
+                </Reveal> */}
 
                 <Reveal animation="up">
                     <FAQSection faqs={seoFaq} />

@@ -202,7 +202,7 @@ function GraphicDesigning() {
                         </p>
                     </Reveal>
 
-                    <Reveal animation="zoom" delay={200}>
+                    <Reveal animation="zoom" delay={100}>
                         <div className="flex flex-col sm:flex-row justify-center gap-4">
                             <button className="px-8 py-3 cursor-pointer bg-white/0 border-2 border-gray-400 text-black font-bold rounded-lg hover:bg-gray-50 transition-all">
                                 Explore Our Solutions
@@ -214,7 +214,7 @@ function GraphicDesigning() {
                     </Reveal>
                 </div>
             </section>
-            <section className="py-20 bg-white overflow-hidden">
+            <section className="py-4 md:py-8 lg:py-20 bg-white overflow-hidden">
                 <div className="container mx-auto px-6 md:px-12 lg:px-20">
 
                     {/* Section Heading */}
@@ -230,7 +230,7 @@ function GraphicDesigning() {
                     <Reveal animation="left">
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-12">
                             {designServices.map((service, index) => (
-                                <Reveal key={index} animation="up" delay={index * 200}>
+                                <Reveal key={index} animation="up" delay={index * 100}>
                                     <div
                                         className="bg-white rounded-md border border-gray-100 shadow-sm overflow-hidden group"
                                     >
@@ -263,11 +263,11 @@ function GraphicDesigning() {
                     </Reveal>
                 </div>
             </section>
-            <section className="relative py-20 overflow-hidden"> {/* removed bg-white */}
+            <section className="relative py-4 md:py-8 lg:py-20 overflow-hidden"> {/* removed bg-white */}
                 <BackgroundGraphics topLeftImage="/home-section-bg.jpg" bottomRightImage="/home-section-bg.jpg" />
 
                 <Reveal animation="right">
-                    <section className="py-20 bg-white/0 overflow-hidden">
+                    <section className="py-4 md:py-8 lg:py-20 bg-white/0 overflow-hidden">
                         <div className="container mx-auto px-6 lg:px-20">
                             <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
 
@@ -317,7 +317,7 @@ function GraphicDesigning() {
                     </section>
                 </Reveal>
 
-                <section className="py-20 bg-white/0 relative overflow-hidden">
+                <section className="py-4 md:py-8 lg:py-20 bg-white/0 relative overflow-hidden">
 
                     <div className="container mx-auto px-6 lg:px-16 relative z-10">
 
@@ -332,7 +332,7 @@ function GraphicDesigning() {
                         {/* Process Cards Grid */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
                             {processes.map((item, index) => (
-                                <Reveal key={index} animation="up" delay={index * 200}>
+                                <Reveal key={index} animation="up" delay={index * 100}>
                                     <div
                                         className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col items-center text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 group"
                                     >

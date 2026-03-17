@@ -211,7 +211,7 @@ const breadcrumbSchema = {
                         </p>
                     </Reveal>
 
-                    <Reveal animation="zoom" delay={200}>
+                    <Reveal animation="zoom" delay={100}>
                         <div className="flex flex-col sm:flex-row justify-center gap-4">
                             <button className="px-8 py-3 cursor-pointer bg-white/0 border-2 border-gray-400 text-black font-bold rounded-lg hover:bg-gray-50 transition-all">
                                 Explore Our Solutions
@@ -231,12 +231,12 @@ const breadcrumbSchema = {
                         {/* Section Heading */}
                         <SectionBadge title={"Our SaaS Services"} />
 
-                        <div className="flex justify-center items-center">
+                        <div className="hidden md:flex md:justify-center md:items-center">
                             <img src="/saas/service-graphic.png" alt="Bynix Srevices for SaaS" className="h-30 w-30" />
                         </div>
 
                         {/* Timeline Container */}
-                        <div className="relative max-w-5xl mx-auto">
+                        <div className="relative max-w-5xl mx-auto py-4">
 
                             {/* Vertical Center Line - Desktop Only */}
                             <div className="absolute left-1/2 top-0 bottom-0 w-[1.5px] bg-black -translate-x-1/2 hidden md:block"></div>
@@ -245,7 +245,7 @@ const breadcrumbSchema = {
                                 {services.map((service, index) => {
                                     const isEven = index % 2 !== 0;
                                     return (
-                                        <Reveal key={index} animation={service.align} delay={index * 200}>
+                                        <Reveal key={index} animation={service.align} delay={index * 100}>
                                             <div className="relative flex flex-col md:flex-row items-center md:min-h-[160px]">
 
                                                 {/* Item Content Wrapper */}
@@ -290,7 +290,7 @@ const breadcrumbSchema = {
                         </div>
                     </div>
                 </section>
-                <section className="py-16 md:py-24 bg-white/0 overflow-hidden">
+                <section className="py-4 lg:py-10 bg-white/0 overflow-hidden">
                     <div className="container mx-auto px-6 md:px-20">
                         <SectionBadge title={"Industries we serve"} />
 
@@ -308,7 +308,7 @@ const breadcrumbSchema = {
                                         key={index}
                                         className={`flex items-center gap-4 lg:justify-center ${colClass}`}
                                     >
-                                        <Reveal animation="up" delay={index * 150}>
+                                        <Reveal animation="up" delay={index * 100}>
                                             <div className="flex items-center gap-4 group">
 
                                                 <div className="w-16 h-16 flex items-center justify-center border rounded-full transition-transform duration-300 group-hover:scale-110">

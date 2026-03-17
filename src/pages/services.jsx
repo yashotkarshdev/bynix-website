@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import BackgroundGraphics from "../components/BackgroundGraphic";
 import { Helmet } from "react-helmet-async";
+import SEO from "../components/SEO";
 
 function Services() {
 
@@ -8,13 +9,13 @@ function Services() {
         {
             title: "Web & App Development",
             desc: "Build powerful websites and mobile apps designed for performance, scalability, and user experience.",
-            image: "/web-app-development/custom-web.jpg",
+            image: "/web-app-development/maintenance.jpg",
             link: "/services/web-app-development-service"
         },
         {
             title: "SEO Services",
             desc: "Improve your search rankings and organic traffic with data-driven SEO strategies.",
-            image: "/seo/onpage-seo.png",
+            image: "/seo/bynix-seo-service-hero.png",
             link: "/services/seo-service"
         },
         {
@@ -26,7 +27,7 @@ function Services() {
         {
             title: "SaaS Development",
             desc: "Develop scalable SaaS platforms that help businesses automate and scale efficiently.",
-            image: "/saas/service-graphic.png",
+            image: "/saas/bynix-saas-service.jpg",
             link: "/services/saas-service"
         },
         {
@@ -134,7 +135,7 @@ function Services() {
             </Helmet>
 
             {/* HERO */}
-            <section className="relative py-24 lg:py-36 px-6 bg-white overflow-hidden">
+            <section className="relative py-12 md:py-24 lg:py-36 px-6 bg-white overflow-hidden">
 
                 <div className="container mx-auto text-center max-w-4xl">
 
@@ -161,7 +162,7 @@ function Services() {
 
             {/* SERVICES GRID */}
 
-            <section className="relative py-20 overflow-hidden">
+            <section className="relative lg:py-20 overflow-hidden">
 
                 <BackgroundGraphics
                     topLeftImage="/home-section-bg.jpg"

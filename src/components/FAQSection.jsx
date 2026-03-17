@@ -42,7 +42,7 @@
 //   };
 
 //   return (
-//     <section className="py-20 bg-white" id="faq">
+//     <section className="py-8 lg:py-20 bg-white" id="faq">
 //       <div className="max-w-5xl mx-auto px-6">
 
 //         <h2 className="text-3xl font-bold text-center mb-10">
@@ -92,7 +92,7 @@ const FAQSection = ({ faqs, title = "Frequently Asked Questions" }) => {
   };
 
   return (
-    <section className="py-20 bg-transparent" id="faq">
+    <section className="py-8 lg:py-20 bg-transparent" id="faq">
       <div className="max-w-5xl mx-auto px-6">
         <h2 className="text-3xl font-bold text-center mb-10">{title}</h2>
 
