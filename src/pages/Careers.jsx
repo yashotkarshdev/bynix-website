@@ -144,7 +144,7 @@ const Careers = () => {
 
                         <Reveal animation="zoom" delay={100}>
                             <div className="flex flex-col sm:flex-row justify-center gap-4">
-                                <button className="px-8 py-3 cursor-pointer bg-white/0 border-2 border-gray-400 text-white font-bold rounded-lg hover:bg-gray-50 transition-all">
+                                <button className="px-8 py-3 cursor-pointer bg-white/0 border-2 border-gray-400 text-white hover:text-black font-bold rounded-lg hover:bg-gray-50 transition-all">
                                     Explore Our Solutions
                                 </button>
                                 <Link to={"/contact"} className="px-8 py-3 bg-black cursor-pointer text-white font-bold rounded-lg hover:bg-[#F27115] transition-all shadow-lg">
