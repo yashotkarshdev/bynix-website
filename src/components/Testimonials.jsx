@@ -6,45 +6,73 @@ import 'swiper/css/navigation';
 function Testimonials() {
     const testimonials = [
         {
-            name: "Mark Ray",
-            role: "Marketing Director",
-            image: "/client-image.jpg",
-            content: "Bynix Technology transformed our online presence. Within months, our website started ranking on the first page for competitive keywords. The increase in traffic and conversions exceeded our expectations.",
+            name: "Fit Quest",
+            role: "Marketing Head",
+            image: "/clientImages/fit-quest-jaipur.png",
+            content: "Bynix transformed our member acquisition with premium branding and high-quality leads that actually convert.",
             rating: "5"
         },
         {
-            name: "Amit Shah",
-            role: "Operations Head, Online Retail Company",
-            image: "/client-image.jpg",
-            content: "The team understands both SEO and conversion optimization. They helped us not only increase traffic but also turn visitors into paying customers. Highly recommended!",
+            name: "Madistax",
+            role: "Founder",
+            image: "/clientImages/madistax.png",
+            content: "Bynix understood our business deeply and helped us achieve consistent growth with a clear strategic approach.",
             rating: "5"
         },
         {
-            name: "Virat Roy",
-            role: "Founder, B2B Company",
-            image: "/client-image.jpg",
-            content: "What impressed us most was their data-driven approach. They didn’t just promise results — they delivered measurable growth. Our qualified leads have nearly doubled since partnering with Bynix Technology.",
+            name: "Growth Happen",
+            role: "Co-Founder",
+            image: "/clientImages/growth-happen.png",
+            content: "Their execution, clarity, and ROI-focused strategies truly set Bynix apart from typical agencies.",
             rating: "5"
         },
         {
-            name: "Mark Ray",
-            role: "Marketing Director",
-            image: "/client-image.jpg",
-            content: "Bynix Technology transformed our online presence. Within months, our website started ranking on the first page for competitive keywords. The increase in traffic and conversions exceeded our expectations.",
+            name: "The Trusted Beauty ",
+            role: "Brand Manager",
+            image: "/clientImages/the-trusted-beuty.png",
+            content: "Bynix helped us stand out in a crowded market with strong positioning and performance-driven marketing.",
             rating: "5"
         },
         {
-            name: "Amit Shah",
-            role: "Operations Head, Online Retail Company",
-            image: "/client-image.jpg",
-            content: "The team understands both SEO and conversion optimization. They helped us not only increase traffic but also turn visitors into paying customers. Highly recommended!",
+            name: "The Style Shaala",
+            role: "Creative Director",
+            image: "/clientImages/the-style-shaala.png",
+            content: "Our brand identity feels stronger and more engaging thanks to Bynix’s creative digital execution.",
             rating: "5"
         },
         {
-            name: "Virat Roy",
-            role: "Founder, B2B Company",
-            image: "/client-image.jpg",
-            content: "What impressed us most was their data-driven approach. They didn’t just promise results — they delivered measurable growth. Our qualified leads have nearly doubled since partnering with Bynix Technology.",
+            name: "Refreshing Flavours",
+            role: "Business Owner",
+            image: "/clientImages/refreshing-flavours.png",
+            content: "Bynix built a refreshing brand image and helped us connect with the right audience effectively.",
+            rating: "5"
+        },
+        {
+            name: "Elixir Balance",
+            role: "Operations Head",
+            image: "/clientImages/elixir-balance.png",
+            content: "Their attention to detail and strategic approach made a significant difference to our overall growth.",
+            rating: "5"
+        },
+        {
+            name: "Sine Elevators",
+            role: "Director",
+            image: "/clientImages/sineel-evators.png",
+            content: "Bynix gave our brand a modern, credible digital presence that resonates with potential clients.",
+            rating: "5"
+        },
+        {
+            name: "Pure Work Athletics",
+            role: "Founder",
+            image: "/clientImages/pure-work-athletics.png",
+            content: "They captured our brand vision perfectly and helped us build a strong identity in the fitness space.",
+            rating: "5"
+        },
+        {
+            name: "TheAutonTwk",
+            role: "Digital Marketing Manager",
+            image: "/clientImages/the-auton-twk.png",
+            content: "We saw immediate improvement in inquiries with Bynix’s performance marketing and website optimization.",
             rating: "5"
         }
     ];
@@ -79,12 +107,13 @@ function Testimonials() {
                     {JSON.stringify(jsonLd)}
                 </script>
 
-                <img
+                {/* <img
                     src="/client-success-stories-bg.png"
                     alt=""
                     className="absolute inset-0 w-screen h-full  object-cover z-0"
                     loading="lazy"
-                />
+                /> */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#f27115] to-white"></div>
 
                 <div className="container relative z-10 mx-auto">
                     <h2 className="text-3xl md:text-5xl font-bold text-center text-black mb-16">

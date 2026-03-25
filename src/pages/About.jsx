@@ -360,24 +360,83 @@
 // }
 
 import { Helmet } from "react-helmet-async";
-import TeamCarousel from "../components/TeamCarousel";
 import SEO from "../components/SEO";
 import SectionBadge from "../components/SectionBadge";
 import Reveal from "../components/animate/Reveal";
+import { Suspense, lazy } from "react";
+import { a, title } from "framer-motion/client";
+import FAQSection from "../components/FAQSection";
+import OurClients from "../components/OurClients";
 
+const TeamCarousel = lazy(() => import("../components/TeamCarousel"));
+
+const Stats_Data = [
+    { id: 1, label: "Happy Clients", value: "99+" },
+    { id: 2, label: "Success Project", value: "25" },
+    { id: 3, label: "Client's Rating", value: "4.5" },
+    { id: 4, label: "Years Experience", value: "4+" }
+];
+
+const WHY_DATA = [
+    { title: "Business-centric Strategies", desc: "We avoid using generic templates but focus on strategies that drive leads and improve conversions." },
+    { title: "Deliver Measurable Success", desc: "We analyze the market to create impactful digital marketing strategies to deliver refined results." },
+    { title: "Deliver Competitive Edge", desc: "We implement creative solutions that turn visitors into loyal customers." }
+];
+
+const SOLUTIONS_DATA = [
+    { title: "Website Design & Development", desc: "Slow or outdated websites can cost you leads. We solve this by paying attention to specific clients’ requirements to provide result-oriented web solutions." },
+    { title: "Search Engine Optimization (SEO)", desc: "Struggling to rank on Google? Our SEO strategies are designed to boost your search visibility, drive organic traffic, and increase qualified leads." },
+    { title: "Social Media Marketing (SMM)", desc: "We guarantee brand awareness, follower engagement, and lead generation through a powerful social media presence for a brand." },
+    { title: "Branding & UI/UX Design", desc: "Our team specializes in creating user-friendly UI/UX designs that would build trust and credibility among potential clients." },
+    { title: "E-commerce Solutions", desc: "We develop conversion-focused online stores that are properly optimized to boost sales and maximize ROI." }
+]
+
+const AboutFAQs = [
+    {
+        id: 1,
+        question: "What industries does Bynix Technology work with?",
+        answer: "Bynix Technology is a service-based company that provides comprehensive solutions to a diverse range of sectors, including real estate, Health & Wellness, Manufacturing, IT, Travel & Tourism, Hospitality, and more."
+    },
+    {
+        id: 2,
+        question: "What is the approach followed by Bynix Technology?",
+        answer: "Bynix Technology follows a structured, client-centric approach following a clear research strategy to deliver measurable results for a brand."
+
+    },
+    {
+        id: 3,
+        question: "How does Bynix Technology ensure quality and performance?",
+        answer: "Bynix Technology ensures high-tier performance through data-driven analysis and continuous optimization across all digital solutions."
+
+    },
+    {
+        id: 4,
+        question: "Does Bynix Technology provide customized solutions?",
+        answer: "We provide fully customized digital solutions engineered to align with the specific operational workflows and strategic goals of each client."
+
+    },
+    {
+        id: 5,
+        question: "Can Bynix Technology support long-term business growth?",
+        answer: "We are focused on building long-term partnerships by delivering scalable solutions that support consistent growth and digital success."
+
+    }
+]
+
+const BASE_URL = import.meta.env.VITE_SITE_URL;
 
 export default function About() {
     const aboutSchema = {
         "@context": "https://schema.org",
         "@type": "AboutPage",
         "name": "About Bynix Technology",
-        "url": "https://bynixtechnology.com/about",
+        "url": `${BASE_URL}/about`,
         "description": "Learn about Bynix Technology, a digital marketing and web development company helping businesses grow online.",
         "mainEntity": {
             "@type": "Organization",
             "name": "Bynix Technology",
-            "url": "https://bynixtechnology.com",
-            "logo": "https://bynixtechnology.com/logo.png",
+            "url": `${BASE_URL}`,
+            "logo": `${BASE_URL}/logo.png`,
             "founder": {
                 "@type": "Person",
                 "name": "Nitesh Gupta"
@@ -388,40 +447,6 @@ export default function About() {
             }
         }
     };
-    const organizationSchema = {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Bynix Technology",
-        "url": "https://bynixtechnology.com",
-        "logo": "https://bynixtechnology.com/logo.png",
-        "founder": {
-            "@type": "Person",
-            "name": "Nitesh Gupta"
-        },
-        "foundingLocation": {
-            "@type": "Place",
-            "name": "Jaipur, India"
-        },
-        "sameAs": [
-            "https://www.linkedin.com/company/bynix-technology",
-            "https://www.instagram.com/bynixtechnology"
-        ]
-    };
-    const businessSchema = {
-        "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "Bynix Technology",
-        "image": "https://bynixtechnology.com/logo.png",
-        "url": "https://bynixtechnology.com",
-        "telephone": "+91-6376925384",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Jaipur",
-            "addressRegion": "Rajasthan",
-            "addressCountry": "India"
-        },
-        "areaServed": "India"
-    };
     const breadcrumbSchema = {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
@@ -430,15 +455,27 @@ export default function About() {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://bynixtechnology.com"
+                "item": `${BASE_URL}`
             },
             {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "About",
-                "item": "https://bynixtechnology.com/about"
+                "item": `${BASE_URL}/about`
             }
         ]
+    };
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": AboutFAQs.map((faq) => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+            }
+        }))
     };
 
     return (
@@ -456,15 +493,11 @@ export default function About() {
                 </script>
 
                 <script type="application/ld+json">
-                    {JSON.stringify(organizationSchema)}
-                </script>
-
-                <script type="application/ld+json">
-                    {JSON.stringify(businessSchema)}
-                </script>
-
-                <script type="application/ld+json">
                     {JSON.stringify(breadcrumbSchema)}
+                </script>
+
+                <script type="application/ld+json">
+                    {JSON.stringify(faqSchema)}
                 </script>
 
             </Helmet>
@@ -486,22 +519,22 @@ export default function About() {
             <Reveal animation="up">
                 <div className="flex justify-center z-20 relative -mt-10 sm:-mt-14 mb-8 px-4">
                     <div className="bg-white shadow-xl rounded-xl grid grid-cols-2 md:grid-cols-4 p-6 sm:p-8 gap-6 w-full max-w-7xl">
-                        <div className="flex flex-col items-center border-r last:border-0 border-gray-100 md:border-r">
-                            <span className="text-[#F27115] font-extrabold text-2xl sm:text-4xl">99+</span>
-                            <span className="uppercase text-[10px] sm:text-xs text-gray-500 mt-1 text-center font-medium">Happy Clients</span>
-                        </div>
-                        <div className="flex flex-col items-center md:border-r border-gray-100">
-                            <span className="text-[#F27115] font-extrabold text-2xl sm:text-4xl">25</span>
-                            <span className="uppercase text-[10px] sm:text-xs text-gray-500 mt-1 text-center font-medium">Success Project</span>
-                        </div>
-                        <div className="flex flex-col items-center border-r last:border-0 border-gray-100">
-                            <span className="text-[#F27115] font-extrabold text-2xl sm:text-4xl">4.5</span>
-                            <span className="uppercase text-[10px] sm:text-xs text-gray-500 mt-1 text-center font-medium">Client's Rating</span>
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <span className="text-[#F27115] font-extrabold text-2xl sm:text-4xl">4+</span>
-                            <span className="uppercase text-[10px] sm:text-xs text-gray-500 mt-1 text-center font-medium">Years Experience</span>
-                        </div>
+
+                        {Stats_Data.map((item, index) => (
+                            <div
+                                key={item.id}
+                                className="flex flex-col items-center 
+            border-r last:border-0 border-gray-100"
+                            >
+                                <span className="text-[#F27115] font-extrabold text-2xl sm:text-4xl">
+                                    {item.value}
+                                </span>
+                                <span className="uppercase text-[10px] sm:text-xs text-gray-500 mt-1 text-center font-medium">
+                                    {item.label}
+                                </span>
+                            </div>
+                        ))}
+
                     </div>
                 </div>
             </Reveal>
@@ -511,20 +544,20 @@ export default function About() {
 
                 {/* introduction grid */}
                 <div className="grid lg:grid-cols-3 gap-8 py-5 lg:py-10">
-                    <Reveal animation="left" delay={350}>
+                    <Reveal animation="left" delay={250}>
                         <h2 className="text-3xl sm:text-4xl font-semibold leading-tight">
-                            <span className="text-[#FF5722]">Introduction</span> <br className="hidden sm:block" />
-                            <span>To Best Digital Agency!</span>
+                            <span className="text-[#FF5722]">Driving Business Growth</span>
+                            <span> Through Digital Excellence!</span>
                         </h2>
                     </Reveal>
-                    <Reveal animation="left" delay={250}>
+                    <Reveal animation="left" delay={200}>
                         <p className="text-gray-600 text-base leading-relaxed">
-                            Bynix Technology is a leading Digital Marketing & IT Solutions firm dedicated to accelerating growth for brands, startups, and enterprises.
+                            Bynix Technology is a leading Digital Marketing and IT Solutions firm focused on accelerating growth for startups, businesses, and enterprises.
                         </p>
                     </Reveal>
                     <Reveal animation="left" delay={150}>
                         <p className="text-gray-600 text-base leading-relaxed">
-                            Welcome to Bynix Technology — a highly result-oriented and outcome-driven digital marketing company committed to helping businesses grow and lead in the digital space.
+                            Our client-centric approach is designed to bridge the gap between complex technological challenges and seamless business outcomes.
                         </p>
                     </Reveal>
                 </div>
@@ -541,13 +574,13 @@ export default function About() {
                                 <div>
                                     <h3 className="text-lg font-bold">Vision</h3>
                                     <p className="text-gray-600 text-sm mt-2 leading-snug">
-                                        We combine analytics, innovation, and strategy to drive sustainable success for every partner.
+                                        What sets us apart is our ability to combine analytics, innovation, and strategy to drive sustainable success.
                                     </p>
                                 </div>
                             </div>
                         </Reveal>
                         {/* Growth */}
-                        <Reveal animation="right" delay={250}>
+                        <Reveal animation="right" delay={200}>
                             <div className="flex items-start gap-4 bg-white p-6 rounded-xl shadow-sm border border-gray-50 hover:shadow-md transition-shadow">
                                 <div className="bg-black p-4 rounded-full w-16 h-16 shrink-0 flex items-center justify-center">
                                     <img src="/growth.png" alt="Growth Icon" loading="lazy" className="w-8 h-8 object-contain animate-icon-wave" />
@@ -555,12 +588,12 @@ export default function About() {
                                 <div>
                                     <h3 className="text-lg font-bold text-black">Growth Formula</h3>
                                     <p className="text-gray-600 text-sm mt-2 leading-snug">
-                                        Innovation + Strategy + Execution = Success. We build the future of digital commerce.
+                                        Innovation + Strategy + Execution = Success
                                     </p>
                                 </div>
                             </div>
                         </Reveal>
-                        <Reveal animation="right" delay={350}>
+                        <Reveal animation="right" delay={300}>
                             {/* Mission */}
                             <div className="flex items-start gap-4 bg-white p-6 rounded-xl shadow-sm border border-gray-50 hover:shadow-md transition-shadow md:col-span-2 lg:col-span-1">
                                 <div className="bg-[#F27115] p-4 rounded-full w-16 h-16 shrink-0 flex items-center justify-center">
@@ -569,7 +602,7 @@ export default function About() {
                                 <div>
                                     <h3 className="text-lg font-bold">Mission</h3>
                                     <p className="text-gray-600 text-sm mt-2 leading-snug">
-                                        To serve as a trusted strategic partner, helping brands achieve tangible results through scalable solutions.
+                                        Our mission is to serve as a trusted strategic partner, helping brands achieve tangible results through innovative and scalable solutions.
                                     </p>
                                 </div>
                             </div>
@@ -607,15 +640,40 @@ export default function About() {
                             Why Choose <span className="text-[#F95228]">Bynix Technology?</span>
                         </h2>
                         <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                            Our clients are our future growth partners. We value every interaction to provide feasible business solutions. Here's why our clients trust us:
+                            Our clients are our future growth partners. We value every interaction to provide feasible business solutions. Here’s why our clients trust us:
                         </p>
                         <ul className="space-y-4">
-                            {[
-                                { title: "Business-centric Strategies", desc: "We avoid using generic templates but focus on strategies that drive leads and improve conversions." },
-                                { title: "Deliver Measurable Success", desc: "We analyze the market to create impactful digital marketing strategies to deliver refined results." },
-                                { title: "Deliver Competitive Edge", desc: "We implement creative solutions that turn visitors into loyal customers." }
-                            ].map((item, idx) => (
-                                <Reveal key={idx} animation="right" delay={100 + idx * 100}>
+                            {WHY_DATA.map((item) => (
+                                <Reveal key={item.id} animation="right" delay={100 + item.id * 150}>
+                                    <li className="flex items-start gap-3">
+                                        <span className="text-[#F95228] font-bold text-2xl mt-[-4px]">•</span>
+                                        <p className="text-gray-700 leading-relaxed">
+                                            <strong className="text-black font-bold">{item.title}: </strong>{item.desc}
+                                        </p>
+                                    </li>
+                                </Reveal>
+                            ))}
+                            <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                                With Bynix, your bold visions will be visibly dominating. Reach out to us now to achieve lasting digital success.
+                            </p>
+                        </ul>
+                    </div>
+                </section>
+            </Reveal>
+
+            {/* Solutions that Drive Business Growth */}
+            <Reveal animation="up">
+                <section className="container mx-auto py-16 px-5 lg:px-20">
+                    <div className="max-w-4xl">
+                        <h2 className="text-4xl font-bold mb-8">
+                            Solutions that <span className="text-[#F95228]">Drive Business Growth</span>
+                        </h2>
+                        <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                            At Bynix Technology, we solve real business challenges:
+                        </p>
+                        <ul className="space-y-4">
+                            {SOLUTIONS_DATA.map((item) => (
+                                <Reveal key={item.id} animation="right" delay={100 + item.id * 100}>
                                     <li className="flex items-start gap-3">
                                         <span className="text-[#F95228] font-bold text-2xl mt-[-4px]">•</span>
                                         <p className="text-gray-700 leading-relaxed">
@@ -659,8 +717,13 @@ export default function About() {
                 </div>
             </section> */}
             <Reveal animation="up">
-                <TeamCarousel />
+            <FAQSection faqs={AboutFAQs} />
             </Reveal>
+
+            <Suspense fallback={<div className="text-center py-10">Loading team...</div>}>
+                <TeamCarousel />
+            </Suspense>
+
         </div>
     );
 }

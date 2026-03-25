@@ -6,165 +6,175 @@ import Reveal from "../components/animate/Reveal";
 import SEO from "../components/SEO";
 import { Helmet } from "react-helmet-async";
 
+const BASE_URL = import.meta.env.VITE_SITE_URL;
+
+const services = [
+    {
+        id: "1.",
+        title: "Custom SaaS Development",
+        desc: "Bynix develops tailored SaaS solutions that address unique business challenges while ensuring scalability, performance, and long-term growth.",
+        align: "left"
+    },
+    {
+        id: "2.",
+        title: "SaaS Integration & Migration",
+        desc: "Bynix enables seamless integration and migration by eliminating data silos and minimizing downtime during system transitions.",
+        align: "right"
+    },
+    {
+        id: "3.",
+        title: "SaaS Product Design & UI/UX",
+        desc: "Bynix designs intuitive SaaS interfaces that solve usability challenges and improve user engagement and adoption.",
+        align: "left"
+    },
+    {
+        id: "4.",
+        title: "SaaS Maintenance & Support",
+        desc: "Bynix provides continuous monitoring and support to prevent performance issues and ensure secure and reliable operations.",
+        align: "right"
+    },
+    {
+        id: "5.",
+        title: " SaaS Analytics & Reporting",
+        desc: "Bynix delivers data-driven insights that help businesses overcome decision-making challenges and optimize overall performance.",
+        align: "left"
+    }
+];
+
+const industries = [
+    {
+        name: "Healthcare",
+        icon: "/saas/icons/healthcare.png",
+    },
+    {
+        name: "Finance & Banking",
+        icon: "/saas/icons/finance.png",
+    },
+    {
+        name: "Education & eLearning",
+        icon: "/saas/icons/education.png",
+    },
+    {
+        name: "E-commerce & Retail",
+        icon: "/saas/icons/ecommerce.png",
+    },
+    {
+        name: "Logistics & Supply Chain",
+        icon: "/saas/icons/logistics.png",
+    },
+];
+
+
+const saasFaqs = [
+    {
+        "id": 1,
+        "question": "How can SaaS help improve business efficiency?",
+        "answer": "SaaS streamlines operations by centralizing data, automating processes, and enabling real-time collaboration across teams."
+    },
+    {
+        "id": 2,
+        "question": "Does Bynix Technology offer custom SaaS development?",
+        "answer": "Yes, Bynix Technology provides fully customized SaaS solutions designed to meet specific business needs and operational goals."
+    },
+    {
+        "id": 3,
+        "question": "How do SaaS analytics help businesses?",
+        "answer":"SaaS analytics provide real-time insights into performance, user behavior, and operations, enabling better decision-making and optimization."
+    },
+    {
+        "id": 4,
+        "question": "How secure are SaaS solutions?",
+        "answer":"SaaS platforms are built with advanced security protocols including data encryption, access controls, and regular updates to ensure data protection."
+    },
+    {
+        "id": 5,
+        "question": "Do you provide ongoing support after SaaS deployment?",
+        "answer": "Yes, Bynix offers continuous maintenance, updates, and performance monitoring to ensure long-term reliability and efficiency."
+    }
+];
 function SaasService() {
 
-    const services = [
-        {
-            id: "1.",
-            title: "Custom SaaS Development",
-            desc: "We build tailor-made SaaS applications for your unique business needs, focused on performance, security, and scalability",
-            align: "left"
+    const saasServiceSchema = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: "SaaS Development Services",
+        url: `${BASE_URL}/services/saas-service`,
+        description:
+            "Custom SaaS development services including SaaS product design, integration, analytics, and long-term support for scalable cloud software.",
+        serviceType: "SaaS Development",
+        provider: {
+            "@type": "Organization",
+            name: "Bynix Technology",
+            url: `${BASE_URL}`
         },
-        {
-            id: "2.",
-            title: "SaaS Integration & Migration",
-            desc: "Seamlessly integrate SaaS with your existing systems or migrate data from legacy software without disruption.",
-            align: "right"
+        areaServed: {
+            "@type": "Place",
+            name: "Worldwide"
         },
-        {
-            id: "3.",
-            title: "SaaS Product Design & UI/UX",
-            desc: "Our UI/UX design experts ensure your SaaS platform is intuitive, user-friendly, and visually engaging.",
-            align: "left"
-        },
-        {
-            id: "4.",
-            title: "SaaS Maintenance & Support",
-            desc: "We provide ongoing support, updates, and performance monitoring to keep your SaaS platform reliable and secure.",
-            align: "right"
-        },
-        {
-            id: "5.",
-            title: " SaaS Analytics & Reporting",
-            desc: "Gain actionable insights with real-time analytics and reporting, helping you optimize operations and improve decision-making.",
-            align: "left"
-        }
-    ];
+        knowsAbout: [
+            "SaaS Development",
+            "Cloud Software Development",
+            "SaaS Product Design",
+            "SaaS Integration",
+            "SaaS Analytics",
+            "SaaS Maintenance"
+        ]
+    };
 
-    const industries = [
-        {
-            name: "Healthcare",
-            icon: "/saas/icons/healthcare.png",
-        },
-        {
-            name: "Finance & Banking",
-            icon: "/saas/icons/finance.png",
-        },
-        {
-            name: "Education & eLearning",
-            icon: "/saas/icons/education.png",
-        },
-        {
-            name: "E-commerce & Retail",
-            icon: "/saas/icons/ecommerce.png",
-        },
-        {
-            name: "Logistics & Supply Chain",
-            icon: "/saas/icons/logistics.png",
-        },
-    ];
+    const servicesSchema = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        itemListElement: services.map((service, index) => ({
+            "@type": "Service",
+            position: index + 1,
+            name: service.title,
+            description: service.desc,
+            provider: {
+                "@type": "Organization",
+                name: "Bynix Technology",
+                url: `${BASE_URL}`
+            }
+        }))
+    };
 
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: saasFaqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+                "@type": "Answer",
+                text:
+                    "Bynix Technology provides scalable SaaS development services including product design, integration, analytics, and long-term platform support."
+            }
+        }))
+    };
 
-    const saasFaqs = [
-        {
-            "id": 1,
-            "question": "What is SaaS and how does it work?"
-        },
-        {
-            "id": 2,
-            "question": "How secure is a SaaS platform?"
-        },
-        {
-            "id": 3,
-            "question": "How much does SaaS development cost?"
-        },
-        {
-            "id": 4,
-            "question": "Do you provide SaaS support after launch?"
-        }
-    ];
-
-const saasServiceSchema = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  name: "SaaS Development Services",
-  url: "https://bynixtechnology.com/services/saas-service",
-  description:
-    "Custom SaaS development services including SaaS product design, integration, analytics, and long-term support for scalable cloud software.",
-  serviceType: "SaaS Development",
-  provider: {
-    "@type": "Organization",
-    name: "Bynix Technology",
-    url: "https://bynixtechnology.com"
-  },
-  areaServed: {
-    "@type": "Place",
-    name: "Worldwide"
-  },
-  knowsAbout: [
-    "SaaS Development",
-    "Cloud Software Development",
-    "SaaS Product Design",
-    "SaaS Integration",
-    "SaaS Analytics",
-    "SaaS Maintenance"
-  ]
-};
-
-const servicesSchema = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  itemListElement: services.map((service, index) => ({
-    "@type": "Service",
-    position: index + 1,
-    name: service.title,
-    description: service.desc,
-    provider: {
-      "@type": "Organization",
-      name: "Bynix Technology",
-      url: "https://bynixtechnology.com"
-    }
-  }))
-};
-
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: saasFaqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text:
-        "Bynix Technology provides scalable SaaS development services including product design, integration, analytics, and long-term platform support."
-    }
-  }))
-};
-
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: "https://bynixtechnology.com"
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Services",
-      item: "https://bynixtechnology.com/services"
-    },
-    {
-      "@type": "ListItem",
-      position: 3,
-      name: "SaaS Development",
-      item: "https://bynixtechnology.com/services/saas-service"
-    }
-  ]
-};
+    const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+            {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: `${BASE_URL}`
+            },
+            {
+                "@type": "ListItem",
+                position: 2,
+                name: "Services",
+                item: `${BASE_URL}/services`
+            },
+            {
+                "@type": "ListItem",
+                position: 3,
+                name: "SaaS Development",
+                item: `${BASE_URL}/services/saas-service`
+            }
+        ]
+    };
     return (
         <>
             <SEO
@@ -174,22 +184,22 @@ const breadcrumbSchema = {
                 image="/saas/bynix-saas-service.jpg"
             />
             <Helmet>
-  <script type="application/ld+json">
-    {JSON.stringify(saasServiceSchema)}
-  </script>
+                <script type="application/ld+json">
+                    {JSON.stringify(saasServiceSchema)}
+                </script>
 
-  <script type="application/ld+json">
-    {JSON.stringify(servicesSchema)}
-  </script>
+                <script type="application/ld+json">
+                    {JSON.stringify(servicesSchema)}
+                </script>
 
-  <script type="application/ld+json">
-    {JSON.stringify(faqSchema)}
-  </script>
+                <script type="application/ld+json">
+                    {JSON.stringify(faqSchema)}
+                </script>
 
-  <script type="application/ld+json">
-    {JSON.stringify(breadcrumbSchema)}
-  </script>
-</Helmet>
+                <script type="application/ld+json">
+                    {JSON.stringify(breadcrumbSchema)}
+                </script>
+            </Helmet>
             <section className="relative bg-white py-8 lg:py-32 px-6 overflow-hidden">
                 {/* Background Image */}
                 <div
@@ -200,24 +210,24 @@ const breadcrumbSchema = {
                 <div className="container mx-auto text-center relative z-10">
                     <Reveal animation="right">
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-black mb-6 leading-tight">
-                            Transform Your Business <br /> with Powerful <span className="text-[#F27115]">SaaS</span> Solutions
+                            Flexible <span className="text-[#F27115]">SaaS Solutions</span> Built for <span className="text-[#F27115]">Growing Businesses</span>
                         </h1>
                     </Reveal>
 
                     <Reveal animation="left">
 
                         <p className="text-black text-center font-medium text-lg md:text-xl sm:px-20 mx-auto mb-10 leading-relaxed">
-                            SaaS allows businesses to access software anytime, anywhere without the hassle of installations or maintenance. It’s cost-effective, scalable, and keeps your business agile in a competitive digital world.
+                            SaaS allows businesses to transform their operations with secure and cloud-powered software. Bynix Technology delivers tailored SaaS solutions that ensure uninterrupted access. 
                         </p>
                     </Reveal>
 
                     <Reveal animation="zoom" delay={100}>
                         <div className="flex flex-col sm:flex-row justify-center gap-4">
-                            <button className="px-8 py-3 cursor-pointer bg-white/0 border-2 border-gray-400 text-black font-bold rounded-lg hover:bg-gray-50 transition-all">
+                            <Link to={"/services"} className="px-8 py-3 cursor-pointer bg-white/0 border-2 border-gray-400 text-black font-bold rounded-lg hover:bg-gray-50 transition-all">
                                 Explore Our Solutions
-                            </button>
+                            </Link>
                             <Link to={"/contact"} className="px-8 py-3 bg-black cursor-pointer text-white font-bold rounded-lg hover:bg-[#F27115] transition-all shadow-lg">
-                                Get In Touch
+                                Get a Quote
                             </Link>
                         </div>
                     </Reveal>

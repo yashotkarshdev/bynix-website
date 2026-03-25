@@ -7,66 +7,86 @@ import Reveal from "../components/animate/Reveal";
 import SEO from "../components/SEO";
 import { Helmet } from "react-helmet-async";
 
+const BASE_URL = import.meta.env.VITE_SITE_URL;
+
+const ssmFaqs = [
+    {
+        "id": 1,
+        "question": "Which social media platforms are best for my business growth?",
+        "answer": "We select platforms based on your target audience and business goals. For example, LinkedIn for B2B growth and emerging platforms like Threads for real-time brand visibility."
+    },
+    {
+        "id": 2,
+        "question": "How does Bynix measure the success and ROI of social media campaigns?",
+        "answer": "We track high-intent metrics like lead quality, website conversions, and pipeline attribution instead of focusing only on vanity metrics like likes or followers."
+    },
+    {
+        "id": 3,
+        "question": "How often will you post content on our company profiles?",
+        "answer": "Posting frequency is planned through a customized content calendar based on your industry, audience behavior, and growth objectives."
+    },
+    {
+        "id": 4,
+        "question": "How do you stay updated with the latest social media trends and algorithm changes?",
+        "answer": "Bynix stays updated by tracking algorithm changes across social media platforms, along with continuous testing and performance analysis to adapt strategies in real time."
+    }
+    ,
+    {
+        "id": 5,
+        "question": "What is the typical timeframe to see results from a social media strategy?",
+        "answer": "Typical engagement growth is usually visible within the first 90 days, while long-term lead generation scales as brand authority compounds. "
+    }
+];
+
+const benefits = [
+    "Bynix Technology addresses systemic digital growth challenges by engineering high-impact social architectures that convert passive digital profiles into active revenue-generating assets.",
+    "The approach replaces inconsistent outreach with a unified and consistent brand voice across all relevant channels.",
+    "Precision targeting on appropriate social media platforms ensures the value proposition reaches C-suite executives and key procurement decision-makers directly.",
+    "Complex technical services are translated into clear, engaging, and high-performance content tailored for professional audiences.",
+    "The strategy strengthens brand authority and credibility to support the acquisition of high-value and long-term B2B partnerships.",
+    "Campaigns are built around measurable attribution models that track performance and align outcomes with business objectives.",
+    "Continuous optimization connects social engagement with tangible ROI by improving targeting, messaging, and conversion pathways."
+];
+
+const platforms = [
+    { name: "Instagram Marketing", icon: "/smm-service/icons/instagram-icon.png", position: "lg:top-10 lg:left-[5%]" },
+    { name: "Youtube Marketing", icon: "/smm-service/icons/youtube-icon.png", position: "lg:top-24 lg:left-[35%]" },
+    { name: "Facebook Marketing", icon: "/smm-service/icons/facebook-icon.png", position: "lg:top-10 lg:left-[65%]" },
+    { name: "LinkedIn Marketing", icon: "/smm-service/icons/linkedin-icon.png", position: "lg:bottom-10 lg:left-[20%]" },
+    { name: "Twitter Marketing", icon: "/smm-service/icons/twitter-icon.png", position: "lg:bottom-10 lg:left-[55%]" },
+];
+
+const services = [
+    {
+        title: "Paid Advertising",
+        desc: "We focus on advanced targeting on emerging platforms for the purpose of high-value lead generation.",
+        image: "/smm-service/strategy.webp"
+    },
+    {
+        title: "Social Media Management",
+        desc: "We follow a structured scheduling process and cross-platform synchronization to maintain a consistent brand presence.",
+        image: "/smm-service/content.webp"
+    },
+    {
+        title: "Content Strategy & Creation",
+        desc: "Content is planned and created to align with audience intent and business objectives. Consistent execution builds engagement and reinforces brand authority.",
+        image: "/smm-service/content-creation-and-strategy.webp"
+    },
+    {
+        title: "Influencer Marketing",
+        desc: "We focus on authority marketing to connect your brand with credible industry voices for validation.",
+        image: "/smm-service/influencer.webp"
+    },
+    {
+        title: "Profile Optimization",
+        desc: "Profiles are optimized with SEO focused descriptions and cohesive branding to improve visibility.",
+        image: "/smm-service/profile-optimization.webp"
+    }
+];
+
 function SMMService() {
     const scrollRef = useRef(null);
     const [progress, setProgress] = useState(0);
-    const ssmFaqs = [
-        {
-            "id": 1,
-            "question": "How does SMM benefit my business?"
-        },
-        {
-            "id": 2,
-            "question": "How often will you post on my social accounts?"
-        },
-        {
-            "id": 3,
-            "question": "Do you manage paid social media ads?"
-        },
-        {
-            "id": 4,
-            "question": "How long before I see results from SMM campaigns?"
-        }
-    ];
-
-    const benefits = [
-        "Expand brand visibility across social platforms",
-        "Engage directly with your target audience",
-        "Drive traffic to your website and landing pages",
-        "Build credibility and trust with your audience",
-        "Increase leads, sales, and ROI"
-    ];
-
-    const platforms = [
-        { name: "Instagram Marketing", icon: "/smm-service/icons/instagram-icon.png", position: "lg:top-10 lg:left-[5%]" },
-        { name: "Youtube Marketing", icon: "/smm-service/icons/youtube-icon.png", position: "lg:top-24 lg:left-[35%]" },
-        { name: "Facebook Marketing", icon: "/smm-service/icons/facebook-icon.png", position: "lg:top-10 lg:left-[65%]" },
-        { name: "LinkedIn Marketing", icon: "/smm-service/icons/linkedin-icon.png", position: "lg:bottom-10 lg:left-[20%]" },
-        { name: "Twitter Marketing", icon: "/smm-service/icons/twitter-icon.png", position: "lg:bottom-10 lg:left-[55%]" },
-    ];
-
-    const services = [
-        {
-            title: "Social Media Strategy & Planning",
-            desc: "We create a custom social media strategy tailored to your business goals, target audience, and industry trends. This ensures every post, campaign, and ad drives meaningful results.",
-            image: "/smm-service/strategy.jpg"
-        },
-        {
-            title: "Content Creation & Management",
-            desc: "Our team designs engaging posts, images, videos, and stories that capture attention and encourage interaction. We manage content calendars to keep your social channels active and relevant.",
-            image: "/smm-service/content.jpg"
-        },
-        {
-            title: "Social Media Advertising (Paid Ads)",
-            desc: "We run targeted paid campaigns on platforms like Facebook, Instagram, and LinkedIn. Our ads are optimized to reach the right audience, increase traffic, and generate leads.",
-            image: "/smm-service/ads.jpg"
-        },
-        {
-            title: "Influencer Marketing",
-            desc: "We connect your brand with the right influencers to expand your reach and build authentic trust with your target audience.",
-            image: "/smm-service/influencer.jpg"
-        }
-    ];
 
     // Function to handle the progress bar width based on scroll position
     const handleScroll = () => {
@@ -91,7 +111,7 @@ function SMMService() {
         "@context": "https://schema.org",
         "@type": "Service",
         name: "Social Media Marketing Services",
-        url: "https://www.bynixtechnology.com/services/smm-service",
+        url: `${BASE_URL}/services/smm-service`,
         description:
             "Professional social media marketing services including Instagram marketing, Facebook ads, LinkedIn marketing, influencer marketing, and content management.",
         serviceType: "Social Media Marketing",
@@ -102,7 +122,7 @@ function SMMService() {
         provider: {
             "@type": "Organization",
             name: "Bynix Technology",
-            url: "https://www.bynixtechnology.com"
+            url: `${BASE_URL}`
         },
         knowsAbout: [
             "Social Media Marketing",
@@ -122,19 +142,19 @@ function SMMService() {
                 "@type": "ListItem",
                 position: 1,
                 name: "Home",
-                item: "https://www.bynixtechnology.com"
+                item: `${BASE_URL}`
             },
             {
                 "@type": "ListItem",
                 position: 2,
                 name: "Services",
-                item: "https://www.bynixtechnology.com/services"
+                item: `${BASE_URL}/services`
             },
             {
                 "@type": "ListItem",
                 position: 3,
                 name: "Social Media Marketing",
-                item: "https://www.bynixtechnology.com/services/smm-service"
+                item: `${BASE_URL}/services/smm-service`
             }
         ]
     };
@@ -169,29 +189,29 @@ function SMMService() {
                 <div className="container mx-auto text-left md:text-center relative z-10">
                     <Reveal animation="right">
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-black mb-6 leading-tight">
-                            Drive Engagement & Grow Your<br /> Brand with Expert <br /><span className="text-[#F27115]">Social Media Marketing</span>
+                            Convert Passive Digital Presence into Active <span className="text-[#F27115]">Business Revenue</span> with High-Impact <br /> <span className="text-[#f27115]">Social Media Marketing</span>
                         </h1>
                     </Reveal>
 
                     <Reveal animation="left">
                         <p className="text-black text-left md:text-center font-medium text-lg md:text-xl sm:px-20 mx-auto mb-10 leading-relaxed">
-                            At Bynix Technology, we create data-driven social media campaigns that increase traffic, build brand awareness, and generate leads across platforms like Facebook, Instagram, LinkedIn, and Twitter.
+                            Bynix Technology engineers data-driven social media strategies that accelerate brand authority and drive high-quality lead generation across LinkedIn, Facebook, and Instagram.
                         </p>
                     </Reveal>
 
                     <Reveal animation="zoom" delay={100}>
 
                         <div className="flex flex-col sm:flex-row justify-center gap-4">
-                            <button className="px-8 py-3 cursor-pointer hover:bg-white border-2 border-gray-400 text-black font-bold rounded-lg transition-all">
+                            <Link to={"/services"} className="px-8 py-3 cursor-pointer hover:bg-white border-2 border-gray-400 text-black font-bold rounded-lg transition-all">
                                 Explore Our Solutions
-                            </button>
+                            </Link>
                             <Link to={"/contact"} className="px-8 py-3 bg-black cursor-pointer text-white font-bold rounded-lg hover:bg-[#F27115] transition-all shadow-lg">
-                                Get In Touch
+                                Get a Quote
                             </Link>
                         </div>
                     </Reveal>
                 </div>
-                <div className="absolute bottom-0 left-0 w-full z-20">
+                <div className="absolute bottom-0 left-0 w-full">
                     <img src="/smm-service/wavy.jpg" alt="" className="w-full object-cover" />
                 </div>
             </section>
@@ -208,20 +228,18 @@ function SMMService() {
                                     {/* Heading with Yellow Underline Effect */}
                                     <div className="text-center mb-16">
                                         <h2 className="relative inline-block text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-900 pb-4">
-                                            Why Social Media Marketing
+                                             Strategic Social Media Solutions
                                             <span className="absolute top-5 left-1/2 mix-blend-multiply -translate-x-1/2 w-full h-2 md:h-3 bg-[#FFC107]"></span>
-                                            <br /> Matters
+                                            <br /> for Modern Business Challenges
                                             {/* The exact Yellow Stroke/Underline from your image */}
                                             <span className="absolute bottom-5 mix-blend-multiply left-1/2 -translate-x-1/2 w-64 h-2 md:h-3 bg-[#FFC107]"></span>
                                         </h2>
                                     </div>
 
                                     {/* Description Text */}
-                                    <p className="text-gray-700 text-lg leading-relaxed mb-8 text-center lg:text-left">
-                                        Social media is a powerful tool to connect with your audience, build trust, and drive sales.
-                                        With the right strategy, businesses can improve engagement, reach new customers,
-                                        and grow their online presence.
-                                    </p>
+                                    {/* <p className="text-gray-700 text-lg leading-relaxed mb-8 text-center lg:text-left">
+                                        Bynix Technology solves these systemic challenges by engineering high-impact social architectures that transform passive digital profiles into active revenue engines. We replace inconsistent outreach with a unified brand voice, utilizing precision targeting on suitable social media platforms to place your value proposition directly in front of C-suite executives and procurement influencers. By translating complex technical services into engaging, high-performance content, we foster the professional credibility necessary to close high-contract value partnerships. Our focus remains on measurable attribution, ensuring every campaign is optimized to bridge the gap between social engagement and tangible ROI for your organization.
+                                    </p> */}
 
                                     {/* Bullet Points with Custom Markers */}
                                     <ul className="space-y-4">
@@ -242,7 +260,7 @@ function SMMService() {
                                     <div className="relative group">
                                         {/* Image with subtle drop shadow to pop against hex bg */}
                                         <img
-                                            src="/smm-service/smm-section.png"
+                                            src="/smm-service/smm-section.webp"
                                             alt="Social Media Marketing Illustration"
                                             className="w-full max-w-[600px] h-auto transform transition-transform duration-700 group-hover:scale-105"
                                         />

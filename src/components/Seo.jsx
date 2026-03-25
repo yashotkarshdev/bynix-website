@@ -11,7 +11,7 @@ export default function SEO({
   const { pathname } = useLocation();
 
   const siteName = "Bynix Technology";
-  const baseUrl = "https://bynixtechnology.com";
+  const baseUrl = import.meta.env.VITE_SITE_URL;
   const canonicalUrl = `${baseUrl}${pathname}`;
 
   const fullTitle = title

@@ -5,6 +5,8 @@ import Reveal from '../components/animate/Reveal';
 import SEO from "../components/SEO";
 import { Helmet } from "react-helmet-async";
 
+const BASE_URL = import.meta.env.VITE_SITE_URL;
+
 const JobCard = ({ title, experience, location }) => {
 
     const handleApply = () => {
@@ -84,8 +86,8 @@ const Careers = () => {
         "hiringOrganization": {
             "@type": "Organization",
             "name": "Bynix Technology",
-            "sameAs": "https://bynixtechnology.com",
-            "logo": "https://bynixtechnology.com/logo.png"
+            "sameAs": `${BASE_URL}`,
+            "logo": `${BASE_URL}/logo.png`
         },
         "jobLocation": {
             "@type": "Place",
@@ -144,9 +146,9 @@ const Careers = () => {
 
                         <Reveal animation="zoom" delay={100}>
                             <div className="flex flex-col sm:flex-row justify-center gap-4">
-                                <button className="px-8 py-3 cursor-pointer bg-white/0 border-2 border-gray-400 text-white hover:text-black font-bold rounded-lg hover:bg-gray-50 transition-all">
+                                <Link to={"/services"} className="px-8 py-3 cursor-pointer bg-white/0 border-2 border-gray-400 text-white hover:text-black font-bold rounded-lg hover:bg-gray-50 transition-all">
                                     Explore Our Solutions
-                                </button>
+                                </Link>
                                 <Link to={"/contact"} className="px-8 py-3 bg-black cursor-pointer text-white font-bold rounded-lg hover:bg-[#F27115] transition-all shadow-lg">
                                     Get In Touch
                                 </Link>
@@ -174,13 +176,13 @@ const Careers = () => {
                             </div>
 
                             {/* Middle Column: Lower Position (Starts below the hero) */}
-                            <div className="space-y-10 lg:mt-10 relative z-40">
+                            <div className="space-y-10 mt-10 md:mt-0 lg:mt-20 relative z-40">
                                 <JobCard title={jobs[1].title} experience={jobs[1].exp} location={jobs[1].loc} />
                                 <JobCard title={jobs[4].title} experience={jobs[4].exp} location={jobs[4].loc} />
                             </div>
 
                             {/* Right Column: Higher Position */}
-                            <div className="space-y-10 lg:-mt-10 relative z-40">
+                            <div className="space-y-10 mt-10 md:mt-0 lg:-mt-10 relative z-40">
                                 <JobCard title={jobs[2].title} experience={jobs[2].exp} location={jobs[2].loc} />
                                 <JobCard title={jobs[5].title} experience={jobs[5].exp} location={jobs[5].loc} />
                             </div>

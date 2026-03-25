@@ -82,48 +82,147 @@
 
 // export default FAQSection;
 
+// import React, { useRef, useState } from "react";
+// import { gsap } from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import { useGSAP } from "@gsap/react";
+
+// gsap.registerPlugin(ScrollTrigger);
+
+
+// const FAQSection = ({ faqs, title = "Frequently Asked Questions" }) => {
+//   const [activeIndex, setActiveIndex] = useState(null);
+
+//   const toggle = (index) => {
+//     setActiveIndex(activeIndex === index ? null : index);
+//   };
+
+//   const scrollRef = useRef();
+//   useGSAP(() => {
+//     gsap.from(scrollRef.current, {
+//       y: 200,
+//       opacity: 0,
+//       scrollTrigger: {
+//         trigger: scrollRef.current,
+//         start: "top 100%",
+//         end: " bottom 50%",
+//         scrub: 1.5,
+//       },
+//     });
+//   }, { scope: scrollRef });
+
+//   return (
+//     <section className="py-8 lg:py-20 bg-transparent" id="faq">
+//       <div ref={scrollRef} className="max-w-5xl mx-auto px-6">
+//         <h2 className="text-3xl font-bold text-center mb-10">{title}</h2>
+
+//         <div className="bg-white border border-gray-300 rounded-xl">
+//           {faqs.map((faq, index) => (
+//             <article key={faq.id} className="border-b border-gray-300 last:border-none">
+
+//               {/* Button with SVG toggle */}
+//               <button
+//                 onClick={() => toggle(index)}
+//                 className="w-full flex justify-between items-center p-5 text-left"
+//               >
+//                 <h3 className="font-medium">{index + 1}. {faq.question}</h3>
+
+//                 {/* Arrow icon */}
+//                 <svg
+//                   className={`w-5 h-5 transform transition-transform duration-300 ${activeIndex === index ? "rotate-180" : "rotate-0"}`}
+//                   fill="none"
+//                   stroke="currentColor"
+//                   viewBox="0 0 24 24"
+//                 >
+//                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+//                 </svg>
+//               </button>
+
+//               {activeIndex === index && (
+//                 <p className="px-5 pb-5 text-gray-600">{faq.answer}</p>
+//               )}
+
+//             </article>
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default FAQSection;
+
 import React, { useState } from "react";
 
-const FAQSection = ({ faqs, title = "Frequently Asked Questions" }) => {
+const FAQSection = ({ faqs = [], title = "Frequently Asked Questions" }) => {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const toggle = (index) => {
-    setActiveIndex(activeIndex === index ? null : index);
+    setActiveIndex((prev) => (prev === index ? null : index));
   };
 
   return (
-    <section className="py-8 lg:py-20 bg-transparent" id="faq">
+    <section className="py-10 lg:py-20 bg-transparent" id="faq">
       <div className="max-w-5xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center mb-10">{title}</h2>
+        
+        <h2 className="text-3xl font-bold text-center mb-10">
+          {title}
+        </h2>
 
-        <div className="bg-white border border-gray-300 rounded-xl">
-          {faqs.map((faq, index) => (
-            <article key={faq.id} className="border-b border-gray-300 last:border-none">
+        <div className="bg-white border border-gray-300 rounded-xl overflow-hidden">
 
-              {/* Button with SVG toggle */}
-              <button
-                onClick={() => toggle(index)}
-                className="w-full flex justify-between items-center p-5 text-left"
+          {faqs.length === 0 ? (
+            <p className="p-5 text-center text-gray-500">
+              No FAQs available
+            </p>
+          ) : (
+            faqs.map((faq, index) => (
+              <article
+                key={faq?.id || index}
+                className="border-b border-gray-300 last:border-none"
               >
-                <h3 className="font-medium">{index + 1}. {faq.question}</h3>
-
-                {/* Arrow icon */}
-                <svg
-                  className={`w-5 h-5 transform transition-transform duration-300 ${activeIndex === index ? "rotate-180" : "rotate-0"}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+                {/* Question */}
+                <button
+                  onClick={() => toggle(index)}
+                  className="w-full flex justify-between items-center p-5 text-left"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
+                  <h3 className="font-medium pr-4">
+                    {index + 1}. {faq?.question || "No question"}
+                  </h3>
 
-              {activeIndex === index && (
-                <p className="px-5 pb-5 text-gray-600">{faq.answer}</p>
-              )}
+                  <svg
+                    className={`w-5 h-5 transition-transform duration-300 ${
+                      activeIndex === index ? "rotate-180" : ""
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
 
-            </article>
-          ))}
+                {/* Answer */}
+                <div
+                  className={`overflow-hidden transition-all duration-300 ${
+                    activeIndex === index
+                      ? "max-h-40 opacity-100"
+                      : "max-h-0 opacity-0"
+                  }`}
+                >
+                  <p className="px-5 pb-5 text-gray-600">
+                    {faq?.answer || "No answer available"}
+                  </p>
+                </div>
+              </article>
+            ))
+          )}
+
         </div>
       </div>
     </section>

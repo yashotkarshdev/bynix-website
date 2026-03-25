@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useRef } from 'react'
+import {ScrollTrigger } from 'gsap/all';
+import gsap from 'gsap';
 import SEO from '../components/SEO';
 import FAQSection from '../components/FAQSection';
 import SectionBadge from '../components/SectionBadge';
@@ -6,49 +8,163 @@ import { useEffect, useState } from "react";
 import Reveal from '../components/animate/Reveal';
 import { Helmet } from 'react-helmet-async';
 import LeadPopup from '../components/LeadPopup';
+import OurClients from '../components/OurClients';
+import { useGSAP } from '@gsap/react';
+import { time } from 'framer-motion';
 // import { getServices } from "../services/serviceApi";
+
+const BASE_URL = import.meta.env.VITE_SITE_URL;
+
+const services = [
+    {
+        title: "Website Development",
+        description: "We build websites that don't just look good — they sell: From wireframe to launch — we handle it all.",
+        img: "/website-dev.jpg",
+        points: [
+            "Business & eCommerce Websites",
+            "WordPress, Shopify, or Custom Builds",
+            "Mobile Responsive & SEO-Friendly",
+            "Fast, secure, and scalable"
+        ]
+    },
+    {
+        title: "App Development",
+        subtitle: "(Android & iOS)",
+        description: "Turn your app idea into reality.",
+        img: "/app-dev.jpg",
+        points: [
+            "Custom mobile app development",
+            "UI/UX Design that users love",
+            "Backend & API integration",
+            "App Store & Play Store support"
+        ]
+    },
+    {
+        title: "Digital Marketing",
+        subtitle: "That Drives Results",
+        description: "We don't just bring traffic — we bring paying customers.",
+        img: "/digital-marketing.jpg",
+        points: [
+            "Facebook & Instagram Ads",
+            "Google Ads (Search & Display)",
+            "SEO & Local SEO",
+            "Social Media Management",
+            "Email Marketing Campaigns",
+            "Conversion Optimization"
+        ]
+    }
+];
+const features = [
+    {
+        title: "User-Centered Strategy That Drives Results",
+        desc: "Each project begins with a deep understanding of user behavior to shape solutions that align with business goals.",
+        image: "/icons/strategy.png", // Path to your custom image
+    },
+    {
+        title: "Data-Driven Design Decisions",
+        desc: "Every design element is optimized using performance data to improve usability and drive measurable results.",
+        image: "/icons/precision.png",
+    },
+    {
+        title: "Seamless Collaboration Across Teams",
+        desc: "Designers, developers, and strategists work in close coordination to ensure efficient execution with consistent quality at every stage.",
+        image: "/icons/collab.png",
+    },
+    {
+        title: "Consistent Experience Across All Platforms",
+        desc: "Solutions are built to perform seamlessly across websites, mobile applications, and devices to ensure a consistent user experience with maximum accessibility.",
+        image: "/icons/platform.png",
+    },
+    {
+        title: "Designed to Drive Business Results",
+        desc: "Solutions are developed with a focus on conversions, engagement, and long-term value to drive sustainable business growth.",
+        image: "/icons/results.png",
+    }
+];
+
+const FEATURES2 = [
+    {
+        title: "Results-Driven Strategy",
+        desc: "Focused on Measurable Business Outcomes.",
+        image: "/icons/bulb-icon.png", // Replace with your image path
+    },
+    {
+        title: "UI/UX Focused Designs",
+        desc: "Intuitive Interfaces with Strong Visual Appeal.",
+        image: "/icons/gear-icon.png", // Replace with your image path
+    },
+    {
+        title: "Transparent Reporting",
+        desc: "Clear Insights with Consistent Performance Tracking.",
+        image: "/icons/expert-icon.png", // Replace with your image path
+    },
+    {
+        title: "Long-Term Partnership",
+        desc: "Committed to Sustained Growth and Success.",
+        image: "/icons/label-icon.png", // Replace with your image path
+    }
+];
+const WORK_STEPS = [
+    {
+        title: "Discovery & Strategy",
+        img: "/how-we-work/discovery.jpg",
+    },
+    {
+        title: "Planning & Design",
+        img: "/how-we-work/planning.jpg",
+    },
+    {
+        title: "Development",
+        img: "/how-we-work/development.jpg",
+    },
+    {
+        title: "Testing & Optimization",
+        img: "/how-we-work/testing.jpg",
+    },
+    {
+        title: "Launch & Growth",
+        img: "/how-we-work/launch.jpg",
+    },
+];
+
+const Home_FAQS = [
+    {
+        id: 1,
+        question: "What services does Bynix Technology offer?",
+        answer:
+            "Bynix Technology provides website development, SEO services, digital marketing, UI/UX design, and custom software solutions to support business growth and online visibility.",
+    },
+    {
+        id: 2,
+        question:
+            "Why choose Bynix Technology for digital solutions?",
+        answer:
+            "We deliver data-driven strategies with a focus on performance, user experience, and measurable business results.",
+    },
+    {
+        id: 3,
+        question: "How does Bynix Technology help increase leads and conversions?",
+        answer:
+            "By combining SEO website optimization and user-focused design, Bynix Technology improves visibility, engagement, and conversion performance.",
+    },
+    {
+        id: 4,
+        question: "How long does it take to see results from SEO?",
+        answer:
+            "SEO results typically become visible within 3 to 6 months, depending on the competition website condition, and strategy execution.",
+    },
+    {
+        id: 5,
+        question: "How can I get started with Bynix Technology?",
+        answer:
+            "Businesses can get started by contacting the team for a consultation to discuss goals, requirements, and the right digital strategy.",
+    },
+];
+
+gsap.registerPlugin(ScrollTrigger);
 
 function Home() {
     // const [services, setServices] = useState([]);
-    const services = [
-        {
-            title: "Website Development",
-            description: "We build websites that don't just look good — they sell: From wireframe to launch — we handle it all.",
-            img: "/website-dev.jpg",
-            points: [
-                "Business & eCommerce Websites",
-                "WordPress, Shopify, or Custom Builds",
-                "Mobile Responsive & SEO-Friendly",
-                "Fast, secure, and scalable"
-            ]
-        },
-        {
-            title: "App Development",
-            subtitle: "(Android & iOS)",
-            description: "Turn your app idea into reality.",
-            img: "/app-dev.jpg",
-            points: [
-                "Custom mobile app development",
-                "UI/UX Design that users love",
-                "Backend & API integration",
-                "App Store & Play Store support"
-            ]
-        },
-        {
-            title: "Digital Marketing",
-            subtitle: "That Drives Results",
-            description: "We don't just bring traffic — we bring paying customers.",
-            img: "/digital-marketing.jpg",
-            points: [
-                "Facebook & Instagram Ads",
-                "Google Ads (Search & Display)",
-                "SEO & Local SEO",
-                "Social Media Management",
-                "Email Marketing Campaigns",
-                "Conversion Optimization"
-            ]
-        }
-    ];
     // useEffect(() => {
     //     const fetchServices = async () => {
     //         const data = await getServices();
@@ -58,133 +174,61 @@ function Home() {
     //     fetchServices();
     // }, []);
 
-    const features = [
-        {
-            title: "User-First Design Strategy",
-            desc: "Before beginning work on any project, we learn about real users, their needs, behaviours, and main points. Our designs are not only pretty but are made to solve real problems with understanding and compassion.",
-            image: "/icons/strategy.png", // Path to your custom image
-        },
-        {
-            title: "Precision in Every Pixel",
-            desc: "From alignment to micro-interactions, we observe each and every small detail, whether they are alignment or micro-interactions. We have designed our UI UX services with utmost attention to detail.",
-            image: "/icons/precision.png",
-        },
-        {
-            title: "Cross-Team Collaboration",
-            desc: "Design isn't a solo act. Our UI/UX professionals collaborate closely with the developers, business analysts, and product managers to make your services flexible and user-friendly.",
-            image: "/icons/collab.png",
-        },
-        {
-            title: "Multi-Platform Perfection",
-            desc: "Whether it's a mobile app UI UX design, responsive websites, or tablet interfaces - our designers will ensure your platform will work and look great across all devices.",
-            image: "/icons/platform.png",
-        },
-        {
-            title: "Results That Go Beyond Aesthetics",
-            desc: "We measure our design success using data - clicks, conversions, and retention. Our every decision is guided by the intention to enhance user engagement and your business activity.",
-            image: "/icons/results.png",
-        }
-    ];
+    // const scrollRef = useRef();
 
-    const features2 = [
-        {
-            title: "Scalable Solutions",
-            desc: "Deliver scalable and intelligent solutions for businesses.",
-            image: "/icons/bulb-icon.png", // Replace with your image path
-        },
-        {
-            title: "AI & Automation",
-            desc: "Help companies leverage AI, automation, and digital transformation.",
-            image: "/icons/gear-icon.png", // Replace with your image path
-        },
-        {
-            title: "Expert Resources",
-            desc: "Provide expert resources through flexible allocation models.",
-            image: "/icons/expert-icon.png", // Replace with your image path
-        },
-        {
-            title: "White-Label",
-            desc: "Offer white-label solutions to accelerate business growth.",
-            image: "/icons/label-icon.png", // Replace with your image path
-        }
-    ];
-    const workSteps = [
-        {
-            title: "Discovery & Strategy",
-            img: "/how-we-work/discovery.jpg",
-        },
-        {
-            title: "Planning & Design",
-            img: "/how-we-work/planning.jpg",
-        },
-        {
-            title: "Development",
-            img: "/how-we-work/development.jpg",
-        },
-        {
-            title: "Testing & Optimization",
-            img: "/how-we-work/testing.jpg",
-        },
-        {
-            title: "Launch & Growth",
-            img: "/how-we-work/launch.jpg",
-        },
-    ];
+// useGSAP(() => {
+//     gsap.from('.boxes', {
+//       x: 200, 
+//       opacity: 0,
+//       scale:0,
+//       borderRadius: "100%",
+//       stagger: {
+//         amount: 1.5,
+//         from: "egdes",
+//       },
+//       scrollTrigger: {
+//         trigger: scrollRef.current,
+//         start: "top 70%", 
+//         end: "top 10%",
+//         scrub: 1.5,
+//       },
+//       rotation: 90,
+//     });
+//   }, { scope: scrollRef });
 
-    const homeFaqs = [
-        {
-            id: 1,
-            question: "What services does Bynix Technology provide?",
-            answer:
-                "Bynix Technology provides web development, digital marketing, SEO services, UI/UX design, and custom software solutions to help businesses grow online.",
-        },
-        {
-            id: 2,
-            question:
-                "What makes Bynix Technology different from other digital marketing agencies?",
-            answer:
-                "Bynix focuses on data-driven strategies, customized marketing plans, and measurable results that help businesses improve visibility and conversions.",
-        },
-        {
-            id: 3,
-            question: "How long does it take to see results from SEO?",
-            answer:
-                "Most SEO campaigns begin showing noticeable improvements within 3 to 6 months depending on the competition and strategy used.",
-        },
-        {
-            id: 4,
-            question: "Do you work with small businesses and startups?",
-            answer:
-                "Yes. Bynix Technology works with startups, small businesses, and enterprises to create scalable digital solutions.",
-        },
-    ];
+const containerRef = useRef();
 
-    const organizationSchema = {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Bynix Technology",
-        "url": "https://bynixtechnology.com",
-        "logo": "https://bynixtechnology.com/logo.png",
-        "image": "https://bynixtechnology.com/home-preview.jpg",
-        "description": "Bynix Technology provides website development, mobile app development, and digital marketing services.",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Jaipur",
-            "addressRegion": "Rajasthan",
-            "addressCountry": "India"
-        },
-        "sameAs": [
-            "https://www.linkedin.com/company/bynixtechnology",
-            "https://www.instagram.com/bynixtechnology"
-        ]
-    };
+useGSAP(() => {
+  const ctx = gsap.context(() => {
 
-    const websiteSchema = {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Bynix Technology",
-        "url": "https://bynixtechnology.com"
-    };
+    const sections = gsap.utils.toArray('.anim-section');
+
+    sections.forEach((section) => {
+      const boxes = section.querySelectorAll('.boxes');
+
+      gsap.from(boxes, {
+        x: 120,
+        opacity: 0,
+        scale: 0.8,
+        rotation: 30,
+        borderRadius: "20px",
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: 0.15,
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      });
+
+    });
+
+  }, containerRef);
+
+  return () => ctx.revert(); // 🔥 IMPORTANT
+}, []);
+
 
     const servicesSchema = {
         "@context": "https://schema.org",
@@ -194,11 +238,11 @@ function Home() {
             "position": index + 1,
             "name": service.title,
             "description": service.description,
-            "url": "https://bynixtechnology.com/services",
+            "url": `${BASE_URL}/services`,
             "provider": {
                 "@type": "Organization",
                 "name": "Bynix Technology",
-                "url": "https://bynixtechnology.com"
+                "url": `${BASE_URL}`
             }
         }))
     };
@@ -206,7 +250,7 @@ function Home() {
     const faqSchema = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        "mainEntity": homeFaqs.map((faq) => ({
+        "mainEntity": Home_FAQS.map((faq) => ({
             "@type": "Question",
             "name": faq.question,
             "acceptedAnswer": {
@@ -219,6 +263,7 @@ function Home() {
 
     return (
         <>
+        <div ref={containerRef}>
             <SEO
                 title="Digital Marketing & Web Development Agency in Jaipur"
                 description="Bynix Technology helps businesses grow with high-performance website development, custom mobile apps, and result-driven digital marketing strategies."
@@ -226,14 +271,6 @@ function Home() {
                 image="/home-preview.jpg"
             />
             <Helmet>
-
-                <script type="application/ld+json">
-                    {JSON.stringify(organizationSchema)}
-                </script>
-
-                <script type="application/ld+json">
-                    {JSON.stringify(websiteSchema)}
-                </script>
 
                 <script type="application/ld+json">
                     {JSON.stringify(servicesSchema)}
@@ -246,7 +283,7 @@ function Home() {
             </Helmet>
             <LeadPopup />
             {/* hero section  */}
-            <section className="relative py-24 overflow-hidden">
+            <section className="relative py-12 md:py-24 overflow-hidden">
 
                 {/* Background Image */}
                 <div
@@ -262,15 +299,13 @@ function Home() {
                         <div>
                             <h1 className="lg:text-6xl text-3xl font-semibold space-y-2">
                                 <span className="text-[#F27115]">
-                                    "From Visibility to Conversions —
+                                    Boost Your Revenue
                                 </span><br />
-                                We Make It Happen."
+                                with Data-Driven Digital Solutions
                             </h1>
 
                             <p className="mt-6 lg:text-2xl text-md text-gray-600">
-                                Take your business to the next level with Bynix. Our team of digital
-                                experts and technical professionals will craft strategies tailored
-                                to your brand’s growth.
+                                Bynix helps organizations build high-performing websites and powerful SEO strategies while crafting experiences that turn visitors into customers.
                             </p>
                         </div>
                     </Reveal>
@@ -299,18 +334,17 @@ function Home() {
                     {/* Heading */}
                     <Reveal animation="left" delay={100}>
                         <h2 className="text-4xl md:text-5xl font-semibold text-black leading-tight mb-16 max-w-3xl">
-                            Let's Make Your Business Smarter,
-                            Faster & Digitally Stronger
+                            Smart <span className='text-[#F27115]'>Web Development</span>, <span className='text-[#F27115]'>Design</span> and <span className='text-[#F27115]'>SEO</span> Solutions for Scalable Growth
                         </h2>
                     </Reveal>
 
                     {/* Services Grid */}
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div className=" anim-section grid grid-cols-1 lg:grid-cols-3 gap-8 overflow-hidden">
                         {services.map((service, index) => (
                             <Reveal key={index} animation="up" delay={index * 150}>
                                 <div
                                     // key={index}
-                                    className="border-2 border-dashed border-gray-200 rounded-[2.5rem] p-8 flex flex-col hover:border-[#F27115] transition-colors duration-300 group"
+                                    className="boxes border-2 border-dashed border-gray-200 rounded-[2.5rem] p-8 flex flex-col hover:border-[#F27115] transition-colors duration-300 group"
                                 >
                                     <h3 className="text-2xl font-bold text-gray-900 mb-1">{service.title}</h3>
                                     {service.subtitle && (
@@ -379,12 +413,12 @@ function Home() {
                     <SectionBadge title={"Who We Are"} />
 
                     <h2 className="text-4xl md:text-5xl font-semibold text-black mb-12">
-                        How we help businesses in Industry
+                        How We Help Businesses in Industry
                     </h2>
 
                     {/* Banner */}
                     <Reveal animation="up">
-                        <div className="w-full h-64 md:h-80 rounded-[2.5rem] overflow-hidden mb-[-100px] relative z-0">
+                        <div className=" w-full h-64 md:h-80 rounded-[2.5rem] overflow-hidden mb-[-100px] relative z-0">
                             <img
                                 src="/team-banner.jpg"
                                 alt="Team"
@@ -395,7 +429,7 @@ function Home() {
                     </Reveal>
 
                     {/* Features */}
-                    <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div className=" relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-8">
                         {features.map((item, idx) => (
                             <Reveal key={idx} animation="up" delay={idx * 100}>
                                 <div
@@ -440,8 +474,8 @@ function Home() {
                     {/* Steps Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
 
-                        {workSteps.map((step, index) => (
-                            <Reveal key={index} animation="up" delay={index * 100}>
+                        {WORK_STEPS.map((step, index) => (
+                            <Reveal key={index} animation="left" delay={index * 150}>
 
                                 <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col items-center text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 group">
 
@@ -474,19 +508,19 @@ function Home() {
             {/* features section */}
             <Reveal animation="up">
                 <section className="py-8 lg:py-20 bg-white">
-                    <div className="container mx-auto px-6">
+                    <div className="container mx-auto px-6 overflow-hidden">
                         {/* Section Heading */}
                         <h2 className="text-3xl md:text-5xl font-semibold text-center text-black mb-20 tracking-tight">
-                            We help bussiness to grow faster and bigger
+                            Why Businesses <span className="text-[#F27115]">Trust Bynix</span> for Digital Growth
                         </h2>
 
                         {/* Features Grid */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
-                            {features2.map((item, index) => (
+                        <div className="anim-section grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+                            {FEATURES2.map((item, index) => (
                                 <Reveal key={index} animation="right" delay={index * 200}>
-                                    <div className="flex flex-col items-center text-center group">
+                                    <div className="boxes flex flex-col items-center text-center group">
 
-                                        {/* Image Circle Container */}
+                                        {/* Image Circle */}
                                         <div className="w-32 h-32 md:w-40 md:h-40 bg-[#F27115] rounded-full flex items-center justify-center mb-8 transition-transform duration-300 group-hover:scale-110 shadow-lg shadow-orange-100">
                                             <img
                                                 src={item.image}
@@ -496,14 +530,15 @@ function Home() {
                                             />
                                         </div>
 
-                                        {/* Description Text */}
-                                        <div className="max-w-[200px]">
-                                            <p className="text-gray-800 text-lg leading-snug font-medium">
-                                                {/* Styling specific words to match your bolding in the image */}
-                                                {index === 0 && <>Deliver <span className="font-semibold">scalable and intelligent solutions</span> for businesses.</>}
-                                                {index === 1 && <>Help companies leverage <span className="font-semibold">AI, automation, and digital transformation.</span></>}
-                                                {index === 2 && <>Provide <span className="font-semibold">expert resources</span> through flexible allocation models.</>}
-                                                {index === 3 && <>Offer <span className="font-semibold">white-label solutions</span> to accelerate business growth.</>}
+                                        {/* Title */}
+                                        <h3 className="text-xl font-semibold text-black mb-3">
+                                            {item.title}
+                                        </h3>
+
+                                        {/* Description */}
+                                        <div className="max-w-[220px]">
+                                            <p className="text-gray-700 text-lg leading-snug font-medium">
+                                                {item.desc}
                                             </p>
                                         </div>
 
@@ -515,9 +550,12 @@ function Home() {
                 </section>
             </Reveal>
             {/* FAQ Section */}
+                <FAQSection faqs={Home_FAQS} />
             <Reveal animation="up">
-                <FAQSection faqs={homeFaqs} title='Frequently Asked Questions' />
+                <OurClients />
             </Reveal>
+        
+        </div>
         </>
 
     )

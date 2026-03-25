@@ -1,23 +1,25 @@
 import Reveal from "../components/animate/Reveal";
 import SEO from "../components/SEO";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import api from "../services/api";
 import { Helmet } from "react-helmet-async";
+
+const BASE_URL = import.meta.env.VITE_SITE_URL;
 
 function Contact() {
     const contactSchema = {
         "@context": "https://schema.org",
         "@type": "ContactPage",
         "name": "Contact Bynix Technology",
-        "url": "https://bynixtechnology.com/contact",
+        "url": `${BASE_URL}/contact`,
         "description": "Contact Bynix Technology for web development, mobile app development and digital marketing services."
     };
     const businessSchema = {
         "@context": "https://schema.org",
         "@type": "ProfessionalService",
         "name": "Bynix Technology",
-        "url": "https://bynixtechnology.com",
-        "image": "https://bynixtechnology.com/logo.png",
+        "url": `${BASE_URL}`,
+        "image": `${BASE_URL}/logo.png`,
         "telephone": "+91-6376925384",
 
         "address": {
@@ -59,13 +61,13 @@ function Contact() {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://bynixtechnology.com"
+                "item": `${BASE_URL}`
             },
             {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Contact",
-                "item": "https://bynixtechnology.com/contact"
+                "item": `${BASE_URL}/contact`
             }
         ]
     };
@@ -76,6 +78,12 @@ function Contact() {
     const [business, setBusiness] = useState("")
     const [message, setMessage] = useState("")
     const [loading, setLoading] = useState(false)
+    const nameInputRef = useRef(null);
+
+    const handleContactClick = () => {
+        nameInputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        nameInputRef.current?.focus();
+    };
 
     const validateForm = () => {
 
@@ -178,15 +186,16 @@ function Contact() {
                 <Reveal animation="left">
                     <div>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                            Your One-Stop Partner for <br />
-                            <span className="text-[#F27115]">Digital Marketing, Website & App Development</span>
+                            <span className="text-[#f27115]">Grow Faster</span> with Expert Digital Marketing & Development Services
                         </h1>
 
                         <p className="text-gray-600 text-lg md:text-xl mb-8 max-w-xl">
-                            Get custom strategies, stunning websites, and powerful apps — all tailored to boost your growth.
+                            If your digital channels aren’t generating qualified leads, they are underperforming.
+                            We fix this with conversion-focused strategies that lead to overall business growth.
+
                         </p>
 
-                        <button className="bg-[#F27115] text-white px-8 py-3 rounded-lg font-bold hover:bg-black transition-colors shadow-lg">
+                        <button onClick={handleContactClick} className="bg-[#F27115] text-white px-8 py-3 rounded-lg font-bold hover:bg-black transition-colors shadow-lg">
                             Contact Us
                         </button>
                     </div>
@@ -204,6 +213,7 @@ function Contact() {
                         <form onSubmit={handleSubmit} className="space-y-4">
 
                             <input
+                                ref={nameInputRef}
                                 type="text"
                                 placeholder="Name"
                                 value={name}

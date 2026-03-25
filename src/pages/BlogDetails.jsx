@@ -128,6 +128,8 @@ import api from "../services/api";
 import { Helmet } from "react-helmet-async";
 import SEO from "../components/SEO";
 
+const BASE_URL = import.meta.env.VITE_SITE_URL;
+
 function BlogDetails() {
     const { slug } = useParams();
     const [blog, setBlog] = useState(null);
@@ -166,7 +168,7 @@ function BlogDetails() {
         "@type": "BlogPosting",
         "headline": blog.title,
         "description": blog.metaDescription || blog.excerpt,
-        "image": blog.imageUrl,
+        "image": blog.imageUrl || "/fallback.jpg",
         "author": {
             "@type": "Organization",
             "name": "Bynix Technology"
@@ -176,7 +178,7 @@ function BlogDetails() {
             "name": "Bynix Technology",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://bynixtechnology.com/logo.png"
+                "url": `${BASE_URL}/logo.png`
             }
         },
         "articleSection": blog.category,
@@ -185,7 +187,7 @@ function BlogDetails() {
         "wordCount": blog.content?.replace(/<[^>]+>/g, "").split(/\s+/).length,
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": `https://bynixtechnology.com/blogs/${slug}`
+            "@id": `${BASE_URL}/blogs/${slug}`
         }
     };
 
@@ -197,19 +199,19 @@ function BlogDetails() {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://bynixtechnology.com"
+                "item": `${BASE_URL}`
             },
             {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Blogs",
-                "item": "https://bynixtechnology.com/blogs"
+                "item": `${BASE_URL}/blogs`
             },
             {
                 "@type": "ListItem",
                 "position": 3,
                 "name": blog.title,
-                "item": `https://bynixtechnology.com/blogs/${slug}`
+                "item": `${BASE_URL}/blogs/${slug}`
             }
         ]
     };
@@ -220,7 +222,7 @@ function BlogDetails() {
                 title={blog.metaTitle || blog.title}
                 description={blog.metaDescription || blog.excerpt}
                 keywords={`${blog.category}, ${blog.title}, Bynix Technology blog`}
-                image={blog.imageUrl}
+                image={blog.imageUrl || "/fallback.jpg"}
             />
             <Helmet>
 
@@ -238,7 +240,7 @@ function BlogDetails() {
 
                 <link
                     rel="canonical"
-                    href={`https://bynixtechnology.com/blogs/${slug}`}
+                    href={`${BASE_URL}/blogs/${slug}`}
                 />
 
                 <script type="application/ld+json">
@@ -288,8 +290,12 @@ function BlogDetails() {
                     {/* HERO IMAGE */}
                     <div className="mb-12">
                         <img
-                            src={blog.imageUrl}
-                            alt={blog.title}
+                            src={blog.imageUrl || "/fallback.jpg"}
+                            alt={blog.title || "Blog Image"}
+                            onError={(e) => {
+                                e.currentTarget.onerror = null;
+                                e.currentTarget.src = "/fallback.jpg";
+                            }}
                             className="w-full rounded-[2rem] shadow-xl border border-gray-50 object-cover max-h-[500px]"
                         />
                     </div>

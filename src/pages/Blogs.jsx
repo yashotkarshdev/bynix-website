@@ -196,19 +196,21 @@ import api from "../services/api";
 import SEO from "../components/SEO";
 import { Helmet } from "react-helmet-async";
 
+const BASE_URL = import.meta.env.VITE_SITE_URL;
+
 function Blog() {
     const blogSchema = {
         "@context": "https://schema.org",
         "@type": "Blog",
         "name": "Bynix Technology Blog",
         "description": "Latest insights on SEO, digital marketing, web development and business growth strategies.",
-        "url": "https://bynixtechnology.com/blogs",
+        "url": `${BASE_URL}/blogs`,
         "publisher": {
             "@type": "Organization",
             "name": "Bynix Technology",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://bynixtechnology.com/logo.png"
+                "url": `${BASE_URL}/logo.png`
             }
         }
     };
@@ -220,13 +222,13 @@ function Blog() {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://bynixtechnology.com"
+                "item": `${BASE_URL}`
             },
             {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Blogs",
-                "item": "https://bynixtechnology.com/blogs"
+                "item": `${BASE_URL}/blogs`
             }
         ]
     };
@@ -293,12 +295,12 @@ function Blog() {
             "name": "Bynix Technology",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://bynixtechnology.com/logo.png"
+                "url": `${BASE_URL}/logo.png`
             }
         },
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": `https://bynixtechnology.com/blogs/${blog.slug}`
+            "@id": `${BASE_URL}/blogs/${blog.slug}`
         }
     }));
     return (
@@ -346,9 +348,13 @@ function Blog() {
                         <div className="bg-white rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100 grid md:grid-cols-2 gap-0 items-center transition-transform duration-500 hover:-translate-y-2">
                             <div className="h-[300px] md:h-[500px] overflow-hidden">
                                 <img
-                                    src={featured.imageUrl}
-                                    alt={featured.title}
+                                    src={featured.imageUrl || "/fallback.jpg"}
+                                    alt={featured.title || "Featured Blog Image"}
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                    onError={(e) => {
+                                        e.currentTarget.onerror = null;
+                                        e.currentTarget.src = "/fallback.jpg";
+                                    }}
                                 />
                             </div>
                             <div className="p-8 md:p-14">
@@ -387,8 +393,12 @@ function Blog() {
                             >
                                 <div className="relative h-64 rounded-[2rem] overflow-hidden shadow-sm mb-6 border border-gray-100">
                                     <img
-                                        src={blog.imageUrl}
-                                        alt={blog.title}
+                                        src={blog.imageUrl || "/fallback.jpg"}
+                                        alt={blog.title || "Blog Image"}
+                                        onError={(e) => {
+                                            e.currentTarget.onerror = null;
+                                            e.currentTarget.src = "/fallback.jpg";
+                                        }}
                                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                     />
                                     <div className="absolute top-4 left-4">

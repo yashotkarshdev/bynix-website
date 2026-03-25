@@ -6,63 +6,81 @@ import Reveal from "../components/animate/Reveal";
 import SEO from "../components/SEO";
 import { Helmet } from "react-helmet-async";
 
-function SeoService() {
+const BASE_URL = import.meta.env.VITE_SITE_URL;
+
     const features = [
         {
-            title: "Outsource SEO",
-            desc: "We provide professional outsourcing services to improve your customer base and your online presence. We have a professional team that helps in increasing traffic, improving search engine ranking, and business growth.",
+            title: "AI SEO",
+            desc: "At Bynix, SEO strategies are designed to help brands appear in AI-generated answers such as Google AI Overviews and conversational platforms like ChatGPT.",
             image: "/seo/outsource-seo.png",
         },
         {
-            title: "Small Business SEO",
-            desc: "Small businesses face many challenges in growing their online presence in today's digital market. SEO is essential to grow and stay ahead, and have a strong presence on Google. We know that small businesses need cost-effective and result-driven solutions.",
+            title: "E-E-A-T Optimization",
+            desc: "E-E-A-T optimization at Bynix is carried out by building strong trust and authority signals across both on-page and off-page elements. This includes authoritative backlinks, digital PR campaigns,  optimizing author profiles, adding verifiable credentials, and more.",
             image: "/seo/small-biz-seo.png",
         },
         {
-            title: "On-Page SEO",
-            desc: "It is used to optimize your website content, structure, layout, and technical elements to increase traffic and user experience. We optimize keywords, internal links, pictures, title tags, headings, and meta descriptions, and enhance the efficiency of the website.",
+            title: "Zero-Click Search Optimization",
+            desc: "This is achieved by structuring content for featured snippets, rich results, and knowledge panels using schema markup and concise answer formats.",
             image: "/seo/onpage-seo.png",
         },
         {
-            title: "Off-page SEO",
-            desc: "A strong digital presence is essential for growing your online presence in today's competitive online market. A strong off-page SEO strategy will boost your website traffic and increase your brand reputation.",
+            title: "Voice Search Optimization",
+            desc: "This includes targeting long-tail, question-based keywords and creating content that directly answers user intent in a brief and clear manner. ",
             image: "/seo/offpage-seo.png",
         },
         {
-            title: "Technical SEO",
-            desc: "The website must be technically strong for online presence and search ranking. Technical SEO ensures your website works smoothly or not. We have professional technical experts who provide proper website structure and overall performance of your website.",
+            title: "Content Clusters & Topical Authority",
+            desc: "Content clusters are developed by organizing related topics under a central pillar page supported by interconnected subtopics.",
+            image: "/seo/technical-seo.png",
+        }
+        ,
+        {
+            title: "Brand Mentions & Digital PR",
+            desc: "The process involves securing mentions in reputable publications, industry websites, and high-quality directories to enhance brand visibility.",
             image: "/seo/technical-seo.png",
         }
     ];
     const seoFaq = [
         {
             "id": 1,
-            "question": "What is SEO?"
+            "question": "What makes Bynix Technology’s SEO services different?",
+            "answer": "Our strategies go beyond traditional SEO by integrating AI SEO, E-E-A-T optimization, and data-driven decision-making."
         },
         {
             "id": 2,
-            "question": "Why is SEO important for my business?"
+            "question": "How long does it take to see results from SEO?",
+            "answer": "Significant results typically take 4 to 6 months, depending on competition, industry, and current website status."
         },
         {
             "id": 3,
-            "question": "How long does it take to see results from SEO?"
+            "question": "Do you provide customized SEO strategies?",
+            "answer": "Absolutely. Every business is unique, so we create tailored SEO strategies based on your goals, target audience, and industry to ensure maximum ROI."
         },
         {
             "id": 4,
-            "question": "What is keyword research in SEO?"
+            "question": "How often should SEO be updated or optimized?",
+            "answer": "SEO is an ongoing process that requires regular updates to stay aligned with algorithm changes and market trends. "
+        },
+        {
+            "id": 5,
+            "question": "How do you measure SEO success?",
+            "answer": "SEO success is measured by tracking organic traffic, keyword rankings, and user engagement metrics. "
         }
     ];
+
+function SeoService() {
     const seoServiceSchema = {
         "@context": "https://schema.org",
         "@type": "Service",
         name: "SEO Services",
-        url: "https://bynixtechnology.com/services/seo-service",
+        url: `${BASE_URL}/services/seo-service`,
         description:
             "Professional SEO services including on-page SEO, off-page SEO, technical SEO, and SEO outsourcing to increase website traffic and search rankings.",
         provider: {
             "@type": "Organization",
             name: "Bynix Technology",
-            url: "https://bynixtechnology.com"
+            url: `${BASE_URL}`
         },
         serviceType: "Search Engine Optimization",
         areaServed: {
@@ -89,7 +107,7 @@ function SeoService() {
             provider: {
                 "@type": "Organization",
                 name: "Bynix Technology",
-                url: "https://bynixtechnology.com"
+                url: `${BASE_URL}`
             }
         }))
     };
@@ -102,7 +120,7 @@ function SeoService() {
             acceptedAnswer: {
                 "@type": "Answer",
                 text:
-                    "Bynix Technology provides professional SEO services including keyword optimization, link building, and technical SEO to improve website rankings."
+                    faq.answer
             }
         }))
     };
@@ -114,19 +132,19 @@ function SeoService() {
                 "@type": "ListItem",
                 position: 1,
                 name: "Home",
-                item: "https://bynixtechnology.com"
+                item: `${BASE_URL}`
             },
             {
                 "@type": "ListItem",
                 position: 2,
                 name: "Services",
-                item: "https://bynixtechnology.com/services"
+                item: `${BASE_URL}/services`
             },
             {
                 "@type": "ListItem",
                 position: 3,
                 name: "SEO Services",
-                item: "https://bynixtechnology.com/services/seo-service"
+                item: `${BASE_URL}/services/seo-service`
             }
         ]
     };
@@ -167,25 +185,21 @@ function SeoService() {
                 <div className="container mx-auto text-center relative z-10">
                     <Reveal animation="right">
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-black mb-6 leading-tight">
-                            Data-Driven <span className="text-[#F27115]">SEO</span> Solutions <br />
-                            for Sustainable Website Growth
+                            <span className="text-[#F27115]">SEO</span> That <span className="text-[#F27115]">Delivers Leads,</span> <br />Not Just Rankings
                         </h1>
                     </Reveal>
                     <Reveal animation="left">
                         <p className="text-black text-left md:text-center font-medium text-lg md:text-xl sm:px-20 mx-auto mb-10 leading-relaxed">
-                            Bynix Technology offers SEO services with advanced solutions to grow your business.
-                            We have a dedicated team of professionals who are trained in keyword optimization,
-                            link building, and high-quality content development. Our experts use latest SEO
-                            techniques that align with search engine algorithms to boost organic traffic.
+                            At Bynix Technology, we combine advanced SEO techniques with analytics-driven insights to ensure your brand reaches the right audience at the right time. 
                         </p>
                     </Reveal>
                     <Reveal animation="zoom" delay={100}>
                         <div className="flex flex-col sm:flex-row justify-center gap-4">
-                            <button className="px-8 py-3 cursor-pointer bg-white/0 border-2 border-gray-400 text-black font-bold rounded-lg hover:bg-gray-50 transition-all">
+                            <Link to={"/services"} className="px-8 py-3 cursor-pointer bg-white/0 border-2 border-gray-400 text-black font-bold rounded-lg hover:bg-gray-50 transition-all">
                                 Explore Our Solutions
-                            </button>
+                            </Link>
                             <Link to={"/contact"} className="px-8 py-3 bg-black cursor-pointer text-white font-bold rounded-lg hover:bg-[#F27115] transition-all shadow-lg">
-                                Get In Touch
+                                Get a Quote 
                             </Link>
                         </div>
                     </Reveal>
@@ -199,9 +213,9 @@ function SeoService() {
                     {/* Heading */}
                     <div className="text-center mb-8 lg:mb-16">
                         <h2 className="relative inline-block text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 pb-4">
-                            Why Local SEO Matters to
+                            Comprehensive SEO Services for
                             <span className="absolute top-5 left-1/2 mix-blend-multiply -translate-x-1/2 w-full h-3 bg-[#FFC107]"></span>
-                            <br /> Your Business?
+                            <br /> Authority, Visibility & Growth
                             <span className="absolute bottom-5 mix-blend-multiply left-1/2 -translate-x-1/2 w-64 h-3 bg-[#FFC107]"></span>
                         </h2>
                     </div>

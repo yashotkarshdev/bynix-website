@@ -4,51 +4,63 @@ import BackgroundGraphics from "../components/BackgroundGraphic";
 import Reveal from "../components/animate/Reveal";
 import SEO from "../components/SEO";
 import { Helmet } from "react-helmet-async";
+
+const BASE_URL = import.meta.env.VITE_SITE_URL;
+
 const designServices = [
     {
         title: "Logo Design",
-        desc: "We create unique and memorable logos that represent your brand identity. Our designs are crafted to be modern, professional, and easily recognizable across all platforms.",
+        desc: "Our experts create distinctive logos that reflect brand identity and establish a strong visual foundation for businesses.",
         // Replace with actual image path from image_16.png
         image: "/graphic-designing/services/logo-design-display.jpg"
     },
     {
         title: "Creative Graphics Design",
-        desc: "Our creative team designs social media posts, banners, ads, and marketing materials that capture attention and strengthen your brand presence online.",
+        desc: "We deliver visually compelling graphics that enhance brand communication and ensure consistent messaging across platforms.",
         // Replace with actual image path from image_16.png
         image: "/graphic-designing/services/graphics-design-display.jpg"
     },
     {
         title: "Video Editing",
-        desc: "We deliver high-quality video editing services for promotional videos, social media content, advertisements, and business presentations to make your content more engaging and professional.",
+        desc: "We provide professional video editing services that transform raw footage into engaging content aligned with business objectives.",
         // Replace with actual image path from image_16.png
         image: "/graphic-designing/services/video-editing-display.jpg"
     }
 ];
 
 const benefits = [
-    "Strong brand identity",
-    "Better audience engagement",
-    "Professional brand image",
-    "Higher marketing impact",
-    "Improved brand recognition"
+    "Reinforces trust and decision-maker confidence",
+    "Translates complex offerings into clear visual narratives",
+    "Elevates brand authority and market positioning",
+    "Drives consistent engagement across platforms",
+    "Contributes directly to pipeline growth and ROI"
 ];
 
 const designingFaqs = [
     {
         "id": 1,
-        "question": "What design services do you offer?"
+        "question": "How does graphic design benefit B2B businesses?",
+        "answer":"Graphic design helps simplify complex ideas, improve communication, and build trust with decision-makers."
     },
     {
         "id": 2,
-        "question": "How long does it take to design a logo or creative?"
+        "question": "Do you provide custom logo design?",
+        "answer": "Yes, we create unique and tailored logos that reflect your brand identity and business values."
     },
     {
         "id": 3,
-        "question": "Do you offer revisions?"
+        "question": "Can you maintain brand consistency across different platforms?",
+        "answer": "Absolutely, we ensure all designs follow a unified style for consistent messaging across digital and offline channels."
     },
     {
         "id": 4,
-        "question": "Can you create designs for social media marketing?"
+        "question": "What industries do you serve with your design solutions?",
+        "answer": "We work with startups, SMEs, and enterprises across various industries, especially B2B sectors."
+    },
+    {
+        "id": 5,
+        "question": "How can I get started with your graphic design services?",
+        "answer": "You can click on the Get a Quote button and share your requirements to begin the process."
     }
 ]
 
@@ -79,14 +91,14 @@ function GraphicDesigning() {
         "@context": "https://schema.org",
         "@type": "Service",
         name: "Graphic Design Services",
-        url: "https://bynixtechnology.com/services/graphic-designing",
+        url: `${BASE_URL}/services/graphic-designing`,
         description:
             "Professional graphic design services including logo design, creative graphics, and video editing to help businesses build strong brand identity.",
         serviceType: "Graphic Design",
         provider: {
             "@type": "Organization",
             name: "Bynix Technology",
-            url: "https://bynixtechnology.com"
+            url: `${BASE_URL}`
         },
         areaServed: {
             "@type": "Place",
@@ -113,7 +125,7 @@ function GraphicDesigning() {
             provider: {
                 "@type": "Organization",
                 name: "Bynix Technology",
-                url: "https://bynixtechnology.com"
+                url: `${BASE_URL}`
             }
         }))
     };
@@ -140,19 +152,19 @@ function GraphicDesigning() {
                 "@type": "ListItem",
                 position: 1,
                 name: "Home",
-                item: "https://bynixtechnology.com"
+                item: `${BASE_URL}`
             },
             {
                 "@type": "ListItem",
                 position: 2,
                 name: "Services",
-                item: "https://bynixtechnology.com/services"
+                item: `${BASE_URL}/services`
             },
             {
                 "@type": "ListItem",
                 position: 3,
                 name: "Graphic Design",
-                item: "https://bynixtechnology.com/services/graphic-designing"
+                item: `${BASE_URL}/services/graphic-designing`
             }
         ]
     };
@@ -193,22 +205,22 @@ function GraphicDesigning() {
                 <div className="container mx-auto text-center relative z-10">
                     <Reveal animation="right">
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-black mb-6 leading-tight">
-                            Creative <span className="text-[#F27115]">Design Solutions</span> <br /> That Bring Your Brand to Life
+                            <span className="text-[#f27115]">Design</span> Excellence That Defines <br /> <span className="text-[#f27115]">Market-Leading Brands</span>
                         </h1>
                     </Reveal>
                     <Reveal animation="left">
                         <p className="text-black text-center font-medium text-lg md:text-xl sm:px-20 mx-auto mb-10 leading-relaxed">
-                            At Bynix Technology, we provide professional design services including logo design, creative graphics, and video editing to help your brand stand out and communicate effectively with your audience.
+                            Bynix Technology creates high-quality visual assets that go beyond aesthetics to deliver meaningful business outcomes. The approach emphasizes precision, consistency, and alignment with broader organizational goals.
                         </p>
                     </Reveal>
 
                     <Reveal animation="zoom" delay={100}>
                         <div className="flex flex-col sm:flex-row justify-center gap-4">
-                            <button className="px-8 py-3 cursor-pointer bg-white/0 border-2 border-gray-400 text-black font-bold rounded-lg hover:bg-gray-50 transition-all">
+                            <Link to={"/services"} className="px-8 py-3 cursor-pointer bg-white/0 border-2 border-gray-400 text-black font-bold rounded-lg hover:bg-gray-50 transition-all">
                                 Explore Our Solutions
-                            </button>
+                            </Link>
                             <Link to={"/contact"} className="px-8 py-3 bg-black cursor-pointer text-white font-bold rounded-lg hover:bg-[#F27115] transition-all shadow-lg">
-                                Get In Touch
+                                Get a Quote 
                             </Link>
                         </div>
                     </Reveal>
@@ -276,15 +288,14 @@ function GraphicDesigning() {
                                     {/* Heading with Yellow Underline */}
                                     <div className="mb-8">
                                         <h2 className="relative inline-block text-3xl md:text-4xl font-extrabold text-[#1a1a1a] pb-2">
-                                            Why Good Design Matters
+                                            Business Value of Strategic Design
                                             <span className="absolute -bottom-1 left-0 w-full h-2 bg-[#FBC02D]"></span>
                                         </h2>
                                     </div>
 
                                     {/* Main Paragraph */}
                                     <p className="text-lg md:text-xl text-[#333] leading-relaxed mb-8 font-medium">
-                                        Good design helps your business build trust, communicate clearly, and attract customers.
-                                        Strong visuals create a lasting impression and help your brand stand out in a competitive market.
+                                        Design serves as a critical driver of perception and performance in competitive markets. For B2B organizations, it enables clearer communication, strengthens brand authority, and creates meaningful engagement across every customer touchpoint.
                                     </p>
 
                                     {/* Bullet List */}
