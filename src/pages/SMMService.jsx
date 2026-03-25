@@ -9,7 +9,7 @@ import { Helmet } from "react-helmet-async";
 
 const BASE_URL = import.meta.env.VITE_SITE_URL;
 
-const ssmFaqs = [
+const smmFaqs = [
     {
         "id": 1,
         "question": "Which social media platforms are best for my business growth?",
@@ -158,6 +158,20 @@ function SMMService() {
             }
         ]
     };
+
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: smmFaqs.map(faq => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer
+            }
+        }))
+    };
+
     return (
         <>
             <SEO
@@ -171,9 +185,9 @@ function SMMService() {
                     {JSON.stringify(serviceSchema)}
                 </script>
 
-                {/* <script type="application/ld+json">
+                <script type="application/ld+json">
                     {JSON.stringify(faqSchema)}
-                </script> */}
+                </script>
 
                 <script type="application/ld+json">
                     {JSON.stringify(breadcrumbSchema)}
@@ -402,7 +416,7 @@ function SMMService() {
                 </section>
                 {/* FAQ Section */}
                 <Reveal animation="up">
-                    <FAQSection faqs={ssmFaqs} />
+                    <FAQSection faqs={smmFaqs} />
                 </Reveal>
             </section>
         </>

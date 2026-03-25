@@ -138,6 +138,19 @@ function Services() {
             { "@type": "ListItem", position: 2, name: "Services", item: `${BASE_URL}/services` }
         ]
     };
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: FAQS.map(faq => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer
+            }
+        }))
+    };
+
 
     return (
         <div className="bg-white text-black">
@@ -151,6 +164,7 @@ function Services() {
             <Helmet>
                 <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
                 <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+                <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
             </Helmet>
 
             {/* HERO SECTION */}

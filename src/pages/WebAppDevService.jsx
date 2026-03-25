@@ -150,8 +150,7 @@ function WebAppDevService() {
             name: faq.question,
             acceptedAnswer: {
                 "@type": "Answer",
-                text:
-                    "Bynix Technology provides professional web and mobile app development solutions tailored to your business needs."
+                text: faq.answer
             }
         }))
     };
