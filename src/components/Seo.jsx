@@ -61,7 +61,8 @@ export default function SEO({
       <meta property="og:site_name" content={siteName} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description || defaultDesc} />
-      <meta property="og:image" content={`${baseUrl}${image}`} />
+      {/* <meta property="og:image" content={`${baseUrl}${image}`} /> */}
+      <meta property="og:image" content="https://bynixtechnology.com/og-image.jpg" />
       <meta property="og:image:alt" content={fullTitle} />
       <meta property="og:url" content={canonicalUrl} />
 
@@ -69,7 +70,7 @@ export default function SEO({
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description || defaultDesc} />
-      <meta name="twitter:image" content={`${baseUrl}${image}`} />
+      <meta name="twitter:image" content="https://bynixtechnology.com/og-image.jpg" />
 
       {/* Organization Schema */}
       <script type="application/ld+json">
