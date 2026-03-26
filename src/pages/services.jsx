@@ -45,7 +45,7 @@ const SERVICES_DATA = [
     {
         title: "Search Engine Optimization Services",
         desc: "We help businesses rank for high-intent keywords and generate consistent organic traffic that converts into leads.",
-        image: "/seo/bynix-seo-service-hero.png",
+        image: "/seo/bynix-seo-service-hero.webp",
         link: "/services/seo-service",
         icon: <BarChart3 className="text-[#f27115] w-8 h-8" />,
         outcome: "Sustainable traffic, better visibility, and long-term lead generation."
@@ -69,7 +69,7 @@ const SERVICES_DATA = [
     {
         title: "SaaS Development & Solutions",
         desc: "We build scalable SaaS products and automation systems tailored to your business model.",
-        image: "/saas/bynix-saas-service.jpg",
+        image: "/saas/bynix-saas-service.webp",
         link: "/services/saas-service",
         icon: <Rocket className="text-[#f27115] w-8 h-8" />,
         outcome: "Recurring revenue models and operational efficiency."

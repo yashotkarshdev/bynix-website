@@ -8,70 +8,70 @@ function Testimonials() {
         {
             name: "Fit Quest",
             role: "Marketing Head",
-            image: "/clientImages/fit-quest-jaipur.png",
+            image: "/clientImages/fit-quest-jaipur.webp",
             content: "Bynix transformed our member acquisition with premium branding and high-quality leads that actually convert.",
             rating: "5"
         },
         {
             name: "Madistax",
             role: "Founder",
-            image: "/clientImages/madistax.png",
+            image: "/clientImages/madistax.webp",
             content: "Bynix understood our business deeply and helped us achieve consistent growth with a clear strategic approach.",
             rating: "5"
         },
         {
             name: "Growth Happen",
             role: "Co-Founder",
-            image: "/clientImages/growth-happen.png",
+            image: "/clientImages/growth-happen.webp",
             content: "Their execution, clarity, and ROI-focused strategies truly set Bynix apart from typical agencies.",
             rating: "5"
         },
         {
             name: "The Trusted Beauty ",
             role: "Brand Manager",
-            image: "/clientImages/the-trusted-beuty.png",
+            image: "/clientImages/the-trusted-beuty.webp",
             content: "Bynix helped us stand out in a crowded market with strong positioning and performance-driven marketing.",
             rating: "5"
         },
         {
             name: "The Style Shaala",
             role: "Creative Director",
-            image: "/clientImages/the-style-shaala.png",
+            image: "/clientImages/the-style-shaala.webp",
             content: "Our brand identity feels stronger and more engaging thanks to Bynix’s creative digital execution.",
             rating: "5"
         },
         {
             name: "Refreshing Flavours",
             role: "Business Owner",
-            image: "/clientImages/refreshing-flavours.png",
+            image: "/clientImages/refreshing-flavours.webp",
             content: "Bynix built a refreshing brand image and helped us connect with the right audience effectively.",
             rating: "5"
         },
         {
             name: "Elixir Balance",
             role: "Operations Head",
-            image: "/clientImages/elixir-balance.png",
+            image: "/clientImages/elixir-balance.webp",
             content: "Their attention to detail and strategic approach made a significant difference to our overall growth.",
             rating: "5"
         },
         {
             name: "Sine Elevators",
             role: "Director",
-            image: "/clientImages/sineel-evators.png",
+            image: "/clientImages/sineel-evators.webp",
             content: "Bynix gave our brand a modern, credible digital presence that resonates with potential clients.",
             rating: "5"
         },
         {
             name: "Pure Work Athletics",
             role: "Founder",
-            image: "/clientImages/pure-work-athletics.png",
+            image: "/clientImages/pure-work-athletics.webp",
             content: "They captured our brand vision perfectly and helped us build a strong identity in the fitness space.",
             rating: "5"
         },
         {
             name: "TheAutonTwk",
             role: "Digital Marketing Manager",
-            image: "/clientImages/the-auton-twk.png",
+            image: "/clientImages/the-auton-twk.webp",
             content: "We saw immediate improvement in inquiries with Bynix’s performance marketing and website optimization.",
             rating: "5"
         }

@@ -5,16 +5,16 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const clients = [
-    { id: 1, name: "Fit Quest", logo: "/clientImages/fit-quest-jaipur.png" },
-    { id: 2, name: "Growth Happen", logo: "/clientImages/growth-happen.png" },
-    { id: 3, name: "Elixir Balance", logo: "/clientImages/elixir-balance.png" },
-    { id: 4, name: "Refreshment Flavours", logo: "/clientImages/refreshing-flavours.png" },
-    { id: 5, name: "Sineel Evators", logo: "/clientImages/sineel-evators.png" },
-    { id: 6, name: "The Trusted Beauty", logo: "/clientImages/the-trusted-beuty.png" },
-    { id: 7, name: "Pure Work Athletics", logo: "/clientImages/pure-work-athletics.png" },
-    {id:8, name: "Madistax", logo: "/clientImages/madistax.png"},
-    {id:9, name: "The Style Shaala", logo: "/clientImages/the-style-shaala.png"},
-    {id:10, name: "The AutoN Twk", logo: "/clientImages/the-auton-twk.png"},
+    { id: 1, name: "Fit Quest", logo: "/clientImages/fit-quest-jaipur.webp" },
+    { id: 2, name: "Growth Happen", logo: "/clientImages/growth-happen.webp" },
+    { id: 3, name: "Elixir Balance", logo: "/clientImages/elixir-balance.webp" },
+    { id: 4, name: "Refreshment Flavours", logo: "/clientImages/refreshing-flavours.webp" },
+    { id: 5, name: "Sineel Evators", logo: "/clientImages/sineel-evators.webp" },
+    { id: 6, name: "The Trusted Beauty", logo: "/clientImages/the-trusted-beuty.webp" },
+    { id: 7, name: "Pure Work Athletics", logo: "/clientImages/pure-work-athletics.webp" },
+    {id:8, name: "Madistax", logo: "/clientImages/madistax.webp"},
+    {id:9, name: "The Style Shaala", logo: "/clientImages/the-style-shaala.webp"},
+    {id:10, name: "The AutoN Twk", logo: "/clientImages/the-auton-twk.webp"},
 ];
 
 const OurClients = () => {

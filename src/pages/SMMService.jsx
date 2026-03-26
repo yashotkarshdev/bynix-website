@@ -197,7 +197,7 @@ function SMMService() {
                 {/* Background Image */}
                 <div
                     className="absolute inset-0 bg-cover bg-center opacity-20"
-                    style={{ backgroundImage: "url('/smm-service/smmhero.jpg')" }}
+                    style={{ backgroundImage: "url('/smm-service/smmhero.webp')" }}
                 ></div>
 
                 <div className="container mx-auto text-left md:text-center relative z-10">

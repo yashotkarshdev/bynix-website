@@ -67,23 +67,23 @@ const designingFaqs = [
 const processes = [
     {
         title: "Understanding your brand and goals",
-        image: "/graphic-designing/processes/process1.jpg" // Replace with actual illustration path
+        image: "/graphic-designing/processes/process1.webp" // Replace with actual illustration path
     },
     {
         title: "Research and concept creation",
-        image: "/graphic-designing/processes/process2.jpg"
+        image: "/graphic-designing/processes/process2.webp"
     },
     {
         title: "Design and creative development",
-        image: "/graphic-designing/processes/process3.jpg"
+        image: "/graphic-designing/processes/process3.webp"
     },
     {
         title: "Client feedback and revisions",
-        image: "/graphic-designing/processes/process4.jpg"
+        image: "/graphic-designing/processes/process4.webp"
     },
     {
         title: "Final delivery of high-quality design files",
-        image: "/graphic-designing/processes/process5.jpg"
+        image: "/graphic-designing/processes/process5.webp"
     }
 ];
 function GraphicDesigning() {
@@ -175,7 +175,7 @@ function GraphicDesigning() {
                 title="Graphic Design Services | Logo, Creative Graphics & Video Editing"
                 description="Bynix Technology provides professional graphic design services including logo design, creative graphics, and video editing to help your brand stand out."
                 keywords="graphic design jaipur, logo design jaipur, creative graphics, video editing services, brand design india"
-                image="/graphic-designing/hero.jpg"
+                image="/graphic-designing/hero.webp"
             />
             <Helmet>
                 <script type="application/ld+json">
@@ -199,7 +199,7 @@ function GraphicDesigning() {
                 {/* Background Image */}
                 <div
                     className="absolute inset-0 bg-cover bg-center opacity-20"
-                    style={{ backgroundImage: "url('/graphic-designing/hero.jpg')" }}
+                    style={{ backgroundImage: "url('/graphic-designing/hero.webp')" }}
                 ></div>
 
                 <div className="container mx-auto text-center relative z-10">
@@ -316,7 +316,7 @@ function GraphicDesigning() {
                                 <div className="w-full md:w-1/2 relative">
                                     <div className="relative z-10">
                                         <img
-                                            src="/graphic-designing/design-collage.png" // Replace with your collage image path
+                                            src="/graphic-designing/design-collage.webp" // Replace with your collage image path
                                             alt="Creative design elements collage"
                                             className="w-full h-auto object-contain"
                                         />

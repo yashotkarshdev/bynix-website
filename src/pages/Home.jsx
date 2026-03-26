@@ -107,23 +107,23 @@ const FEATURES2 = [
 const WORK_STEPS = [
     {
         title: "Discovery & Strategy",
-        img: "/how-we-work/discovery.jpg",
+        img: "/how-we-work/discovery.webp",
     },
     {
         title: "Planning & Design",
-        img: "/how-we-work/planning.jpg",
+        img: "/how-we-work/planning.webp",
     },
     {
         title: "Development",
-        img: "/how-we-work/development.jpg",
+        img: "/how-we-work/development.webp",
     },
     {
         title: "Testing & Optimization",
-        img: "/how-we-work/testing.jpg",
+        img: "/how-we-work/testing.webp",
     },
     {
         title: "Launch & Growth",
-        img: "/how-we-work/launch.jpg",
+        img: "/how-we-work/launch.webp",
     },
 ];
 

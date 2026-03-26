@@ -12,33 +12,33 @@ const BASE_URL = import.meta.env.VITE_SITE_URL;
         {
             title: "AI SEO",
             desc: "At Bynix, SEO strategies are designed to help brands appear in AI-generated answers such as Google AI Overviews and conversational platforms like ChatGPT.",
-            image: "/seo/outsource-seo.png",
+            image: "/seo/outsource-seo.webp",
         },
         {
             title: "E-E-A-T Optimization",
             desc: "E-E-A-T optimization at Bynix is carried out by building strong trust and authority signals across both on-page and off-page elements. This includes authoritative backlinks, digital PR campaigns,  optimizing author profiles, adding verifiable credentials, and more.",
-            image: "/seo/small-biz-seo.png",
+            image: "/seo/small-biz-seo.webp",
         },
         {
             title: "Zero-Click Search Optimization",
             desc: "This is achieved by structuring content for featured snippets, rich results, and knowledge panels using schema markup and concise answer formats.",
-            image: "/seo/onpage-seo.png",
+            image: "/seo/onpage-seo.webp",
         },
         {
             title: "Voice Search Optimization",
             desc: "This includes targeting long-tail, question-based keywords and creating content that directly answers user intent in a brief and clear manner. ",
-            image: "/seo/offpage-seo.png",
+            image: "/seo/offpage-seo.webp",
         },
         {
             title: "Content Clusters & Topical Authority",
             desc: "Content clusters are developed by organizing related topics under a central pillar page supported by interconnected subtopics.",
-            image: "/seo/technical-seo.png",
+            image: "/seo/technical-seo.webp",
         }
         ,
         {
             title: "Brand Mentions & Digital PR",
             desc: "The process involves securing mentions in reputable publications, industry websites, and high-quality directories to enhance brand visibility.",
-            image: "/seo/technical-seo.png",
+            image: "/seo/technical-seo.webp",
         }
     ];
     const seoFaq = [
@@ -156,7 +156,7 @@ function SeoService() {
                 title="Professional SEO Services | Local & Technical SEO Solutions"
                 description="Bynix Technology offers data-driven SEO services including on-page, off-page, technical SEO, and local SEO strategies to boost your website traffic."
                 keywords="seo services, on-page seo, off-page seo, technical seo, local seo, seo outsourcing, seo pricing"
-                image="/seo/bynix-seo-service-hero.png"
+                image="/seo/bynix-seo-service-hero.webp"
             />
             <Helmet>
                 <script type="application/ld+json">
@@ -179,7 +179,7 @@ function SeoService() {
                 {/* Background Image */}
                 <div
                     className="absolute inset-0 bg-cover bg-center opacity-20"
-                    style={{ backgroundImage: "url('/seo/bynix-seo-service-hero.png')" }}
+                    style={{ backgroundImage: "url('/seo/bynix-seo-service-hero.webp')" }}
                 ></div>
 
                 <div className="container mx-auto text-center relative z-10">

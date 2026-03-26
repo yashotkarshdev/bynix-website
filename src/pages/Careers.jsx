@@ -129,7 +129,7 @@ const Careers = () => {
                     {/* Background Image */}
                     <div
                         className="absolute inset-0 bg-cover bg-center opacity-20"
-                        style={{ backgroundImage: "url('/careers/hero.jpg')" }}
+                        style={{ backgroundImage: "url('/careers/hero.webp')" }}
                     ></div>
 
                     <div className="container mx-auto my-34 mt-18 md:my-36 lg:my-32 text-center relative z-10">

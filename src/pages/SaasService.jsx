@@ -181,7 +181,7 @@ function SaasService() {
                 title="SaaS Development Services | Custom SaaS, UI/UX & Analytics"
                 description="Bynix Technology provides custom SaaS development, integration, UI/UX design, and analytics solutions for businesses across industries."
                 keywords="saas development, saas integration, saas ui/ux, saas analytics, saas support, jaipur"
-                image="/saas/bynix-saas-service.jpg"
+                image="/saas/bynix-saas-service.webp"
             />
             <Helmet>
                 <script type="application/ld+json">
@@ -204,7 +204,7 @@ function SaasService() {
                 {/* Background Image */}
                 <div
                     className="absolute inset-0 bg-cover bg-center opacity-20"
-                    style={{ backgroundImage: "url('/saas/bynix-saas-service.jpg')" }}
+                    style={{ backgroundImage: "url('/saas/bynix-saas-service.webp')" }}
                 ></div>
 
                 <div className="container mx-auto text-center relative z-10">
@@ -242,7 +242,7 @@ function SaasService() {
                         <SectionBadge title={"Our SaaS Services"} />
 
                         <div className="hidden md:flex md:justify-center md:items-center">
-                            <img src="/saas/service-graphic.png" alt="Bynix Srevices for SaaS" className="h-30 w-30" />
+                            <img src="/saas/service-graphic.webp" alt="Bynix Srevices for SaaS" className="h-30 w-30" />
                         </div>
 
                         {/* Timeline Container */}
