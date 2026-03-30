@@ -265,9 +265,9 @@ useGSAP(() => {
         <>
         <div ref={containerRef}>
             <SEO
-                title="Digital Marketing & Web Development Agency in Jaipur"
-                description="Bynix Technology helps businesses grow with high-performance website development, custom mobile apps, and result-driven digital marketing strategies."
-                keywords="digital marketing agency jaipur, website development company jaipur, seo agency jaipur, mobile app development jaipur, digital marketing services india"
+                title="Web & App Development, SEO, SMM & SaaS Services"
+                description="Need a reliable digital partner? Bynix Technology helps businesses grow with web & app development, SEO, SMM, SaaS & graphic design. Let’s scale your business today."
+                // keywords="digital marketing agency jaipur, website development company jaipur, seo agency jaipur, mobile app development jaipur, digital marketing services india"
                 image="/home-preview.jpg"
             />
             <Helmet>
