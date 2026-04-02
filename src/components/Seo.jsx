@@ -18,11 +18,6 @@ export default function SEO({
     ? `${title} | ${siteName}`
     : `${siteName} | Website Development & Digital Marketing`;
 
-  const defaultDesc =
-    "Bynix Technology provides Website Development, Mobile App Development, SEO and Digital Marketing services.";
-
-  const defaultKeywords =
-    "Bynix Technology, web development company Jaipur, digital marketing agency, SEO services Jaipur";
 
   const organizationSchema = {
     "@context": "https://schema.org",
@@ -48,8 +43,8 @@ export default function SEO({
 
       <title>{fullTitle}</title>
 
-      <meta name="description" content={description || defaultDesc} />
-      <meta name="keywords" content={keywords || defaultKeywords} />
+      <meta name="description" content={description} />
+      <meta name="keywords" content={keywords} />
       <meta name="robots" content="index, follow" />
       <meta name="author" content="Bynix Technology" />
       <meta name="publisher" content="Bynix Technology" />
@@ -60,7 +55,7 @@ export default function SEO({
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content={siteName} />
       <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={description || defaultDesc} />
+      <meta property="og:description" content={description} />
       {/* <meta property="og:image" content={`${baseUrl}${image}`} /> */}
       <meta property="og:image" content="https://bynixtechnology.com/og-image.jpg" />
       <meta property="og:image:alt" content={fullTitle} />
@@ -69,7 +64,7 @@ export default function SEO({
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
-      <meta name="twitter:description" content={description || defaultDesc} />
+      <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content="https://bynixtechnology.com/og-image.jpg" />
 
       {/* Organization Schema */}
