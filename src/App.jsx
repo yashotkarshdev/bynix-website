@@ -18,6 +18,7 @@ import NotFound from "./pages/NotFound";
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsAndConditions from './pages/TermsAndConditions';
 import Careers from './pages/careers';
+import Apply from './pages/Apply';
 
 export default function App() {
   return (
@@ -40,6 +41,8 @@ export default function App() {
           <Route path="/terms" element={<TermsAndConditions />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/career" element={<Careers />} />
+
+          <Route path="/apply/:jobTitle" element={<Apply />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
